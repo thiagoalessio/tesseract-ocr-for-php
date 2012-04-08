@@ -14,9 +14,8 @@
   - ImageMagick ()
   - TesseractOCR ()
 
-  #### IMPORTANT
-
-  Make sure that `convert` and `tesseract` executables are visible in your $PATH.
+  **IMPORTANT**: Make sure that `convert` and `tesseract` executables are 
+  visible in your $PATH.
   If you're running PHP on a webserver, the user may be not you, but \_www or 
   similar.
   So a good tip is to add the following line in your code:
