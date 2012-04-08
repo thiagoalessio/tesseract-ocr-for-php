@@ -11,16 +11,17 @@
 
 ### Dependencies
 
-  - [ImageMagick](http://www.imagemagick.org/)
-  - [TesseractOCR](http://code.google.com/p/tesseract-ocr/)
+-  [ImageMagick](http://www.imagemagick.org/)
+-  [TesseractOCR](http://code.google.com/p/tesseract-ocr/)
 
-  **IMPORTANT**: Make sure that `convert` and `tesseract` executables are 
+**IMPORTANT**: Make sure that `convert` and `tesseract` executables are 
   visible in your $PATH.
   If you're running PHP on a webserver, the user may be not you, but \_www or 
   similar.
   So a good tip is to add the following line in your code:
 
-    putenv("PATH={getenv('PATH')}:/usr/local/bin");
+    $path = getenv('PATH');
+    putenv("PATH=$path:/usr/local/bin");
 
 ## Usage
 
@@ -28,5 +29,35 @@
     require_once '/path/to/tesseract-ocr-for-php/tesseract-ocr.php';
     
     $text = TesseractOCR::recognize('images/some-words.jpg');
+    ?>
+
+### Inducing recognition
+
+  Sometimes tesseract misunderstand some chars, such as:
+
+    0 - O
+    1 - l
+    j - ,
+    etc ...
+
+  But you can improve recognition accuracy by specifing what kind of chars
+  you're sending, for example:
+
+    <?php
+    require_once '/path/to/tesseract-ocr-for-php/tesseract-ocr.php';
+    
+    // tesseract will threat everything as downcase letters
+    TesseractOCR::recognize('my-image.jpg', range('a','z'));
+    
+    // you can pass as many ranges as you need
+    TesseractOCR::recognize('my-image.jpg', range(0,9), range('A','Z'));
+    ?>
+
+  You can even do *cool* stuff like this one:
+
+    <?php
+    require_once '/path/to/tesseract-ocr-for-php/tesseract-ocr.php';
+    
+    TesseractOCR::recognize('617.jpg', range('A','Z')); // will return "GIT"
     ?>
 

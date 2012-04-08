@@ -7,7 +7,8 @@ class TestTesseractOCR extends PoorTest {
   var $imagesPath;
 
   function beforeAll() {
-    @putenv("PATH={getenv('PATH')}:/usr/local/bin");
+    $path = getenv('PATH');
+    putenv("PATH=$path:/usr/local/bin");
     $this->imagesPath = dirname(__FILE__).'/images';
   }
 
@@ -22,6 +23,12 @@ class TestTesseractOCR extends PoorTest {
         return false;
     }
     return true;
+  }
+
+  function testInducingRecognition() {
+    $a = TesseractOCR::recognize($this->imagesPath.'/617.jpg', range('A','Z'));
+    $b = TesseractOCR::recognize($this->imagesPath.'/gotz.jpg', range(0,9));
+    return ($a == 'GIT') && ($b == '6072');
   }
 }
 new TestTesseractOCR();
