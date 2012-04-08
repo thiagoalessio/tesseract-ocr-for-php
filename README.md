@@ -11,8 +11,8 @@
 
 ### Dependencies
 
-  - ImageMagick ()
-  - TesseractOCR ()
+  - [ImageMagick](http://www.imagemagick.org/)
+  - [TesseractOCR](http://code.google.com/p/tesseract-ocr/)
 
   **IMPORTANT**: Make sure that `convert` and `tesseract` executables are 
   visible in your $PATH.
