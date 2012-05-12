@@ -26,7 +26,7 @@
 ## Usage
 
     <?php
-    require_once '/path/to/tesseract-ocr-for-php/tesseract-ocr.php';
+    require_once '/path/to/tesseract_ocr/tesseract_ocr.php';
     
     $text = TesseractOCR::recognize('images/some-words.jpg');
     ?>
@@ -44,7 +44,7 @@
   you're sending, for example:
 
     <?php
-    require_once '/path/to/tesseract-ocr-for-php/tesseract-ocr.php';
+    require_once '/path/to/tesseract_ocr/tesseract_ocr.php';
     
     // tesseract will threat everything as downcase letters
     TesseractOCR::recognize('my-image.jpg', range('a','z'));
@@ -56,7 +56,7 @@
   You can even do *cool* stuff like this one:
 
     <?php
-    require_once '/path/to/tesseract-ocr-for-php/tesseract-ocr.php';
+    require_once '/path/to/tesseract_ocr/tesseract_ocr.php';
     
     TesseractOCR::recognize('617.jpg', range('A','Z')); // will return "GIT"
     ?>

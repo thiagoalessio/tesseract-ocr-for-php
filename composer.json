@@ -1,5 +1,5 @@
 {
-    "name": "thiagoalessio/tesseractocr",
+    "name": "thiagoalessio/tesseract_ocr",
     "type": "library",
     "version": "0.1.1",
     "description": "A wrapper to work with TesseractOCR inside your PHP scripts",
@@ -19,6 +19,6 @@
         }
     ],
     "autoload": {
-        "psr-0": { "tesseract-ocr": "" }
+        "psr-0": { "tesseract_ocr": "" }
     }
 }
