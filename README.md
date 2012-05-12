@@ -4,7 +4,15 @@
 
 ## Instalation
 
-  Just clone and put somewhere inside your project folder.
+  Via [composer](http://getcomposer.org/)
+
+    {
+        "require": {
+            "thiagoalessio/tesseract_ocr": ">= 0.1.1"
+        }
+    }
+
+  Or just clone and put somewhere inside your project folder.
 
     $ cd myapp/vendor
     $ git clone git://github.com/thiagoalessio/tesseract-ocr-for-php.git
