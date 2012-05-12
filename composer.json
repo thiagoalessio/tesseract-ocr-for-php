@@ -1,0 +1,24 @@
+{
+    "name": "thiagoalessio/tesseractocr",
+    "type": "library",
+    "version": "0.1.1",
+    "description": "A wrapper to work with TesseractOCR inside your PHP scripts",
+    "keywords": ["Tesseract", "OCR", "text recognition"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thiago Alessio",
+            "email": "thiagoalessio@me.com",
+            "homepage": "http://thiagoalessio.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/thiagoalessio/tesseract-ocr-for-php"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "tesseract-ocr": "" }
+    }
+}

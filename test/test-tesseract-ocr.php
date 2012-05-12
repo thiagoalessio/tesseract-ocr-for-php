@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__FILE__).'/../vendor/poor-test/poor-test.php';
-require_once dirname(__FILE__).'/../tesseract-ocr.php';
+require_once dirname(__FILE__).'/../tesseract-ocr/tesseract-ocr.php';
 
 class TestTesseractOCR extends PoorTest {
 
