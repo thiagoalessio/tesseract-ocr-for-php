@@ -20,5 +20,8 @@
     ],
     "autoload": {
         "psr-0": { "tesseract_ocr": "" }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
     }
 }
