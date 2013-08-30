@@ -5,6 +5,7 @@
 ## Instalation
 
   Via [composer](http://getcomposer.org/)
+  (https://packagist.org/packages/thiagoalessio/tesseract_ocr)
 
     {
         "require": {
