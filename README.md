@@ -8,7 +8,7 @@
 
     {
         "require": {
-            "thiagoalessio/tesseract_ocr": ">= 0.1.1"
+            "thiagoalessio/tesseract_ocr": ">= 0.1.2"
         }
     }
 
