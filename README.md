@@ -9,7 +9,7 @@
 
     {
         "require": {
-            "thiagoalessio/tesseract_ocr": ">= 0.1.2"
+            "thiagoalessio/tesseract_ocr": ">= 0.1.4"
         }
     }
 
@@ -32,13 +32,19 @@
     $path = getenv('PATH');
     putenv("PATH=$path:/usr/local/bin");
 
+### Windows users
+
+I received several messages from people trying to get this library running
+under Windows, so I decided to write a short tutorial that can be found 
+[here](http://thiagoalessio.me/tesseractocr-for-php-on-windows/).
+
 ## Usage
 
     <?php
     require_once '/path/to/tesseract_ocr/tesseract_ocr.php';
+    //or require_once 'vendor/autoload.php' if you are using composer
     
     $text = TesseractOCR::recognize('images/some-words.jpg');
-    ?>
 
 ### Inducing recognition
 
@@ -53,20 +59,13 @@
   you're sending, for example:
 
     <?php
-    require_once '/path/to/tesseract_ocr/tesseract_ocr.php';
-    
     // tesseract will threat everything as downcase letters
     TesseractOCR::recognize('my-image.jpg', range('a','z'));
     
     // you can pass as many ranges as you need
     TesseractOCR::recognize('my-image.jpg', range(0,9), range('A','Z'));
-    ?>
 
   You can even do *cool* stuff like this one:
 
     <?php
-    require_once '/path/to/tesseract_ocr/tesseract_ocr.php';
-    
     TesseractOCR::recognize('617.jpg', range('A','Z')); // will return "GIT"
-    ?>
-
