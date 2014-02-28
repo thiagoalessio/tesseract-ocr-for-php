@@ -1,6 +1,6 @@
 <?php
-class TesseractOCR {
-
+class TesseractOCR
+{
   public static function recognize($originalImage) {
     $tifImage       = TesseractOCR::convertImageToTif($originalImage);
     $configFile     = TesseractOCR::generateConfigFile(func_get_args());
@@ -11,19 +11,17 @@ class TesseractOCR {
   }
 
   protected static function convertImageToTif($originalImage) {
-    $tifImage = sys_get_temp_dir().'/tesseract-ocr-tif-'.rand().'.tif';
+    $tifImage = sys_get_temp_dir().DIRECTORY_SEPARATOR.rand().'.tif';
     exec("convert -colorspace gray +matte $originalImage $tifImage");
     return $tifImage;
   }
 
   protected static function generateConfigFile($arguments) {
-    $configFile = sys_get_temp_dir().'/tesseract-ocr-config-'.rand().'.conf';
+    $configFile = sys_get_temp_dir().DIRECTORY_SEPARATOR.rand().'.conf';
     exec("touch $configFile");
     $whitelist = TesseractOCR::generateWhitelist($arguments);
     if(!empty($whitelist)) {
-      $fp = fopen($configFile, 'w');
-      fwrite($fp, "tessedit_char_whitelist $whitelist");
-      fclose($fp);
+      file_put_contents($configFile, "tessedit_char_whitelist $whitelist");
     }
     return $configFile;
   }
@@ -36,9 +34,9 @@ class TesseractOCR {
   }
 
   protected static function executeTesseract($tifImage, $configFile) {
-    $outputFile = sys_get_temp_dir().'/tesseract-ocr-output-'.rand();
-    exec("tesseract $tifImage $outputFile nobatch $configFile 2> /dev/null");
-    return $outputFile.'.txt'; //tesseract appends txt extension to output file
+    $outputFile = sys_get_temp_dir().DIRECTORY_SEPARATOR.rand();
+    exec("tesseract $tifImage $outputFile nobatch $configFile");
+    return $outputFile.'.txt'; //tesseract adds txt extension to output file
   }
 
   protected static function readOutputFile($outputFile) {
@@ -46,7 +44,7 @@ class TesseractOCR {
   }
 
   protected static function removeTempFiles() {
-    array_map("unlink", func_get_args());
+    array_map('unlink', func_get_args());
   }
 }
 ?>
