@@ -3,6 +3,8 @@ require_once dirname(__FILE__).'/../TesseractOCR/TesseractOCR.php';
 
 class TesseractOCRTest extends PHPUnit_Framework_TestCase
 {
+    protected $imagesDir;
+
     public function setUp()
     {
         $this->imagesDir = dirname(__FILE__).DIRECTORY_SEPARATOR;

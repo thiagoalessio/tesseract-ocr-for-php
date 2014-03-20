@@ -49,8 +49,8 @@ under Windows, so I decided to write a short tutorial that can be found
 
 ### Defining language
 
-    Tesseract has training data for several languages, which certainly improve
-    the accuracy of the recognition.
+Tesseract has training data for several languages, which certainly improve
+the accuracy of the recognition.
 
     <?php
     require_once '/path/to/TesseractOCR/TesseractOCR.php';
