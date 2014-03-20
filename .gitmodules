@@ -1,3 +1,0 @@
-[submodule "vendor/poor-test"]
-	path = vendor/poor-test
-	url = git://github.com/thiagoalessio/poor-test.git

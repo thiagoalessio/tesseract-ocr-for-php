@@ -9,7 +9,7 @@
 
     {
         "require": {
-            "thiagoalessio/tesseract_ocr": ">= 0.1.4"
+            "thiagoalessio/tesseract_ocr": ">= 0.2.0"
         }
     }
 
@@ -20,14 +20,12 @@
 
 ### Dependencies
 
--  [ImageMagick](http://www.imagemagick.org/)
 -  [TesseractOCR](http://code.google.com/p/tesseract-ocr/)
 
-**IMPORTANT**: Make sure that `convert` and `tesseract` executables are 
-  visible in your $PATH.
+**IMPORTANT**: Make sure that the `tesseract` binary is on your $PATH.
   If you're running PHP on a webserver, the user may be not you, but \_www or 
   similar.
-  So a good tip is to add the following line in your code:
+  If you need, there is always the possibility of modify your $PATH:
 
     $path = getenv('PATH');
     putenv("PATH=$path:/usr/local/bin");
@@ -40,11 +38,27 @@ under Windows, so I decided to write a short tutorial that can be found
 
 ## Usage
 
+### Basic usage
+
     <?php
-    require_once '/path/to/tesseract_ocr/tesseract_ocr.php';
+    require_once '/path/to/TesseractOCR/TesseractOCR.php';
     //or require_once 'vendor/autoload.php' if you are using composer
     
-    $text = TesseractOCR::recognize('images/some-words.jpg');
+    $tesseract = new TesseractOCR('images/some-words.jpg');
+    echo $tesseract->recognize();
+
+### Defining language
+
+    Tesseract has training data for several languages, which certainly improve
+    the accuracy of the recognition.
+
+    <?php
+    require_once '/path/to/TesseractOCR/TesseractOCR.php';
+    //or require_once 'vendor/autoload.php' if you are using composer
+    
+    $tesseract = new TesseractOCR('images/sind-sie-deutsch.jpg');
+    $tesseract->setLanguage('deu'); //same 3-letters code as tesseract training data packages
+    echo $tesseract->recognize();
 
 ### Inducing recognition
 
@@ -59,13 +73,26 @@ under Windows, so I decided to write a short tutorial that can be found
   you're sending, for example:
 
     <?php
-    // tesseract will threat everything as downcase letters
-    TesseractOCR::recognize('my-image.jpg', range('a','z'));
+    $tesseract = new TesseractOCR('my-image.jpg');
+    $tesseract->setWhitelist(range('a','z')); //tesseract will threat everything as downcase letters
+    echo $tesseract->recognize();
     
-    // you can pass as many ranges as you need
-    TesseractOCR::recognize('my-image.jpg', range(0,9), range('A','Z'));
+    $tesseract = new TesseractOCR('my-image.jpg');
+    $tesseract->setWhitelist(range('A','Z'), range(0,9), '_-@.'); //you can pass as many ranges as you need
 
   You can even do *cool* stuff like this one:
 
     <?php
-    TesseractOCR::recognize('617.jpg', range('A','Z')); // will return "GIT"
+    $tesseract = new TesseractOCR('617.jpg');
+    $tesseract->setWhitelist(range('A','Z'));
+    echo $tesseract->recognize(); //will return "GIT"
+
+## Troubleshooting
+
+#### Warnings like `Permission denied` or `No such file or directory`
+
+  To solve this issue you can specify a custom directory for temp files:
+
+    <?php
+    $tesseract = new TesseractOCR('my-image.jpg');
+    $tesseract->setTempDir('./my-temp-dir');
