@@ -65,9 +65,11 @@ class TesseractOCR
      *
      * @param string $image Path to the image to be recognized
      */
-    public function __construct($image)
+    public function __construct($image = null)
     {
-        $this->image = $image;
+        if ($image) {
+            $this->image = $image;
+        }
     }
 
     /**
@@ -77,11 +79,26 @@ class TesseractOCR
      */
     public function recognize()
     {
+        if (!$this->image) {
+            throw new Exception('Image is not set!');
+        }
         $this->generateConfigFile();
         $this->execute();
         $recognizedText = $this->readOutputFile();
         $this->removeTempFiles();
         return $recognizedText;
+    }
+
+    /**
+     * Sets the image to be recognize
+     *
+     * @param string $image Path to the image to be recognized
+     * 
+     * @return void
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 
     /**
