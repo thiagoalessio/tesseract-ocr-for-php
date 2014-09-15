@@ -35,6 +35,12 @@ class TesseractOCR
     protected $language;
 
     /**
+     * Set Tesseract to only run a subset of layout analysis and assume a certain form of image
+     * @var string
+     */
+    protected $psm;
+
+    /**
      * Restricted list of characters known by the OCR
      * @var string
      */
@@ -94,6 +100,19 @@ class TesseractOCR
     public function setLanguage($language)
     {
         $this->language = $language;
+        return $this;
+    }
+
+    /**
+     * Set Tesseract to only run a subset of layout analysis and assume a certain form of image
+     *
+     * @param string $psm number 1-10 layout identifier
+     *
+     * @return TesseractOCR
+     */
+    public function setPsm($psm)
+    {
+        $this->psm = $psm;
         return $this;
     }
 
@@ -190,6 +209,10 @@ class TesseractOCR
 
         if ($this->language) {
             $command.= " -l {$this->language}";
+        }
+
+        if ($this->psm) {
+            $command.= " -psm {$this->psm}";
         }
 
         $command.= " {$this->outputFile}";
