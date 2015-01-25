@@ -41,6 +41,12 @@ class TesseractOCR
     protected $whitelist;
 
     /**
+     * pagesegmode param
+     * @var string
+     */
+    protected $psm;
+
+    /**
      * Path to directory to place temporary files
      * @var string
      */
@@ -97,7 +103,18 @@ class TesseractOCR
         return $this;
     }
 
-    /**
+     /**
+     * Set pagesegmode params
+     *
+     * @return TesseractOCR
+     */
+    public function setPsm($psm)
+    {
+        $this->psm = $psm;
+        return $this;
+    }
+
+   /**
      * Restricts the characters list known by the OCR
      *
      * @return TesseractOCR
@@ -194,11 +211,16 @@ class TesseractOCR
 
         $command.= " {$this->outputFile}";
 
+        // psm
+        if ($this->psm) {
+            $command.= " -psm  " . $this->psm;
+        }
+
         if ($this->configFile) {
             $command.= " nobatch {$this->configFile}";
         }
 
-        return $command;
+        return $command . " 2>/dev/null";
     }
 
     /**
