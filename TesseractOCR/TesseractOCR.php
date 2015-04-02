@@ -35,6 +35,12 @@ class TesseractOCR
     protected $language;
 
     /**
+     * Pagesegmode value to be used for the recognition (see `man tesseract` for valid values)
+     * @var integer
+     */
+    protected $psm;
+
+    /**
      * Restricted list of characters known by the OCR
      * @var string
      */
@@ -94,6 +100,19 @@ class TesseractOCR
     public function setLanguage($language)
     {
         $this->language = $language;
+        return $this;
+    }
+
+    /**
+     * Defines the pagesegmode to be used for the recognition
+     *
+     * @param integer $psm
+     *
+     * @return TesseractOCR
+     */
+    public function setPsm($psm)
+    {
+        $this->psm = (int) $psm;
         return $this;
     }
 
@@ -190,6 +209,10 @@ class TesseractOCR
 
         if ($this->language) {
             $command.= " -l {$this->language}";
+        }
+
+        if (null !== $this->psm) {
+            $command.= " -psm {$this->psm}";
         }
 
         $command.= " {$this->outputFile}";
