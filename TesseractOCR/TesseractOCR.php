@@ -232,6 +232,13 @@ class TesseractOCR
     protected function readOutputFile()
     {
         $this->outputFile.= '.txt'; //automatically appended by tesseract
+
+        if(!file_exists($this->outputFile) || !is_readable($this->outputFile)) {
+            $filePath = explode(DIRECTORY_SEPARATOR, $this->outputFile);
+            $file = array_pop($filePath);
+            throw new Exception("Cannot read file: [{$file}] in " . implode(DIRECTORY_SEPARATOR, $filePath));
+        }
+            
         return trim(file_get_contents($this->outputFile));
     }
 
