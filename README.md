@@ -20,7 +20,7 @@
 
 ### Dependencies
 
--  [TesseractOCR](http://code.google.com/p/tesseract-ocr/)
+-  [TesseractOCR](https://github.com/tesseract-ocr/tesseract)
 
 **IMPORTANT**: Make sure that the `tesseract` binary is on your $PATH.
   If you're running PHP on a webserver, the user may be not you, but \_www or 
