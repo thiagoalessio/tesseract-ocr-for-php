@@ -2,7 +2,7 @@
 
   A wrapper to work with TesseractOCR inside your PHP scripts.
 
-## Instalation
+## Installation
 
   Via [composer](http://getcomposer.org/)
   (https://packagist.org/packages/thiagoalessio/tesseract_ocr)
