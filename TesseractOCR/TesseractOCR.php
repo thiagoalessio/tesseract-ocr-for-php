@@ -220,6 +220,7 @@ class TesseractOCR
         if ($this->configFile) {
             $command.= " nobatch {$this->configFile}";
         }
+        $command.= '> /dev/null 2>&1';
 
         return $command;
     }
