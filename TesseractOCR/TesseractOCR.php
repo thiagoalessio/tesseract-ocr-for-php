@@ -129,7 +129,7 @@ class TesseractOCR
 
     /**
      * Flatten the lists of characters into a single string
-     * 
+     *
      * @param array $charLists Lists of chars the OCR should look for
      *
      * @return string
@@ -233,6 +233,9 @@ class TesseractOCR
     protected function readOutputFile()
     {
         $this->outputFile.= '.txt'; //automatically appended by tesseract
+        if (!file_exists($this->outputFile)) {
+           throw new Exception("{$this->outputFile} does not exist! Probably Tesseract was unsuccessful.");
+        }
         return trim(file_get_contents($this->outputFile));
     }
 
@@ -246,6 +249,8 @@ class TesseractOCR
         if ($this->configFile) {
             unlink($this->configFile);
         }
-        unlink($this->outputFile);
+        if (file_exists($this->outputFile)) {
+            unlink($this->outputFile);
+        }
     }
 }
