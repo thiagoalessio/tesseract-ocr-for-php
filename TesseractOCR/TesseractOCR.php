@@ -253,6 +253,7 @@ class TesseractOCR
         $this->outputFile.= '.txt'; //automatically appended by tesseract
          if (!file_exists($this->outputFile)) {
            throw new Exception("{$this->outputFile} does not exist! Probably Tesseract was unsuccessful or badly installed.");
+           exit();
         }
         return trim(file_get_contents($this->outputFile));
     }
