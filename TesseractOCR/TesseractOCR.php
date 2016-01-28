@@ -23,6 +23,12 @@
 class TesseractOCR
 {
     /**
+     * Path of the tesseract command to be run
+     * @var string
+     */
+    protected $commandPath = 'tesseract';
+    
+    /**
      * Path of the image to be recognized
      * @var string
      */
@@ -171,6 +177,18 @@ class TesseractOCR
     {
         $this->tempDir = $path;
     }
+    
+    /**
+     * Defines a tesseract Command Path
+     *
+     * @param string $path Path to Command Path
+     *
+     * @return void
+     */
+    public function setCommandPath($commandPath)
+    {
+        $this->commandPath = $commandPath;
+    }
 
     /**
      * Generates a temporary tesseract configuration file to be used on the
@@ -205,7 +223,7 @@ class TesseractOCR
      */
     protected function buildTesseractCommand()
     {
-        $command = "tesseract \"{$this->image}\"";
+        $command = "$this->commandPath \"{$this->image}\"";
 
         if ($this->language) {
             $command.= " -l {$this->language}";
@@ -233,6 +251,11 @@ class TesseractOCR
     protected function readOutputFile()
     {
         $this->outputFile.= '.txt'; //automatically appended by tesseract
+         if (!file_exists($this->outputFile)) {
+             exit("{$this->outputFile} does not exist! Probably Tesseract was unsuccessful or badly installed.");
+           throw new Exception("{$this->outputFile} does not exist! Probably Tesseract was unsuccessful or badly installed.");
+           
+        }
         return trim(file_get_contents($this->outputFile));
     }
 
