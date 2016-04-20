@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <phpunit colors="true">
     <testsuites>
-        <testsuite name="Application Test Suite">
-            <directory>./Test/</directory>
+        <testsuite name="TesseractOCR Test Suite">
+            <directory suffix="Tests.php">./tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

@@ -1,3 +1,2 @@
 composer.lock
-Vagrantfile
-.vagrant
+vendor

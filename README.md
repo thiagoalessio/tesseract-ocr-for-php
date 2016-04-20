@@ -1,98 +1,194 @@
-# TesseractOCR for PHP
+![Tesseract OCR for PHP logo: A baby elephant sucking letters from a book][0]
+# Tesseract OCR for PHP
 
-  A wrapper to work with TesseractOCR inside your PHP scripts.
+A wrapper to work with Tesseract OCR inside PHP.
 
 ## Installation
 
-  Via [composer](http://getcomposer.org/)
-  (https://packagist.org/packages/thiagoalessio/tesseract_ocr)
+First of all, make sure you have [Tesseract OCR][1] installed.
+
+### As a [composer][2] dependency
 
     {
         "require": {
-            "thiagoalessio/tesseract_ocr": ">= 0.2.0"
+            "thiagoalessio/tesseract_ocr": "1.*"
         }
     }
-
-  Or just clone and put somewhere inside your project folder.
-
-    $ cd myapp/vendor
-    $ git clone git://github.com/thiagoalessio/tesseract-ocr-for-php.git
-
-### Dependencies
-
--  [TesseractOCR](https://github.com/tesseract-ocr/tesseract)
-
-**IMPORTANT**: Make sure that the `tesseract` binary is on your $PATH.
-  If you're running PHP on a webserver, the user may be not you, but \_www or 
-  similar.
-  If you need, there is always the possibility of modify your $PATH:
-
-    $path = getenv('PATH');
-    putenv("PATH=$path:/usr/local/bin");
-
-### Windows users
-
-I received several messages from people trying to get this library running
-under Windows, so I decided to write a short tutorial that can be found 
-[here](http://thiagoalessio.me/tesseractocr-for-php-on-windows/).
 
 ## Usage
 
 ### Basic usage
 
-    <?php
-    require_once '/path/to/TesseractOCR/TesseractOCR.php';
-    //or require_once 'vendor/autoload.php' if you are using composer
-    
-    $tesseract = new TesseractOCR('images/some-words.jpg');
-    echo $tesseract->recognize();
+Given the following image ([text.png][3]):
 
-### Defining language
+![The quick brown fox jumps over the lazy dog][3]
 
-Tesseract has training data for several languages, which certainly improve
-the accuracy of the recognition.
+And the following code:
 
     <?php
-    require_once '/path/to/TesseractOCR/TesseractOCR.php';
-    //or require_once 'vendor/autoload.php' if you are using composer
-    
-    $tesseract = new TesseractOCR('images/sind-sie-deutsch.jpg');
-    $tesseract->setLanguage('deu'); //same 3-letters code as tesseract training data packages
-    echo $tesseract->recognize();
+    echo (new TesseractOCR('text.png'))
+        ->run();
+
+The output would be:
+
+    The quick brown fox
+    jumps over the lazy
+    dog.
+
+### Other languages
+
+Given the following image ([german.png][4]):
+
+![grüßen - Google Translate said it means "to greet" in German][4]
+
+And the following code:
+
+    <?php
+    echo (new TesseractOCR('german.png'))
+        ->run();
+
+The output would be:
+
+    griiﬁen
+
+Which is not good, but defining a language:
+
+    <?php
+    echo (new TesseractOCR('german.png'))
+        ->lang('deu')
+        ->run();
+
+Will produce:
+
+    grüßen
+
+### Multiple languages
+
+Given the following image ([multi-languages.png][5]):
+
+![The phrase "I each apple sushi", with mixed English, Japanese and Portuguese][5]
+
+And the following code ....
+
+    <?php
+    echo (new TesseractOCR('multi-languages.png'))
+        ->lang('eng', 'jpn', 'por')
+        ->run();
+
+The output would be:
+
+    I eat 寿司 de maçã
 
 ### Inducing recognition
 
-  Sometimes tesseract misunderstand some chars, such as:
+Given the following image ([8055.png][6]):
 
-    0 - O
-    1 - l
-    j - ,
-    etc ...
+![Number 8055][6]
 
-  But you can improve recognition accuracy by specifing what kind of chars
-  you're sending, for example:
+And the following code ....
 
     <?php
-    $tesseract = new TesseractOCR('my-image.jpg');
-    $tesseract->setWhitelist(range('a','z')); //tesseract will threat everything as downcase letters
-    echo $tesseract->recognize();
-    
-    $tesseract = new TesseractOCR('my-image.jpg');
-    $tesseract->setWhitelist(range('A','Z'), range(0,9), '_-@.'); //you can pass as many ranges as you need
+    echo (new TesseractOCR('8055.png'))
+        ->whitelist(range('A', 'Z'))
+        ->run();
 
-  You can even do *cool* stuff like this one:
+The output would be:
 
-    <?php
-    $tesseract = new TesseractOCR('617.jpg');
-    $tesseract->setWhitelist(range('A','Z'));
-    echo $tesseract->recognize(); //will return "GIT"
+    BOSS
 
-## Troubleshooting
+## API
 
-#### Warnings like `Permission denied` or `No such file or directory`
+### `->executable('/path/to/tesseract')`
 
-  To solve this issue you can specify a custom directory for temp files:
+Define a custom location of the `tesseract` executable, if by any reason it is
+not present in the `$PATH`.
 
-    <?php
-    $tesseract = new TesseractOCR('my-image.jpg');
-    $tesseract->setTempDir('./my-temp-dir');
+### `->tessdataDir('/path')`
+
+Specify a custom location for the tessdata directory.
+
+### `->userWords('/path/to/user-words.txt')`
+
+Specify the location of user words file.
+
+This is a plain text file containing a list of words that you want to be
+considered as a normal dictionary words by `tesseract`.
+
+Useful when dealing with contents that contain technical terminology, jargon,
+etc.
+
+Example of a user words file:
+
+    $ cat /path/to/user-words.txt
+    foo
+    bar
+
+### `->userPatterns('/path/to/user-patterns.txt')` 
+
+Specify the location of user patterns file.
+
+If the contents you are dealing with have known patterns, this option can help
+a lot tesseract's recognition accuracy.
+
+Example of a user patterns file:
+
+    $ cat /path/to/user-patterns.txt'
+    1-\d\d\d-GOOG-441
+    www.\n\\\*.com
+
+### `->lang('lang1', 'lang2', 'lang3')`
+
+Define one or more languages to be used during the recognition.
+
+They need to be specified as 3-character [ISO 639-2][7] language codes.
+
+### `->psm(6)`
+
+Specify the Page Segmentation Mode, which instructs `tesseract` how to
+interpret the given image.
+
+Possible `psm` values are:
+
+     0 = Orientation and script detection (OSD) only.
+     1 = Automatic page segmentation with OSD.
+     2 = Automatic page segmentation, but no OSD, or OCR.
+     3 = Fully automatic page segmentation, but no OSD. (Default)
+     4 = Assume a single column of text of variable sizes.
+     5 = Assume a single uniform block of vertically aligned text.
+     6 = Assume a single uniform block of text.
+     7 = Treat the image as a single text line.
+     8 = Treat the image as a single word.
+     9 = Treat the image as a single word in a circle.
+    10 = Treat the image as a single character.
+
+### `->config('configvar', 'value')`
+
+Tesseract offers incredible control to the user through its 660 configuration
+vars.
+
+You can see the complete list by running the following command:
+
+    $ tesseract --print-parameters
+
+### `->whitelist(range('a', 'z'), range(0, 9), '-_@')`
+
+This is a shortcut for `->config('tessedit_char_whitelist', 'abcdef....')`.
+
+## Where to get help
+
+* [#tesseract-ocr-for-php on freenode IRC][9]
+
+## License
+
+[Apache License 2.0][8].
+
+[0]: http://thiagoalessio.me/content/images/logo.png
+[1]: https://github.com/tesseract-ocr/tesseract/wiki
+[2]: http://getcomposer.org/
+[3]: http://thiagoalessio.me/content/images/text.png
+[4]: http://thiagoalessio.me/content/images/german.png
+[5]: http://thiagoalessio.me/content/images/multi-languages.png
+[6]: http://thiagoalessio.me/content/images/8055.png
+[7]: https://www.loc.gov/standards/iso639-2/php/code_list.php
+[8]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/LICENSE
+[9]: irc://irc.freenode.net/tesseract-ocr-for-php
