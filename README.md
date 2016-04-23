@@ -4,6 +4,7 @@
 A wrapper to work with Tesseract OCR inside PHP.
 
 [![Code Climate](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/gpa.svg)](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php)
+[![Test Coverage](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/coverage.svg)](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/coverage)
 
 ## Installation
 
