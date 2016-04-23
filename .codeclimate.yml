@@ -1,0 +1,34 @@
+---
+engines:
+
+  phan:
+    enabled: true
+    config:
+      file_extensions: "php"
+
+  phpcodesniffer:
+    enabled: true
+
+  phpmd:
+    enabled: true
+    config:
+      rulesets: "cleancode,codesize,controversial,design,naming,unusedcode"
+
+  markdownlint:
+    enabled: true
+
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - php
+
+  fixme:
+    enabled: true
+
+ratings:
+  paths:
+  - "**.php"
+
+exclude_paths:
+  - tests/**/*
