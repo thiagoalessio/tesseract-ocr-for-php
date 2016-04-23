@@ -16,4 +16,18 @@ class FunctionalTests extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * Should work fine even if image name contains special characters.
+     */
+    public function testImageNameWithSpecialCharacters()
+    {
+        $expected = "Issue found by\n@crimsonvspurple";
+
+        $actual = (new TesseractOCR(__DIR__.'/img name$with@special#chars.png'))
+            ->run();
+
+        $this->assertEquals($expected, $actual);
+    }
+
 }

@@ -195,7 +195,7 @@ class TesseractOCR
      */
     protected function buildCommand()
     {
-        return "$this->executable $this->image stdout"
+        return $this->executable.' '.escapeshellarg($this->image).' stdout'
             .$this->buildTessdataDirParam()
             .$this->buildUserWordsParam()
             .$this->buildUserPatternsParam()
