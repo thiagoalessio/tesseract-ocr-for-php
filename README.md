@@ -3,12 +3,13 @@
 
 A wrapper to work with Tesseract OCR inside PHP.
 
+[![Build Status](https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php.svg?branch=master)](https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php)
 [![Code Climate](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/gpa.svg)](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php)
 [![Test Coverage](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/coverage.svg)](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/coverage)
 
 ## Installation
 
-First of all, make sure you have [Tesseract OCR][1] installed .(version **3.03** or greater)
+First of all, make sure you have [Tesseract OCR][1] installed. (**v3.03** or greater)
 
 ### As a [composer][2] dependency
 
