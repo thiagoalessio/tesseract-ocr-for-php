@@ -5,7 +5,7 @@ A wrapper to work with Tesseract OCR inside PHP.
 
 ## Installation
 
-First of all, make sure you have [Tesseract OCR][1] installed.
+First of all, make sure you have [Tesseract OCR][1] installed .(version **3.03** or greater)
 
 ### As a [composer][2] dependency
 
