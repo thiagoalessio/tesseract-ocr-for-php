@@ -146,6 +146,8 @@ Define one or more languages to be used during the recognition.
 
 They need to be specified as 3-character [ISO 639-2][7] language codes.
 
+Note： For Chinese Language,we don't use the [ISO 639-2][7] code,it doesn't work well. Rewrite as this:`->lang('chi_sim', 'chi_tra')` instead .
+
 ### `->psm(6)`
 
 Specify the Page Segmentation Mode, which instructs `tesseract` how to
