@@ -1,4 +1,5 @@
 ![Tesseract OCR for PHP logo: A baby elephant sucking letters from a book][0]
+
 # Tesseract OCR for PHP
 
 A wrapper to work with Tesseract OCR inside PHP.
@@ -127,7 +128,7 @@ Example of a user words file:
     foo
     bar
 
-### `->userPatterns('/path/to/user-patterns.txt')` 
+### `->userPatterns('/path/to/user-patterns.txt')`
 
 Specify the location of user patterns file.
 
@@ -175,6 +176,8 @@ vars.
 You can see the complete list by running the following command:
 
     $ tesseract --print-parameters
+    Tesseract parameters:
+    ... long list with all parameters ...
 
 ### `->whitelist(range('a', 'z'), range(0, 9), '-_@')`
 
