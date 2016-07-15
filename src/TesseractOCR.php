@@ -80,7 +80,15 @@ class TesseractOCR
      */
     public function run()
     {
-        return trim(`{$this->buildCommand()}`);
+        $output = array();
+        $returnValue = 0;
+        exec($this->buildCommand(), $output, $returnValue);
+        $output = implode(PHP_EOL, $output);
+        if (0 < $returnValue) {
+            throw new Exception(sprintf('error during execution of tesseract %s', $output));
+        }
+
+        return trim($output);
     }
 
     /**
