@@ -257,7 +257,7 @@ class TesseractOCR
      */
     private function buildPsmParam()
     {
-        return $this->psm ? ' -psm '.$this->psm : '';
+        return is_null($this->psm) ? '' : ' -psm '.$this->psm;
     }
 
     /**
