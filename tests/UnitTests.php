@@ -154,6 +154,20 @@ class UnitTests extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * The '-psm' option should be present even if it has a "falsy" value.
+     */
+    public function testPsmOptionWithValueZero()
+    {
+        $expected = "tesseract 'image.png' stdout -psm 0";
+
+        $actual = (new WrapTesseractOCR('image.png'))
+            ->psm(0)
+            ->buildCommand();
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
      * When a control parameter is provided, a '-c' option should be appended
      * to the command with its correspondent pair configvar=value.
      * Multiple control parameters are allowed.
