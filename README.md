@@ -25,7 +25,7 @@ First of all, make sure you have [Tesseract OCR][1] installed. (**v3.03** or gre
 
 ### Basic usage
 
-Given the following image ([text.png][3]):
+Given the following image ([text.jpeg][3]):
 
 ![The quick brown fox jumps over the lazy dog][3]
 
@@ -43,7 +43,7 @@ The output would be:
 
 ### Other languages
 
-Given the following image ([german.png][4]):
+Given the following image ([german.jpeg][4]):
 
 ![grüßen - Google Translate said it means "to greet" in German][4]
 
@@ -70,7 +70,7 @@ Will produce:
 
 ### Multiple languages
 
-Given the following image ([multi-languages.png][5]):
+Given the following image ([multi-languages.jpeg][5]):
 
 ![The phrase "I each apple sushi", with mixed English, Japanese and Portuguese][5]
 
@@ -193,13 +193,13 @@ This is a shortcut for `->config('tessedit_char_whitelist', 'abcdef....')`.
 
 [Apache License 2.0][8].
 
-[0]: http://thiagoalessio.me/content/images/logo.png
+[0]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/logo.jpeg
 [1]: https://github.com/tesseract-ocr/tesseract/wiki
 [2]: http://getcomposer.org/
-[3]: http://thiagoalessio.me/content/images/text.png
-[4]: http://thiagoalessio.me/content/images/german.png
-[5]: http://thiagoalessio.me/content/images/multi-languages.png
-[6]: http://thiagoalessio.me/content/images/8055.png
+[3]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/text.jpeg
+[4]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/german.jpeg
+[5]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/multi-languages.jpeg
+[6]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/8055.png
 [7]: https://www.loc.gov/standards/iso639-2/php/code_list.php
 [8]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/LICENSE
 [9]: irc://irc.freenode.net/tesseract-ocr-for-php
