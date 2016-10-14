@@ -1,5 +1,5 @@
 {
-    "name": "nkkollaw/tesseract-ocr",
+    "name": "nkkollaw/tesseract-ocr-php",
     "description": "A wrapper to work with Tesseract OCR inside PHP, forked from thiagoalessio/tesseract-ocr-for-php",
     "version": "0.1.0",
     "type": "library",
