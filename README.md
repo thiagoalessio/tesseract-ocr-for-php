@@ -33,7 +33,7 @@ And the following code:
 
     <?php
     echo (new TesseractOCR('text.png'))
-        ->run();
+        ->recognize();
 
 The output would be:
 
@@ -51,7 +51,7 @@ And the following code:
 
     <?php
     echo (new TesseractOCR('german.png'))
-        ->run();
+        ->recognize();
 
 The output would be:
 
@@ -62,7 +62,7 @@ Which is not good, but defining a language:
     <?php
     echo (new TesseractOCR('german.png'))
         ->lang('deu')
-        ->run();
+        ->recognize();
 
 Will produce:
 
@@ -79,7 +79,7 @@ And the following code ....
     <?php
     echo (new TesseractOCR('multi-languages.png'))
         ->lang('eng', 'jpn', 'por')
-        ->run();
+        ->recognize();
 
 The output would be:
 
@@ -96,7 +96,7 @@ And the following code ....
     <?php
     echo (new TesseractOCR('8055.png'))
         ->whitelist(range('A', 'Z'))
-        ->run();
+        ->recognize();
 
 The output would be:
 
