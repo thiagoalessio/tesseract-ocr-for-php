@@ -1,4 +1,6 @@
 <?php
+namespace nkkollaw\TesseractOCR;
+
 /**
  * A wrapper to work with TesseractOCR inside PHP.
  */
@@ -72,9 +74,9 @@ class TesseractOCR
         if (!is_file($image)) {
             throw new Exception('image not found');
         }
-        
+
         $this->image = $image;
-        
+
         return $this;
     }
 
