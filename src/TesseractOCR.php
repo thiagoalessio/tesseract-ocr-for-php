@@ -91,9 +91,9 @@ class TesseractOCR
      */
     public function executable($executable)
     {
-        // Manage windows path on C:\Program Files\... (path with spaces)
-        if(strpos($executable, ' ') !== FALSE) {
-            $this->executable = "$executable";
+        // Manage windows path on C:\Program Files\... (path with spaces) && prevent for already escaped path
+        if (strpos($executable, ' ') !== FALSE && strpos($executable, '"') === FALSE) {
+            $this->executable = '"' . $executable . '"';
         } else {
             // Default case (linux)
             $this->executable = $executable;
