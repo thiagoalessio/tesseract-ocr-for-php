@@ -139,6 +139,24 @@ class UnitTests extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Even more sugar when providing multiple languages as an array, because passing them all
+     * as dynamic parameters is not very comfortable when you want to assign them dynamically:
+     *
+     *     (new TesseractOCR('img'))->lang('eng', 'deu', 'jpn');
+     */
+    public function testLanguageArrayOptionForMultipleLanguages()
+    {
+        $expected = "tesseract 'image.png' stdout -l eng+deu+jpn";
+
+        $actual = (new WrapTesseractOCR('image.png'))
+            ->lang(array('eng', 'deu', 'jpn'))
+            ->buildCommand();
+
+        $this->assertEquals($expected, $actual);
+    }
+
+
+    /**
      * When a page segmentation mode is provided, the '-psm' option should be
      * appended to the command with its correspondent value.
      */
