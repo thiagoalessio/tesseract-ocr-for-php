@@ -155,7 +155,6 @@ class UnitTests extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual);
     }
 
-
     /**
      * When a page segmentation mode is provided, the '-psm' option should be
      * appended to the command with its correspondent value.
