@@ -55,11 +55,18 @@ class TesseractOCR
     private $psm;
 
     /**
-     *  List of tesseract configuration variables.
+     * List of tesseract configuration variables.
      *
      * @var array
      */
     private $configs = [];
+
+    /**
+     * Quiet mode status.
+     *
+     * @var bool
+     */
+    private $statusQuietMode = false;
 
     /**
      * Class constructor.
@@ -189,6 +196,18 @@ class TesseractOCR
     }
 
     /**
+     * Change quiet mode state.
+     *
+     * @param bool $status
+     * @return $this
+     */
+    public function quietMode($status)
+    {
+        $this->statusQuietMode = boolval($status);
+        return $this;
+    }
+
+    /**
      * Builds the tesseract command with all its options.
      * This method is 'protected' instead of 'private' to make testing easier.
      *
@@ -202,7 +221,8 @@ class TesseractOCR
             .$this->buildUserPatternsParam()
             .$this->buildLanguagesParam()
             .$this->buildPsmParam()
-            .$this->buildConfigurationsParam();
+            .$this->buildConfigurationsParam()
+            .$this->buildQuietMode();
     }
 
     /**
@@ -276,4 +296,16 @@ class TesseractOCR
             array_values($this->configs)
         ));
     }
+
+    /**
+     * If quiet mode is defined, return the correspondent command line argument
+     * to the tesseract command.
+     *
+     * @return string
+     */
+    private function buildQuietMode()
+    {
+        return $this->statusQuietMode ? ' quiet' : '';
+    }
+
 }
