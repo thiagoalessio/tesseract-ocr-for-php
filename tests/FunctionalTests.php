@@ -30,4 +30,14 @@ class FunctionalTests extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    /**
+     * in case of errors (e.g. non-existent files) an exception is thrown
+     *
+     * @expectedException Exception
+     */
+    public function testCommandWithInvalidFile()
+    {
+        $actual = (new WrapTesseractOCR('image.pn'))
+            ->run();
+    }
 }
