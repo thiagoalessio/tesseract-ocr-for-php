@@ -17,7 +17,7 @@ First of all, make sure you have [Tesseract OCR][1] installed. (**v3.03** or gre
 
     {
         "require": {
-            "thiagoalessio/tesseract_ocr": "1.0.0-RC"
+            "thiagoalessio/tesseract_ocr": "1.0.0"
         }
     }
 
