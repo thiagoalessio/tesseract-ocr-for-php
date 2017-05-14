@@ -17,7 +17,7 @@ First of all, make sure you have [Tesseract OCR][1] installed. (**v3.03** or gre
 
     {
         "require": {
-            "thiagoalessio/tesseract_ocr": "1.0.0-RC"
+            "thiagoalessio/tesseract_ocr": "1.0.0"
         }
     }
 
@@ -101,6 +101,18 @@ And the following code ....
 The output would be:
 
     BOSS
+
+### Quiet Mode
+
+To clean the bash log console you can use the Quiet Mode configuration.
+The following code:
+
+    <?php
+    echo (new TesseractOCR('text.png'))
+        ->quietMode(true)
+        ->run();
+
+This way you can get clean logs.
 
 ## API
 

@@ -222,4 +222,19 @@ class UnitTests extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual2->executable);
         $this->assertEquals($expected, $actual3->executable);
     }
+
+    /**
+     * The quiet mode is activated.
+     */
+    public function testQuietMode()
+    {
+        $expected = "tesseract 'image.png' stdout quiet";
+
+        $actual = (new WrapTesseractOCR('image.png'))
+            ->quietMode(true)
+            ->buildCommand();
+
+        $this->assertEquals($expected, $actual);
+    }
+
 }
