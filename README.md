@@ -102,6 +102,18 @@ The output would be:
 
     BOSS
 
+### Quiet Mode
+
+To clean the bash log console you can use the Quiet Mode configuration.
+The following code:
+
+    <?php
+    echo (new TesseractOCR('text.png'))
+        ->quietMode(true)
+        ->run();
+
+This way you can get clean logs.
+
 ## API
 
 ### `->executable('/path/to/tesseract')`
