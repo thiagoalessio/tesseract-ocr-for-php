@@ -1,3 +1,4 @@
+---
 sudo: required
 dist: trusty
 language: php
@@ -5,12 +6,12 @@ php:
   - '5.6'
   - '7.0'
 before_script:
-   - sudo apt-get -y update
-   - sudo apt-get -y install tesseract-ocr
+  - sudo apt-get -y update
+  - sudo apt-get -y install tesseract-ocr
 install: composer install
 script:
   - vendor/bin/phpunit
   - vendor/bin/test-reporter
 addons:
-    code_climate:
-        repo_token: f442e0269e45f83404e875771156135fcad0436ecea79963ef8d46bcb7d05ab2
+  code_climate:
+    repo_token: f442e0269e45f83404e875771156135fcad0436ecea79963ef8d46bcb7d05ab2
