@@ -5,6 +5,8 @@ engines:
     enabled: true
     config:
       file_extensions: "php"
+      ignore-undeclared: true
+      backward-compatibility-checks: true,
 
   phpcodesniffer:
     enabled: true
@@ -31,4 +33,4 @@ ratings:
   - "**.php"
 
 exclude_paths:
-  - tests/**/*
+  - vendor/**/*
