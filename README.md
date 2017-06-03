@@ -114,6 +114,22 @@ The following code:
 
 This way you can get clean logs.
 
+### Debugging
+
+You can just retrieve the generated tesseract command instead of running it:
+
+    <?php
+    echo (new TesseractOCR('image.png'))
+        ->executable('/usr/local/bin/tesseract')
+        ->lang('eng', 'jpn', 'por')
+        ->psm(8)
+        ->quietMode(true)
+        ->buildCommand();
+
+Will return:
+
+    /usr/local/bin/tesseract 'image.png' stdout -l eng+jpn+por -psm 8 quiet
+
 ## API
 
 ### `->executable('/path/to/tesseract')`

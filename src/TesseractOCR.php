@@ -209,11 +209,10 @@ class TesseractOCR
 
     /**
      * Builds the tesseract command with all its options.
-     * This method is 'protected' instead of 'private' to make testing easier.
      *
      * @return string
      */
-    protected function buildCommand()
+    public function buildCommand()
     {
         return $this->executable.' '.escapeshellarg($this->image).' stdout'
             .$this->buildTessdataDirParam()

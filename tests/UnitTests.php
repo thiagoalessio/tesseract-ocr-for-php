@@ -1,20 +1,5 @@
 <?php
 /**
- * Wrapping TesseractOCR class to be able to unit test some functionality.
- */
-class WrapTesseractOCR extends TesseractOCR
-{
-    /**
-     * Exposing 'buildCommand' method by making it public, without changing
-     * its implementation, just to be able invoke it from the unit tests.
-     */
-    public function buildCommand()
-    {
-        return parent::buildCommand();
-    }
-}
-
-/**
  * The only purpose of the following unit tests is to verify if the tesseract
  * command gets correctly built with its options.
  * The commands are not actually being executed during the tests.
@@ -28,7 +13,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
     {
         $expected = "tesseract 'image.png' stdout";
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->buildCommand();
 
         $this->assertEquals($expected, $actual);
@@ -42,7 +27,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
     {
         $expected = "/path/to/tesseract 'image.png' stdout";
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->executable('/path/to/tesseract')
             ->buildCommand();
 
@@ -57,7 +42,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
     {
         $expected = "tesseract 'image.png' stdout --tessdata-dir /path";
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->tessdataDir('/path')
             ->buildCommand();
 
@@ -78,7 +63,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
         $expected = "tesseract 'image.png' stdout"
             .' --user-words /path/to/user-words.txt';
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->userWords('/path/to/user-words.txt')
             ->buildCommand();
 
@@ -99,7 +84,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
         $expected = "tesseract 'image.png' stdout"
             .' --user-patterns /path/to/user-patterns.txt';
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->userPatterns('/path/to/user-patterns.txt')
             ->buildCommand();
 
@@ -114,7 +99,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
     {
         $expected = "tesseract 'image.png' stdout -l deu";
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->lang('deu')
             ->buildCommand();
 
@@ -131,7 +116,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
     {
         $expected = "tesseract 'image.png' stdout -l eng+deu+jpn";
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->lang('eng', 'deu', 'jpn')
             ->buildCommand();
 
@@ -146,7 +131,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
     {
         $expected = "tesseract 'image.png' stdout -psm 8";
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->psm(8)
             ->buildCommand();
 
@@ -160,7 +145,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
     {
         $expected = "tesseract 'image.png' stdout -psm 0";
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->psm(0)
             ->buildCommand();
 
@@ -178,7 +163,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
             ." -c 'tessedit_create_pdf=1'"
             ." -c 'load_system_dawg=F'";
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->config('tessedit_create_pdf', '1')
             ->config('load_system_dawg', 'F')
             ->buildCommand();
@@ -194,7 +179,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
         $expected = "tesseract 'image.png' stdout"
             ." -c 'tessedit_char_whitelist=0123456789ABCDEF-_@'";
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->whitelist(range(0, 9), range('A', 'F'), '-_@')
             ->buildCommand();
 
@@ -208,7 +193,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
     {
         $expected = "tesseract 'image.png' stdout quiet";
 
-        $actual = (new WrapTesseractOCR('image.png'))
+        $actual = (new TesseractOCR('image.png'))
             ->quietMode(true)
             ->buildCommand();
 
