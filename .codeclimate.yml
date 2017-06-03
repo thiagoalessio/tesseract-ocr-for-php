@@ -30,6 +30,7 @@ engines:
 
 ratings:
   paths:
+  - "**.md"
   - "**.php"
 
 exclude_paths:
