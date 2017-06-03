@@ -179,7 +179,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
             ." -c 'load_system_dawg=F'";
 
         $actual = (new WrapTesseractOCR('image.png'))
-            ->config('tessedit_create_pdf', 1)
+            ->config('tessedit_create_pdf', '1')
             ->config('load_system_dawg', 'F')
             ->buildCommand();
 
@@ -214,5 +214,4 @@ class UnitTests extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $actual);
     }
-
 }

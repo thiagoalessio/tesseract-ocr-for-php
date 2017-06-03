@@ -307,5 +307,4 @@ class TesseractOCR
     {
         return $this->statusQuietMode ? ' quiet' : '';
     }
-
 }

@@ -157,8 +157,7 @@ Example of a user patterns file:
 ### `->lang('lang1', 'lang2', 'lang3')`
 
 Define one or more languages to be used during the recognition.
-A complete list of available languages can be found at
-https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc#languages
+A complete list of available languages can be found [here][11].
 
 __Tip from [@daijiale][10]:__ Use the combination `->lang('chi_sim', 'chi_tra')`
 for proper recognition of Chinese.
@@ -216,3 +215,4 @@ This is a shortcut for `->config('tessedit_char_whitelist', 'abcdef....')`.
 [8]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/LICENSE
 [9]: irc://irc.freenode.net/tesseract-ocr-for-php
 [10]: https://github.com/daijiale
+[11]: https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc#languages
