@@ -185,6 +185,28 @@ class UnitTests extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $actual);
     }
+    
+    /**
+     * Spaces on executable path management (Windows, Linux) :
+     */
+    public function testPathExecutable()
+    {
+        $expected = '"C:\Program Files\Tesseract OCR\tesseract.exe"';
+
+        // Windows : unescaped path
+        $actual1 = (new WrapTesseractOCR())
+            ->executable("C:\Program Files\Tesseract OCR\tesseract.exe");
+        // Windows : escaped path
+        $actual2 = (new WrapTesseractOCR())
+            ->executable('"C:\Program Files\Tesseract OCR\tesseract.exe"');
+        // Linux
+        $actual2 = (new WrapTesseractOCR())
+            ->executable("/usr/bin/some/path/tesseract");
+        
+        $this->assertEquals($expected, $actual1->executable);
+        $this->assertEquals($expected, $actual2->executable);
+        $this->assertEquals($expected, $actual3->executable);
+    }
 
     /**
      * The quiet mode is activated.
