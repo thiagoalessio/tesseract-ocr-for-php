@@ -141,12 +141,16 @@ class TesseractOCR
     /**
      * Sets the language(s).
      *
-     * @param string ...$languages
+     * @param string|array ...$languages
      * @return TesseractOCR
      */
     public function lang()
     {
-        $this->languages = func_get_args();
+        if (1 == func_num_args() && is_array(func_get_arg(0))) {
+            $this->languages = func_get_arg(0);
+        } else {
+            $this->languages = func_get_args();
+        }
         return $this;
     }
 
