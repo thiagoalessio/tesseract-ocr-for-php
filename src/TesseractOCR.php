@@ -26,6 +26,13 @@ class TesseractOCR
      */
     private $tessdataDir;
 
+	/**
+	 * Path to configfile.
+	 *
+	 * @var string
+	 */
+	private $configFile;
+
     /**
      * Path to user words file.
      *
@@ -113,6 +120,18 @@ class TesseractOCR
         $this->tessdataDir = $dir;
         return $this;
     }
+
+	/**
+	 * Sets a custom configfile file path.
+	 *
+	 * @param string $filePath
+	 * @return TesseractOCR
+	 */
+	public function configFile($filePath)
+	{
+		$this->configFile = $filePath;
+		return $this;
+	}
 
     /**
      * Sets user words file path.
@@ -221,7 +240,8 @@ class TesseractOCR
             .$this->buildLanguagesParam()
             .$this->buildPsmParam()
             .$this->buildConfigurationsParam()
-            .$this->buildQuietMode();
+            .$this->buildQuietMode()
+            .$this->buildConfigFileParam();
     }
 
     /**
@@ -234,6 +254,17 @@ class TesseractOCR
     {
         return $this->tessdataDir ? " --tessdata-dir $this->tessdataDir" : '';
     }
+
+	/**
+	 * If tessdata directory is defined, return the correspondent command line
+	 * argument to the tesseract command.
+	 *
+	 * @return string
+	 */
+	private function buildConfigFileParam()
+	{
+		return $this->configFile ? " $this->configFile" : '';
+	}
 
     /**
      * If user words file is defined, return the correspondent command line
