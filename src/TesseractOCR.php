@@ -304,6 +304,6 @@ class TesseractOCR
      */
     private function buildQuietMode()
     {
-        return $this->statusQuietMode ? ' quiet' : '';
+        return $this->statusQuietMode ? ' quiet 2>/dev/null' : '';
     }
 }
