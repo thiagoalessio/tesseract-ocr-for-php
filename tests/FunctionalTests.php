@@ -12,7 +12,9 @@ class FunctionalTests extends PHPUnit_Framework_TestCase
     {
         $expected = "The quick brown fox\njumps over the lazy\ndog.";
 
-        $actual = (new TesseractOCR(__DIR__.'/text.png'))->run();
+        $actual = (new TesseractOCR(__DIR__.'/text.png'))
+            ->suppressErrors()
+            ->run();
 
         $this->assertEquals($expected, $actual);
     }
@@ -25,6 +27,7 @@ class FunctionalTests extends PHPUnit_Framework_TestCase
         $expected = "Issue found by\n@crimsonvspurple";
 
         $actual = (new TesseractOCR(__DIR__.'/img name$with@special#chars.png'))
+            ->suppressErrors()
             ->run();
 
         $this->assertEquals($expected, $actual);
