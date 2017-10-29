@@ -199,4 +199,16 @@ class UnitTests extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $actual);
     }
+
+    public function testSuppressErrorsMode()
+    {
+        $expected = "tesseract 'image.png' stdout quiet 2>/dev/null";
+
+        $actual = (new TesseractOCR('image.png'))
+            ->quietMode(true)
+            ->suppressErrors()
+            ->buildCommand();
+
+        $this->assertEquals($expected, $actual);
+    }
 }

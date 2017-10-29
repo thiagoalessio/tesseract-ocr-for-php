@@ -69,6 +69,13 @@ class TesseractOCR
     private $statusQuietMode = false;
 
     /**
+     * If true, all warnings and errors from tesseract will be suppressed.
+     *
+     * @var bool
+     */
+    private $suppressErrorsMode = false;
+
+    /**
      * Class constructor.
      *
      * @param string $image
@@ -201,9 +208,21 @@ class TesseractOCR
      * @param bool $status
      * @return $this
      */
-    public function quietMode($status)
+    public function quietMode($status = true)
     {
         $this->statusQuietMode = boolval($status);
+        return $this;
+    }
+
+    /**
+     * Change suppress errors mode state.
+     *
+     * @param bool $status
+     * @return $this
+     */
+    public function suppressErrors($status = true)
+    {
+        $this->suppressErrorsMode = boolval($status);
         return $this;
     }
 
@@ -221,7 +240,8 @@ class TesseractOCR
             .$this->buildLanguagesParam()
             .$this->buildPsmParam()
             .$this->buildConfigurationsParam()
-            .$this->buildQuietMode();
+            .$this->buildQuietMode()
+            .$this->buildSuppressErrorsMode();
     }
 
     /**
@@ -305,5 +325,16 @@ class TesseractOCR
     private function buildQuietMode()
     {
         return $this->statusQuietMode ? ' quiet' : '';
+    }
+
+    /**
+     * If suppress errors mode is defined, redirect all stderr output from the
+     * tesseract command to /dev/null.
+     *
+     * @return string
+     */
+    private function buildSuppressErrorsMode()
+    {
+        return $this->suppressErrorsMode ? ' 2>/dev/null' : '';
     }
 }
