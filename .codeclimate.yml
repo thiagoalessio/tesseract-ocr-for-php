@@ -35,3 +35,4 @@ ratings:
 
 exclude_paths:
   - vendor/**/*
+  - tests/**/*
