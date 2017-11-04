@@ -147,9 +147,9 @@ class TesseractOCR
      * @param bool $status
      * @return $this
      */
-    public function suppressErrors($status = true)
+    public function suppressErrors()
     {
-        $this->suppressErrorsMode = boolval($status);
+        $this->suppressErrorsMode = true;
         return $this;
     }
 
