@@ -34,13 +34,6 @@ class TesseractOCR
     private $configs = [];
 
     /**
-     * Quiet mode status.
-     *
-     * @var bool
-     */
-    private $statusQuietMode = false;
-
-    /**
      * If true, all warnings and errors from tesseract will be suppressed.
      *
      * @var bool
@@ -139,14 +132,12 @@ class TesseractOCR
     }
 
     /**
-     * Change quiet mode state.
-     *
-     * @param bool $status
-     * @return $this
+     * @DEPRECATED now it is always quiet by default, this option will be
+     * removed on the next major version, just keeping an empty method here
+     * for backwards compatibility.
      */
-    public function quietMode($status = true)
+    public function quietMode()
     {
-        $this->statusQuietMode = boolval($status);
         return $this;
     }
 
@@ -183,10 +174,9 @@ class TesseractOCR
      */
     public function buildCommand()
     {
-        return $this->executable.' '.escapeshellarg($this->image).' stdout'
+        return $this->executable.' '.escapeshellarg($this->image).' stdout quiet'
             .$this->options
             .$this->buildConfigurationsParam()
-            .$this->buildQuietMode()
             .$this->buildSuppressErrorsMode();
     }
 
@@ -205,17 +195,6 @@ class TesseractOCR
             array_keys($this->configs),
             array_values($this->configs)
         ));
-    }
-
-    /**
-     * If quiet mode is defined, return the correspondent command line argument
-     * to the tesseract command.
-     *
-     * @return string
-     */
-    private function buildQuietMode()
-    {
-        return $this->statusQuietMode ? ' quiet' : '';
     }
 
     /**

@@ -102,18 +102,6 @@ The output would be:
 
     BOSS
 
-### Quiet Mode
-
-To clean the bash log console you can use the Quiet Mode configuration.
-The following code:
-
-    <?php
-    echo (new TesseractOCR('text.png'))
-        ->quietMode(true)
-        ->run();
-
-This way you can get clean logs.
-
 ### Debugging
 
 You can just retrieve the generated tesseract command instead of running it:
@@ -123,12 +111,11 @@ You can just retrieve the generated tesseract command instead of running it:
         ->executable('/usr/local/bin/tesseract')
         ->lang('eng', 'jpn', 'por')
         ->psm(8)
-        ->quietMode(true)
         ->buildCommand();
 
 Will return:
 
-    /usr/local/bin/tesseract 'image.png' stdout -l eng+jpn+por -psm 8 quiet
+    /usr/local/bin/tesseract 'image.png' stdout quiet -l eng+jpn+por -psm 8
 
 ## API
 

@@ -11,7 +11,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testSimplestCommand()
     {
-        $expected = "tesseract 'image.png' stdout";
+        $expected = "tesseract 'image.png' stdout quiet";
 
         $actual = (new TesseractOCR('image.png'))
             ->buildCommand();
@@ -25,7 +25,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testDefiningLocationOfTesseractExecutable()
     {
-        $expected = "/path/to/tesseract 'image.png' stdout";
+        $expected = "/path/to/tesseract 'image.png' stdout quiet";
 
         $actual = (new TesseractOCR('image.png'))
             ->executable('/path/to/tesseract')
@@ -40,7 +40,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testDefiningLocationOfTessdataDir()
     {
-        $expected = "tesseract 'image.png' stdout --tessdata-dir /path";
+        $expected = "tesseract 'image.png' stdout quiet --tessdata-dir /path";
 
         $actual = (new TesseractOCR('image.png'))
             ->tessdataDir('/path')
@@ -60,7 +60,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testDefiningLocationOfUserWords()
     {
-        $expected = "tesseract 'image.png' stdout"
+        $expected = "tesseract 'image.png' stdout quiet"
             .' --user-words /path/to/user-words.txt';
 
         $actual = (new TesseractOCR('image.png'))
@@ -81,7 +81,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testDefiningLocationOfUserPatterns()
     {
-        $expected = "tesseract 'image.png' stdout"
+        $expected = "tesseract 'image.png' stdout quiet"
             .' --user-patterns /path/to/user-patterns.txt';
 
         $actual = (new TesseractOCR('image.png'))
@@ -97,7 +97,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testLanguageOption()
     {
-        $expected = "tesseract 'image.png' stdout -l deu";
+        $expected = "tesseract 'image.png' stdout quiet -l deu";
 
         $actual = (new TesseractOCR('image.png'))
             ->lang('deu')
@@ -114,7 +114,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testLanguageOptionForMultipleLanguages()
     {
-        $expected = "tesseract 'image.png' stdout -l eng+deu+jpn";
+        $expected = "tesseract 'image.png' stdout quiet -l eng+deu+jpn";
 
         $actual = (new TesseractOCR('image.png'))
             ->lang('eng', 'deu', 'jpn')
@@ -129,7 +129,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testPsmOption()
     {
-        $expected = "tesseract 'image.png' stdout -psm 8";
+        $expected = "tesseract 'image.png' stdout quiet -psm 8";
 
         $actual = (new TesseractOCR('image.png'))
             ->psm(8)
@@ -143,7 +143,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testPsmOptionWithValueZero()
     {
-        $expected = "tesseract 'image.png' stdout -psm 0";
+        $expected = "tesseract 'image.png' stdout quiet -psm 0";
 
         $actual = (new TesseractOCR('image.png'))
             ->psm(0)
@@ -159,7 +159,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testConfigOption()
     {
-        $expected = "tesseract 'image.png' stdout"
+        $expected = "tesseract 'image.png' stdout quiet"
             ." -c 'tessedit_create_pdf=1'"
             ." -c 'load_system_dawg=F'";
 
@@ -176,7 +176,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testWhitelistSettingShortcutWithMultipleRanges()
     {
-        $expected = "tesseract 'image.png' stdout"
+        $expected = "tesseract 'image.png' stdout quiet"
             ." -c 'tessedit_char_whitelist=0123456789ABCDEF-_@'";
 
         $actual = (new TesseractOCR('image.png'))
@@ -187,7 +187,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * The quiet mode is activated.
+     * @DEPRECATED The quiet mode is activated.
      */
     public function testQuietMode()
     {
