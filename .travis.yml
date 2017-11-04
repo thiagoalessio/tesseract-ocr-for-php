@@ -8,10 +8,9 @@ php:
 before_script:
   - sudo apt-get -y update
   - sudo apt-get -y install tesseract-ocr
-install: composer install
+install:
+  - composer install
 script:
   - vendor/bin/phpunit
+after_success:
   - vendor/bin/test-reporter
-addons:
-  code_climate:
-    repo_token: f442e0269e45f83404e875771156135fcad0436ecea79963ef8d46bcb7d05ab2
