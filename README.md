@@ -1,4 +1,4 @@
-![Tesseract OCR for PHP logo: A baby elephant sucking letters from a book][0]
+![Tesseract OCR for PHP logo: A baby elephant reading a book][0]
 
 # Tesseract OCR for PHP
 
@@ -220,7 +220,7 @@ This is a shortcut for `->config('tessedit_char_whitelist', 'abcdef....')`.
 
 [Apache License 2.0][8].
 
-[0]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/logo.jpeg
+[0]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/logo.png
 [1]: https://github.com/tesseract-ocr/tesseract/wiki
 [2]: http://getcomposer.org/
 [3]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/text.jpeg
