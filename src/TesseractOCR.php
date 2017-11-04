@@ -55,6 +55,13 @@ class TesseractOCR
     private $psm;
 
     /**
+     * OCR Engine Mode value.
+     *
+     * @var integer
+     */
+    private $oem;
+
+    /**
      * List of tesseract configuration variables.
      *
      * @var array
@@ -170,6 +177,18 @@ class TesseractOCR
     }
 
     /**
+     * Sets the OCR Engine Mode
+     *
+     * @param integer $oem
+     * @return TesseractOCR
+     */
+    public function oem($oem)
+    {
+        $this->oem = $oem;
+        return $this;
+    }
+
+    /**
      * Sets a tesseract configuration value.
      *
      * @param string $key
@@ -239,6 +258,7 @@ class TesseractOCR
             .$this->buildUserPatternsParam()
             .$this->buildLanguagesParam()
             .$this->buildPsmParam()
+            .$this->buildOemParam()
             .$this->buildConfigurationsParam()
             .$this->buildQuietMode()
             .$this->buildSuppressErrorsMode();
@@ -297,6 +317,17 @@ class TesseractOCR
     private function buildPsmParam()
     {
         return is_null($this->psm) ? '' : ' -psm '.$this->psm;
+    }
+
+    /**
+     * If a OCR Engine Mode is defined, return the correspondent command
+     * line argument to the tesseract command.
+     *
+     * @return string
+     */
+    private function buildOemParam()
+    {
+        return is_null($this->oem) ? '' : ' --oem '.$this->oem;
     }
 
     /**
