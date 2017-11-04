@@ -20,39 +20,11 @@ class TesseractOCR
     private $executable = 'tesseract';
 
     /**
-     * Path to tessdata directory.
+     * Command options.
      *
      * @var string
      */
-    private $tessdataDir;
-
-    /**
-     * Path to user words file.
-     *
-     * @var string
-     */
-    private $userWords;
-
-    /**
-     * Path to user patterns file.
-     *
-     * @var string
-     */
-    private $userPatterns;
-
-    /**
-     * List of languages.
-     *
-     * @var array
-     */
-    private $languages = [];
-
-    /**
-     * Page Segmentation Mode value.
-     *
-     * @var integer
-     */
-    private $psm;
+    private $options = '';
 
     /**
      * List of tesseract configuration variables.
@@ -110,42 +82,6 @@ class TesseractOCR
     }
 
     /**
-     * Sets a custom tessdata directory.
-     *
-     * @param string $dir
-     * @return TesseractOCR
-     */
-    public function tessdataDir($dir)
-    {
-        $this->tessdataDir = $dir;
-        return $this;
-    }
-
-    /**
-     * Sets user words file path.
-     *
-     * @param string $filePath
-     * @return TesseractOCR
-     */
-    public function userWords($filePath)
-    {
-        $this->userWords = $filePath;
-        return $this;
-    }
-
-    /**
-     * Sets user patterns file path.
-     *
-     * @param string $filePath
-     * @return TesseractOCR
-     */
-    public function userPatterns($filePath)
-    {
-        $this->userPatterns = $filePath;
-        return $this;
-    }
-
-    /**
      * Sets the language(s).
      *
      * @param string ...$languages
@@ -153,7 +89,7 @@ class TesseractOCR
      */
     public function lang()
     {
-        $this->languages = func_get_args();
+        $this->options.= ' -l '.join('+', func_get_args());
         return $this;
     }
 
@@ -165,7 +101,7 @@ class TesseractOCR
      */
     public function psm($psm)
     {
-        $this->psm = $psm;
+        $this->options.= ' -psm '.$psm;
         return $this;
     }
 
@@ -227,6 +163,20 @@ class TesseractOCR
     }
 
     /**
+     * Catch all undeclared method invocations
+     * and threat them as command options.
+     *
+     * @return $this
+     */
+    public function __call($method, $args)
+    {
+        $option = strtolower(preg_replace('/([A-Z])+/', '-$1', $method));
+        $value = $args[0];
+        $this->options.= " --$option $value";
+        return $this;
+    }
+
+    /**
      * Builds the tesseract command with all its options.
      *
      * @return string
@@ -234,69 +184,10 @@ class TesseractOCR
     public function buildCommand()
     {
         return $this->executable.' '.escapeshellarg($this->image).' stdout'
-            .$this->buildTessdataDirParam()
-            .$this->buildUserWordsParam()
-            .$this->buildUserPatternsParam()
-            .$this->buildLanguagesParam()
-            .$this->buildPsmParam()
+            .$this->options
             .$this->buildConfigurationsParam()
             .$this->buildQuietMode()
             .$this->buildSuppressErrorsMode();
-    }
-
-    /**
-     * If tessdata directory is defined, return the correspondent command line
-     * argument to the tesseract command.
-     *
-     * @return string
-     */
-    private function buildTessdataDirParam()
-    {
-        return $this->tessdataDir ? " --tessdata-dir $this->tessdataDir" : '';
-    }
-
-    /**
-     * If user words file is defined, return the correspondent command line
-     * argument to the tesseract command.
-     *
-     * @return string
-     */
-    private function buildUserWordsParam()
-    {
-        return $this->userWords ? " --user-words $this->userWords" : '';
-    }
-
-    /**
-     * If user patterns file is defined, return the correspondent command line
-     * argument to the tesseract command.
-     *
-     * @return string
-     */
-    private function buildUserPatternsParam()
-    {
-        return $this->userPatterns ? " --user-patterns $this->userPatterns" : '';
-    }
-
-    /**
-     * If one (or more) languages are defined, return the correspondent command
-     * line argument to the tesseract command.
-     *
-     * @return string
-     */
-    private function buildLanguagesParam()
-    {
-        return $this->languages ? ' -l '.join('+', $this->languages) : '';
-    }
-
-    /**
-     * If a page segmentation mode is defined, return the correspondent command
-     * line argument to the tesseract command.
-     *
-     * @return string
-     */
-    private function buildPsmParam()
-    {
-        return is_null($this->psm) ? '' : ' -psm '.$this->psm;
     }
 
     /**
