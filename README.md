@@ -1,13 +1,16 @@
-![Tesseract OCR for PHP logo: A baby elephant reading a book][0]
+<p align="center">
+    <img src="https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/logo.png" alt="Tesseract OCR for PHP logo: A baby elephant reading a book"/>
+</p>
+<p align="center">
+    <a href="https://packagist.org/packages/thiagoalessio/tesseract_ocr"><img src="https://poser.pugx.org/thiagoalessio/tesseract_ocr/downloads" alt="Total Downloads"/></a>
+    <a href="https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php"><img src="https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php.svg?branch=master" alt="Build Status"/></a>
+    <a href="https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php"><img src="https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/gpa.svg" alt="Code Climate"/></a>
+    <a href="https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/coverage"><img src="https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/coverage.svg" alt="Test Coverage"/></a>
+</p>
 
 # Tesseract OCR for PHP
 
 A wrapper to work with Tesseract OCR inside PHP.
-
-[![Total Downloads](https://poser.pugx.org/thiagoalessio/tesseract_ocr/downloads)](https://packagist.org/packages/thiagoalessio/tesseract_ocr)
-[![Build Status](https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php.svg?branch=master)](https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php)
-[![Code Climate](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/gpa.svg)](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php)
-[![Test Coverage](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/coverage.svg)](https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/coverage)
 
 ## Installation
 
@@ -207,7 +210,6 @@ This is a shortcut for `->config('tessedit_char_whitelist', 'abcdef....')`.
 
 [Apache License 2.0][8].
 
-[0]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/logo.png
 [1]: https://github.com/tesseract-ocr/tesseract/wiki
 [2]: http://getcomposer.org/
 [3]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/text.jpeg
