@@ -105,6 +105,13 @@ The output would be:
 
     BOSS
 
+### Breaking CAPTCHAs
+
+Yes, I know some of you might want to use this library for the *noble* purpose
+of breaking CAPTCHAs, so please take a look on this comment:
+
+https://github.com/thiagoalessio/tesseract-ocr-for-php/issues/91#issuecomment-342290510
+
 ### Debugging
 
 You can just retrieve the generated tesseract command instead of running it:
