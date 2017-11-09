@@ -34,13 +34,6 @@ class TesseractOCR
     private $configs = [];
 
     /**
-     * If true, all warnings and errors from tesseract will be suppressed.
-     *
-     * @var bool
-     */
-    private $suppressErrorsMode = false;
-
-    /**
      * Class constructor.
      *
      * @param string $image
@@ -142,14 +135,12 @@ class TesseractOCR
     }
 
     /**
-     * Change suppress errors mode state.
-     *
-     * @param bool $status
-     * @return $this
+     * @DEPRECATED now it always redirects STDERR to /dev/null,
+     * this option will be removed on the next major version, just keeping an
+     * empty method here for backwards compatibility.
      */
     public function suppressErrors()
     {
-        $this->suppressErrorsMode = true;
         return $this;
     }
 
@@ -177,7 +168,7 @@ class TesseractOCR
         return $this->executable.' '.escapeshellarg($this->image).' stdout quiet'
             .$this->options
             .$this->buildConfigurationsParam()
-            .$this->buildSuppressErrorsMode();
+            .' 2>/dev/null';
     }
 
     /**
@@ -195,16 +186,5 @@ class TesseractOCR
             array_keys($this->configs),
             array_values($this->configs)
         ));
-    }
-
-    /**
-     * If suppress errors mode is defined, redirect all stderr output from the
-     * tesseract command to /dev/null.
-     *
-     * @return string
-     */
-    private function buildSuppressErrorsMode()
-    {
-        return $this->suppressErrorsMode ? ' 2>/dev/null' : '';
     }
 }
