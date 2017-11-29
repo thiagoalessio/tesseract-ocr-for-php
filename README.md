@@ -18,7 +18,7 @@ First of all, make sure you have [Tesseract OCR][] installed. (**v3.03** or grea
 ```json
 {
     "require": {
-        "thiagoalessio/tesseract_ocr": "1.2.0"
+        "thiagoalessio/tesseract_ocr": "1.2.1"
     }
 }
 ```
