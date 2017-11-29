@@ -165,7 +165,10 @@ class TesseractOCR
      */
     public function buildCommand()
     {
-        return $this->executable.' '.escapeshellarg($this->image).' stdout quiet'
+        return escapeshellarg($this->executable)
+            .' '
+            .escapeshellarg($this->image)
+            .' stdout quiet'
             .$this->options
             .$this->buildConfigurationsParam()
             .' 2>/dev/null';
