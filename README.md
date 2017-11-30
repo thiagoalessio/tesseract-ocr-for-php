@@ -12,6 +12,7 @@ A wrapper to work with Tesseract OCR inside PHP.
 ## Installation
 
 First of all, make sure you have [Tesseract OCR][] installed. (**v3.03** or greater)
+Please also check the [FAQ for Windows Users][] Wiki Page, if needed.
 
 ### As a [Composer][] dependency
 
@@ -268,6 +269,7 @@ echo (new TesseractOCR('img.png'))
 [test_coverage_badge]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/coverage.svg
 [test_coverage]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/coverage
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract/wiki
+[FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
 [Composer]: http://getcomposer.org/
 [quick_brown_fox]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/text.jpeg
 [german]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/german.jpeg
