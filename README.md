@@ -264,10 +264,10 @@ echo (new TesseractOCR('img.png'))
 [packagist]: https://packagist.org/packages/thiagoalessio/tesseract_ocr
 [build_status_badge]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php.svg?branch=master
 [travisci]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php
-[codeclimate_badge]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/gpa.svg
-[codeclimate]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php
-[test_coverage_badge]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/badges/coverage.svg
-[test_coverage]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/coverage
+[codeclimate_badge]: https://api.codeclimate.com/v1/badges/3eff8345313848d863c0/maintainability
+[codeclimate]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/maintainability
+[test_coverage_badge]: https://api.codeclimate.com/v1/badges/3eff8345313848d863c0/test_coverage
+[test_coverage]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/test_coverage
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract/wiki
 [FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
 [Composer]: http://getcomposer.org/
