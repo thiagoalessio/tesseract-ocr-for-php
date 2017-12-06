@@ -154,7 +154,7 @@ class TesseractOCR
     {
         $option = strtolower(preg_replace('/([A-Z])+/', '-$1', $method));
         $value = $args[0];
-        $this->options.= " --$option $value";
+        $this->options.= ' --'.$option.' "'.addcslashes($value, '\\"').'"';
         return $this;
     }
 
@@ -165,13 +165,10 @@ class TesseractOCR
      */
     public function buildCommand()
     {
-        return escapeshellarg($this->executable)
-            .' '
-            .escapeshellarg($this->image)
-            .' stdout'
-            .$this->options
-            .$this->buildConfigurationsParam()
-            .' quiet';
+        $cmd = '"'.addcslashes($this->executable, '\\"').'" ';
+        $cmd.= '"'.addcslashes($this->image, '\\"').'" stdout';
+        $cmd.= $this->options.$this->buildConfigurationsParam().' quiet';
+        return $cmd;
     }
 
     /**
@@ -182,7 +179,7 @@ class TesseractOCR
     private function buildConfigurationsParam()
     {
         $buildParam = function ($config, $value) {
-            return ' -c '.escapeshellarg("$config=$value");
+            return ' -c "'.addcslashes("$config=$value", '\\"').'"';
         };
         return join('', array_map(
             $buildParam,

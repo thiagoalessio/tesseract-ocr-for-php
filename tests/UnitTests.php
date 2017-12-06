@@ -14,7 +14,7 @@ class UnitTests extends TestCase
      */
     public function testSimplestCommand()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet";
+        $expected = '"tesseract" "image.png" stdout quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->buildCommand();
@@ -25,12 +25,12 @@ class UnitTests extends TestCase
     /**
      * One should be able to specify the location of the tesseract executable,
      * if by any reason it is not present in the $PATH.
-     * It should be surrounded by single quotes, in case there are spaces on the path,
-     * like 'C:/Program Files (x86)/Tesseract-OCR/tesseract.exe' for example.
+     * It should be surrounded by double quotes, in case there are spaces on the path,
+     * like "C:/Program Files (x86)/Tesseract-OCR/tesseract.exe" for example.
      */
     public function testDefiningLocationOfTesseractExecutable()
     {
-        $expected = "'/path/to/tesseract' 'image.png' stdout quiet";
+        $expected = '"/path/to/tesseract" "image.png" stdout quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->executable('/path/to/tesseract')
@@ -45,7 +45,7 @@ class UnitTests extends TestCase
      */
     public function testDefiningLocationOfTessdataDir()
     {
-        $expected = "'tesseract' 'image.png' stdout --tessdata-dir /path quiet";
+        $expected = '"tesseract" "image.png" stdout --tessdata-dir "/path" quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->tessdataDir('/path')
@@ -65,8 +65,8 @@ class UnitTests extends TestCase
      */
     public function testDefiningLocationOfUserWords()
     {
-        $expected = "'tesseract' 'image.png' stdout"
-            .' --user-words /path/to/user-words.txt quiet';
+        $expected = '"tesseract" "image.png" stdout'
+            .' --user-words "/path/to/user-words.txt" quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->userWords('/path/to/user-words.txt')
@@ -86,8 +86,8 @@ class UnitTests extends TestCase
      */
     public function testDefiningLocationOfUserPatterns()
     {
-        $expected = "'tesseract' 'image.png' stdout"
-            .' --user-patterns /path/to/user-patterns.txt quiet';
+        $expected = '"tesseract" "image.png" stdout'
+            .' --user-patterns "/path/to/user-patterns.txt" quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->userPatterns('/path/to/user-patterns.txt')
@@ -102,7 +102,7 @@ class UnitTests extends TestCase
      */
     public function testLanguageOption()
     {
-        $expected = "'tesseract' 'image.png' stdout -l deu quiet";
+        $expected = '"tesseract" "image.png" stdout -l deu quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->lang('deu')
@@ -119,7 +119,7 @@ class UnitTests extends TestCase
      */
     public function testLanguageOptionForMultipleLanguages()
     {
-        $expected = "'tesseract' 'image.png' stdout -l eng+deu+jpn quiet";
+        $expected = '"tesseract" "image.png" stdout -l eng+deu+jpn quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->lang('eng', 'deu', 'jpn')
@@ -134,7 +134,7 @@ class UnitTests extends TestCase
      */
     public function testPsmOption()
     {
-        $expected = "'tesseract' 'image.png' stdout -psm 8 quiet";
+        $expected = '"tesseract" "image.png" stdout -psm 8 quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->psm(8)
@@ -148,7 +148,7 @@ class UnitTests extends TestCase
      */
     public function testPsmOptionWithValueZero()
     {
-        $expected = "'tesseract' 'image.png' stdout -psm 0 quiet";
+        $expected = '"tesseract" "image.png" stdout -psm 0 quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->psm(0)
@@ -164,9 +164,9 @@ class UnitTests extends TestCase
      */
     public function testConfigOption()
     {
-        $expected = "'tesseract' 'image.png' stdout"
-            ." -c 'tessedit_create_pdf=1'"
-            ." -c 'load_system_dawg=F' quiet";
+        $expected = '"tesseract" "image.png" stdout'
+            .' -c "tessedit_create_pdf=1"'
+            .' -c "load_system_dawg=F" quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->config('tessedit_create_pdf', '1')
@@ -181,8 +181,8 @@ class UnitTests extends TestCase
      */
     public function testWhitelistSettingShortcutWithMultipleRanges()
     {
-        $expected = "'tesseract' 'image.png' stdout"
-            ." -c 'tessedit_char_whitelist=0123456789ABCDEF-_@' quiet";
+        $expected = '"tesseract" "image.png" stdout'
+            .' -c "tessedit_char_whitelist=0123456789ABCDEF-_@" quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->whitelist(range(0, 9), range('A', 'F'), '-_@')
@@ -196,7 +196,7 @@ class UnitTests extends TestCase
      */
     public function testQuietMode()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet";
+        $expected = '"tesseract" "image.png" stdout quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->quietMode(true)
@@ -207,7 +207,7 @@ class UnitTests extends TestCase
 
     public function testSuppressErrorsMode()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet";
+        $expected = '"tesseract" "image.png" stdout quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->quietMode(true)
