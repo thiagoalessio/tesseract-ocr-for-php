@@ -3,7 +3,8 @@
 # Tesseract OCR for PHP
 
 [![Total Downloads][total_downloads_badge]][packagist]
-[![Build Status][build_status_badge]][travisci]
+[![Build Status][travisci_badge]][travisci]
+[![Build Status][appveyor_badge]][appveyor]
 [![Code Climate][codeclimate_badge]][codeclimate]
 [![Test Coverage][test_coverage_badge]][test_coverage]
 
@@ -262,8 +263,10 @@ echo (new TesseractOCR('img.png'))
 [project_logo]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/logo.png
 [total_downloads_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/downloads
 [packagist]: https://packagist.org/packages/thiagoalessio/tesseract_ocr
-[build_status_badge]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php.svg?branch=master
+[travisci_badge]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php.svg?branch=master
 [travisci]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php
+[appveyor_badge]: https://ci.appveyor.com/api/projects/status/xwy5ls0798iwcim3/branch/master?svg=true
+[appveyor]: https://ci.appveyor.com/project/thiagoalessio/tesseract-ocr-for-php/branch/master
 [codeclimate_badge]: https://api.codeclimate.com/v1/badges/3eff8345313848d863c0/maintainability
 [codeclimate]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/maintainability
 [test_coverage_badge]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php/branch/master/graph/badge.svg
