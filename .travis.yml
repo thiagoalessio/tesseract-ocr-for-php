@@ -7,7 +7,7 @@ php:
   - '7.0'
 before_script:
   - sudo apt-get -y update
-  - sudo apt-get -y install tesseract-ocr
+  - sudo apt-get -y install tesseract-ocr tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-por
 install:
   - composer install
 script:

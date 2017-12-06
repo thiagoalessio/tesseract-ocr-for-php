@@ -8,12 +8,11 @@ class FunctionalTests extends PHPUnit_Framework_TestCase
     /**
      * Recognizing text from an image.
      */
-    public function testRecognizingTextFromImage()
+    public function testBasicUsage()
     {
-        $expected = "The quick brown fox\njumps over the lazy\ndog.";
+        $expected = "The quick brown fox\njumps over\nthe lazy dog.";
 
-        $actual = (new TesseractOCR(__DIR__.'/text.png'))
-            ->suppressErrors()
+        $actual = (new TesseractOCR(__DIR__.'/../images/text.png'))
             ->run();
 
         $this->assertEquals($expected, $actual);
@@ -27,7 +26,39 @@ class FunctionalTests extends PHPUnit_Framework_TestCase
         $expected = "Issue found by\n@crimsonvspurple";
 
         $actual = (new TesseractOCR(__DIR__.'/img name$with@special#chars.png'))
-            ->suppressErrors()
+            ->run();
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testOtherLanguages()
+    {
+        $expected = 'Bülowstraße';
+
+        $actual = (new TesseractOCR(__DIR__.'/../images/german.png'))
+            ->lang('deu')
+            ->run();
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMultipleLanguages()
+    {
+        $expected = 'I eat すし de maçã';
+
+        $actual = (new TesseractOCR(__DIR__.'/../images/multi-language.png'))
+            ->lang('eng', 'jpn', 'por')
+            ->run();
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testInducingRecognition()
+    {
+        $expected = 'BOSS';
+
+        $actual = (new TesseractOCR(__DIR__.'/../images/8055.png'))
+            ->whitelist(range('A', 'Z'))
             ->run();
 
         $this->assertEquals($expected, $actual);
