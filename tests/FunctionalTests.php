@@ -46,10 +46,10 @@ class FunctionalTests extends TestCase
 
     public function testMultipleLanguages()
     {
-        $expected = 'I eat すし de maçã';
+        $expected = 'I eat すし y Pollo';
 
-        $actual = (new TesseractOCR(__DIR__.'/../images/multi-language.png'))
-            ->lang('eng', 'jpn', 'por')
+        $actual = (new TesseractOCR(__DIR__.'/../images/mixed-languages.png'))
+            ->lang('eng', 'jpn', 'spa')
             ->run();
 
         $this->assertEquals($expected, $actual);

@@ -10,7 +10,7 @@ php:
 
 before_script:
   - sudo apt-get -y update
-  - sudo apt-get -y install tesseract-ocr tesseract-ocr-eng tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-por
+  - sudo apt-get -y install tesseract-ocr tesseract-ocr-eng tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-spa
   - composer install
 
 script:

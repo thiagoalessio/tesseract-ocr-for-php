@@ -76,17 +76,17 @@ Produces `Bülowstraße`.
 
 Given the following image:
 
-![The phrase "I each apple sushi", with mixed English, Japanese and Portuguese][multilanguage]
+![The phrase "I each apple sushi", with mixed English, Japanese and Portuguese][mixed_langs]
 
 And the following code:
 
 ```php
-echo (new TesseractOCR('multi-language.png'))
-    ->lang('eng', 'jpn', 'por')
+echo (new TesseractOCR('mixed-languages.png'))
+    ->lang('eng', 'jpn', 'spa')
     ->run();
 ```
 
-Produces `I eat すし de maçã`.
+Produces `I eat すし y Pollo`.
 
 ### Inducing recognition
 
@@ -273,7 +273,7 @@ echo (new TesseractOCR('img.png'))
 [Composer]: http://getcomposer.org/
 [quick_brown_fox]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/text.png
 [german]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/german.png
-[multilanguage]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/multi-language.png
+[mixed_langs]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/mixed-languages.png
 [8055]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/8055.png
 [tesseract_langs]: https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc#languages
 [@daijiale]: https://github.com/daijiale
