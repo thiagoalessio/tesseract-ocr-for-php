@@ -3,7 +3,9 @@
  * End-to-end tests, just to get a feeling of how a real user would interact
  * with this library.
  */
-class FunctionalTests extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class FunctionalTests extends TestCase
 {
     /**
      * Recognizing text from an image.

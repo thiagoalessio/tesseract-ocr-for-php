@@ -3,8 +3,9 @@ sudo: required
 dist: trusty
 language: php
 php:
-  - '5.6'
   - '7.0'
+  - '7.1'
+  - '7.2'
 before_script:
   - sudo apt-get -y update
   - sudo apt-get -y install tesseract-ocr tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-por

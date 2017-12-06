@@ -4,7 +4,10 @@
  * command gets correctly built with its options.
  * The commands are not actually being executed during the tests.
  */
-class UnitTests extends PHPUnit_Framework_TestCase
+
+use PHPUnit\Framework\TestCase;
+
+class UnitTests extends TestCase
 {
     /**
      * Simplest tesseract command, with no additional options.
