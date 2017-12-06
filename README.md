@@ -22,7 +22,7 @@ Please also check the [FAQ for Windows Users][] Wiki Page, if needed.
 ```json
 {
     "require": {
-        "thiagoalessio/tesseract_ocr": "1.2.3"
+        "thiagoalessio/tesseract_ocr": "1.3.0"
     }
 }
 ```
