@@ -43,8 +43,8 @@ Produces:
 
 ```
 The quick brown fox
-jumps over the lazy
-dog.
+jumps over
+the lazy dog.
 ```
 
 ### Other languages
@@ -60,7 +60,7 @@ echo (new TesseractOCR('german.png'))
     ->run();
 ```
 
-Produces `griiﬁen`.
+Produces `BiilowstraBe`.
 
 Which is not good, but defining a language:
 
@@ -70,7 +70,7 @@ echo (new TesseractOCR('german.png'))
     ->run();
 ```
 
-Produces `grüßen`.
+Produces `Bülowstraße`.
 
 ### Multiple languages
 
@@ -81,12 +81,12 @@ Given the following image:
 And the following code:
 
 ```php
-echo (new TesseractOCR('multi-languages.png'))
+echo (new TesseractOCR('multi-language.png'))
     ->lang('eng', 'jpn', 'por')
     ->run();
 ```
 
-Produces `I eat 寿司 de maçã`.
+Produces `I eat すし de maçã`.
 
 ### Inducing recognition
 
@@ -271,9 +271,9 @@ echo (new TesseractOCR('img.png'))
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract/wiki
 [FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
 [Composer]: http://getcomposer.org/
-[quick_brown_fox]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/text.jpeg
-[german]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/german.jpeg
-[multilanguage]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/multi-languages.jpeg
+[quick_brown_fox]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/text.png
+[german]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/german.png
+[multilanguage]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/multi-language.png
 [8055]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/8055.png
 [tesseract_langs]: https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc#languages
 [@daijiale]: https://github.com/daijiale
