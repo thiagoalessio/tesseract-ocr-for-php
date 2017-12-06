@@ -14,7 +14,7 @@ class FunctionalTests extends TestCase
     {
         $expected = "The quick brown fox\njumps over\nthe lazy dog.";
 
-        $actual = (new TesseractOCR(__DIR__.'/../images/text.png'))
+        $actual = (new TesseractOCR(__DIR__.'/images/text.png'))
             ->run();
 
         $this->assertEquals($expected, $actual);
@@ -24,7 +24,7 @@ class FunctionalTests extends TestCase
     {
         $expected = 'Bülowstraße';
 
-        $actual = (new TesseractOCR(__DIR__.'/../images/german.png'))
+        $actual = (new TesseractOCR(__DIR__.'/images/german.png'))
             ->lang('deu')
             ->run();
 
@@ -35,7 +35,7 @@ class FunctionalTests extends TestCase
     {
         $expected = 'I eat すし y Pollo';
 
-        $actual = (new TesseractOCR(__DIR__.'/../images/mixed-languages.png'))
+        $actual = (new TesseractOCR(__DIR__.'/images/mixed-languages.png'))
             ->lang('eng', 'jpn', 'spa')
             ->run();
 
@@ -46,7 +46,7 @@ class FunctionalTests extends TestCase
     {
         $expected = 'BOSS';
 
-        $actual = (new TesseractOCR(__DIR__.'/../images/8055.png'))
+        $actual = (new TesseractOCR(__DIR__.'/images/8055.png'))
             ->whitelist(range('A', 'Z'))
             ->run();
 

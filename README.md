@@ -279,10 +279,10 @@ echo (new TesseractOCR('img.png'))
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract/wiki
 [FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
 [Composer]: http://getcomposer.org/
-[quick_brown_fox]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/text.png
-[german]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/german.png
-[mixed_langs]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/mixed-languages.png
-[8055]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/8055.png
+[quick_brown_fox]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/text.png
+[german]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/german.png
+[mixed_langs]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/mixed-languages.png
+[8055]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/8055.png
 [tesseract_langs]: https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc#languages
 [@daijiale]: https://github.com/daijiale
 [Apache License 2.0]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/LICENSE
