@@ -127,7 +127,7 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
-### path
+### tessdataDir
 
 Specify a custom location for the tessdata directory.
 
