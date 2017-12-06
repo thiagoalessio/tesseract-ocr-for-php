@@ -2,11 +2,13 @@
 
 # Tesseract OCR for PHP
 
+[![Latest Stable Version][stable_version_badge]][packagist]
 [![Total Downloads][total_downloads_badge]][packagist]
 [![Build Status][travisci_badge]][travisci]
 [![Build Status][appveyor_badge]][appveyor]
 [![Code Climate][codeclimate_badge]][codeclimate]
 [![Test Coverage][test_coverage_badge]][test_coverage]
+[![License][license_badge]][apache_license]
 
 A wrapper to work with Tesseract OCR inside PHP.
 
@@ -261,6 +263,7 @@ echo (new TesseractOCR('img.png'))
 [Apache License 2.0][].
 
 [project_logo]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/logo.png
+[stable_version_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/v/stable
 [total_downloads_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/downloads
 [packagist]: https://packagist.org/packages/thiagoalessio/tesseract_ocr
 [travisci_badge]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php.svg?branch=master
@@ -271,6 +274,8 @@ echo (new TesseractOCR('img.png'))
 [codeclimate]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/maintainability
 [test_coverage_badge]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php/branch/master/graph/badge.svg
 [test_coverage]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php
+[license_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/license
+[apache_license]: http://www.apache.org/licenses/LICENSE-2.0
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract/wiki
 [FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
 [Composer]: http://getcomposer.org/
