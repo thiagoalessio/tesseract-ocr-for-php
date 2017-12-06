@@ -262,7 +262,7 @@ echo (new TesseractOCR('img.png'))
 
 [Apache License 2.0][].
 
-[project_logo]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/images/logo.png
+[project_logo]: https://thiagoalessio.ams3.digitaloceanspaces.com/tesseract-ocr-for-php-logo.png
 [stable_version_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/v/stable
 [total_downloads_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/downloads
 [packagist]: https://packagist.org/packages/thiagoalessio/tesseract_ocr
