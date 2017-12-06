@@ -42,7 +42,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testDefiningLocationOfTessdataDir()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet --tessdata-dir /path";
+        $expected = "'tesseract' 'image.png' stdout --tessdata-dir /path quiet";
 
         $actual = (new TesseractOCR('image.png'))
             ->tessdataDir('/path')
@@ -62,8 +62,8 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testDefiningLocationOfUserWords()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet"
-            .' --user-words /path/to/user-words.txt';
+        $expected = "'tesseract' 'image.png' stdout"
+            .' --user-words /path/to/user-words.txt quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->userWords('/path/to/user-words.txt')
@@ -83,8 +83,8 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testDefiningLocationOfUserPatterns()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet"
-            .' --user-patterns /path/to/user-patterns.txt';
+        $expected = "'tesseract' 'image.png' stdout"
+            .' --user-patterns /path/to/user-patterns.txt quiet';
 
         $actual = (new TesseractOCR('image.png'))
             ->userPatterns('/path/to/user-patterns.txt')
@@ -99,7 +99,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testLanguageOption()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet -l deu";
+        $expected = "'tesseract' 'image.png' stdout -l deu quiet";
 
         $actual = (new TesseractOCR('image.png'))
             ->lang('deu')
@@ -116,7 +116,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testLanguageOptionForMultipleLanguages()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet -l eng+deu+jpn";
+        $expected = "'tesseract' 'image.png' stdout -l eng+deu+jpn quiet";
 
         $actual = (new TesseractOCR('image.png'))
             ->lang('eng', 'deu', 'jpn')
@@ -131,7 +131,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testPsmOption()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet -psm 8";
+        $expected = "'tesseract' 'image.png' stdout -psm 8 quiet";
 
         $actual = (new TesseractOCR('image.png'))
             ->psm(8)
@@ -145,7 +145,7 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testPsmOptionWithValueZero()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet -psm 0";
+        $expected = "'tesseract' 'image.png' stdout -psm 0 quiet";
 
         $actual = (new TesseractOCR('image.png'))
             ->psm(0)
@@ -161,9 +161,9 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testConfigOption()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet"
+        $expected = "'tesseract' 'image.png' stdout"
             ." -c 'tessedit_create_pdf=1'"
-            ." -c 'load_system_dawg=F'";
+            ." -c 'load_system_dawg=F' quiet";
 
         $actual = (new TesseractOCR('image.png'))
             ->config('tessedit_create_pdf', '1')
@@ -178,8 +178,8 @@ class UnitTests extends PHPUnit_Framework_TestCase
      */
     public function testWhitelistSettingShortcutWithMultipleRanges()
     {
-        $expected = "'tesseract' 'image.png' stdout quiet"
-            ." -c 'tessedit_char_whitelist=0123456789ABCDEF-_@'";
+        $expected = "'tesseract' 'image.png' stdout"
+            ." -c 'tessedit_char_whitelist=0123456789ABCDEF-_@' quiet";
 
         $actual = (new TesseractOCR('image.png'))
             ->whitelist(range(0, 9), range('A', 'F'), '-_@')

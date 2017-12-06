@@ -168,9 +168,10 @@ class TesseractOCR
         return escapeshellarg($this->executable)
             .' '
             .escapeshellarg($this->image)
-            .' stdout quiet'
+            .' stdout'
             .$this->options
-            .$this->buildConfigurationsParam();
+            .$this->buildConfigurationsParam()
+            .' quiet';
     }
 
     /**
