@@ -75,7 +75,7 @@ class TesseractOCR
      */
     public function lang()
     {
-        $this->options.= ' -l '.join('+', func_get_args());
+        $this->options .= ' -l '.join('+', func_get_args());
         return $this;
     }
 
@@ -87,7 +87,7 @@ class TesseractOCR
      */
     public function psm($psm)
     {
-        $this->options.= ' -psm '.$psm;
+        $this->options .= ' -psm '.$psm;
         return $this;
     }
 
@@ -116,8 +116,8 @@ class TesseractOCR
      */
     public function whitelist()
     {
-        $concatenate = function ($carry, $item) {
-            return $carry . join('', (array)$item);
+        $concatenate = function($carry, $item) {
+            return $carry.join('', (array)$item);
         };
         $whitelist = array_reduce(func_get_args(), $concatenate, '');
         $this->config('tessedit_char_whitelist', $whitelist);
@@ -154,7 +154,7 @@ class TesseractOCR
     {
         $option = strtolower(preg_replace('/([A-Z])+/', '-$1', $method));
         $value = $args[0];
-        $this->options.= ' --'.$option.' "'.addcslashes($value, '\\"').'"';
+        $this->options .= ' --'.$option.' "'.addcslashes($value, '\\"').'"';
         return $this;
     }
 
@@ -166,8 +166,8 @@ class TesseractOCR
     public function buildCommand()
     {
         $cmd = '"'.addcslashes($this->executable, '\\"').'" ';
-        $cmd.= '"'.addcslashes($this->image, '\\"').'" stdout';
-        $cmd.= $this->options.$this->buildConfigurationsParam().' quiet';
+        $cmd .= '"'.addcslashes($this->image, '\\"').'" stdout';
+        $cmd .= $this->options.$this->buildConfigurationsParam().' quiet';
         return $cmd;
     }
 
@@ -178,7 +178,7 @@ class TesseractOCR
      */
     private function buildConfigurationsParam()
     {
-        $buildParam = function ($config, $value) {
+        $buildParam = function($config, $value) {
             return ' -c "'.addcslashes("$config=$value", '\\"').'"';
         };
         return join('', array_map(
