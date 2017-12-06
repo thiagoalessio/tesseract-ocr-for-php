@@ -266,8 +266,8 @@ echo (new TesseractOCR('img.png'))
 [travisci]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php
 [codeclimate_badge]: https://api.codeclimate.com/v1/badges/3eff8345313848d863c0/maintainability
 [codeclimate]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/maintainability
-[test_coverage_badge]: https://api.codeclimate.com/v1/badges/3eff8345313848d863c0/test_coverage
-[test_coverage]: https://codeclimate.com/github/thiagoalessio/tesseract-ocr-for-php/test_coverage
+[test_coverage_badge]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php/branch/master/graph/badge.svg
+[test_coverage]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract/wiki
 [FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
 [Composer]: http://getcomposer.org/
