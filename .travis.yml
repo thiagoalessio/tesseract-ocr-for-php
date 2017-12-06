@@ -1,17 +1,20 @@
 ---
+os: linux
 sudo: required
-dist: trusty
+
 language: php
 php:
   - '7.0'
   - '7.1'
   - '7.2'
+
 before_script:
   - sudo apt-get -y update
-  - sudo apt-get -y install tesseract-ocr tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-por
-install:
+  - sudo apt-get -y install tesseract-ocr tesseract-ocr-eng tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-por
   - composer install
+
 script:
   - vendor/bin/phpunit
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
