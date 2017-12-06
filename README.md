@@ -14,12 +14,17 @@ A wrapper to work with Tesseract OCR inside PHP.
 First of all, make sure you have [Tesseract OCR][] installed. (**v3.03** or greater)
 Please also check the [FAQ for Windows Users][] Wiki Page, if needed.
 
+## Quick Installation
+```bash
+$ composer require thiagoalessio/tesseract_ocr
+```
+
 ### As a [Composer][] dependency
 
 ```json
 {
     "require": {
-        "thiagoalessio/tesseract_ocr": "1.2.3"
+        "thiagoalessio/tesseract_ocr": "^1.2.3",
     }
 }
 ```
