@@ -14,18 +14,38 @@ A wrapper to work with Tesseract OCR inside PHP.
 
 ## Installation
 
-First of all, make sure you have [Tesseract OCR][] installed. (**v3.03** or greater)
-Please also check the [FAQ for Windows Users][] Wiki Page, if needed.
+Via [Composer][]:
 
-### As a [Composer][] dependency
+    $ composer require thiagoalessio/tesseract_ocr
 
-```json
-{
-    "require": {
-        "thiagoalessio/tesseract_ocr": "1.3.0"
-    }
-}
-```
+This library depends on [Tesseract OCR][], version **3.03** or later.
+
+<br/>
+
+### Note for Windows users
+
+There are [many ways][tesseract_installation_on_windows] to install
+[Tesseract OCR][] on your system, but if you just want something quick to
+get up and running, I recommend installing the [Capture2Text][] package with
+[Chocolatey][].
+
+    choco install capture2text
+
+<br/>
+
+### Note for **macOS** users
+
+With [MacPorts][] you can install support for individual languages, like so:
+
+    $ sudo port install tesseract-<langcode>
+
+But that is not possible with [Homebrew][]. It comes only with **English** support
+by default, so if you intend to use it for other language, the quickest solution
+is to install them all:
+
+    $ brew install tesseract --with-all-languages
+
+<br/>
 
 ## Usage
 
@@ -276,9 +296,14 @@ echo (new TesseractOCR('img.png'))
 [test_coverage]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php
 [license_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/license
 [apache_license]: http://www.apache.org/licenses/LICENSE-2.0
-[Tesseract OCR]: https://github.com/tesseract-ocr/tesseract/wiki
-[FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
+[Tesseract OCR]: https://github.com/tesseract-ocr/tesseract
 [Composer]: http://getcomposer.org/
+[tesseract_installation_on_windows]: https://github.com/tesseract-ocr/tesseract/wiki#windows
+[Capture2Text]: https://chocolatey.org/packages/capture2text
+[Chocolatey]: https://chocolatey.org
+[MacPorts]: https://www.macports.org
+[Homebrew]: https://brew.sh
+[FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
 [quick_brown_fox]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/text.png
 [german]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/german.png
 [mixed_langs]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/mixed-languages.png
