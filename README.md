@@ -53,18 +53,12 @@ is to install them all:
 
 ### Basic usage
 
-Given the following image:
-
-![The quick brown fox jumps over the lazy dog.][quick_brown_fox]
-
-And the following code:
+<img align="right" width="50%" title="The quick brown fox jumps over the lazy dog." src="./tests/images/text.png"/>
 
 ```php
-echo (new TesseractOCR('text.png'))
+echo (new \TesseractOCR('text.png'))
     ->run();
 ```
-
-Produces:
 
 ```
 The quick brown fox
@@ -72,62 +66,55 @@ jumps over
 the lazy dog.
 ```
 
+<br/>
+
 ### Other languages
 
-Given the following image:
-
-![Bülowstraße][german]
-
-And the following code:
+<img align="right" width="50%" title="Bülowstraße" src="./tests/images/german.png"/>
 
 ```php
-echo (new TesseractOCR('german.png'))
-    ->run();
-```
-
-Produces `BiilowstraBe`.
-
-Which is not good, but defining a language:
-
-```php
-echo (new TesseractOCR('german.png'))
+echo (new \TesseractOCR('german.png'))
     ->lang('deu')
     ->run();
 ```
 
-Produces `Bülowstraße`.
+```
+Bülowstraße
+```
+
+<br/>
 
 ### Multiple languages
 
-Given the following image:
-
-![I eat すし y Pollo][mixed_langs]
-
-And the following code:
+<img align="right" width="50%" title="I eat すし y Pollo" src="./tests/images/mixed-languages.png"/>
 
 ```php
-echo (new TesseractOCR('mixed-languages.png'))
+echo (new \TesseractOCR('mixed-languages.png'))
     ->lang('eng', 'jpn', 'spa')
     ->run();
 ```
 
-Produces `I eat すし y Pollo`.
+```
+I eat すし y Pollo
+```
+
+<br/>
 
 ### Inducing recognition
 
-Given the following image:
-
-![8055][8055]
-
-And the following code:
+<img align="right" width="50%" title="8055" src="./tests/images/8055.png"/>
 
 ```php
-echo (new TesseractOCR('8055.png'))
+echo (new \TesseractOCR('8055.png'))
     ->whitelist(range('A', 'Z'))
     ->run();
 ```
 
-Produces `BOSS`.
+```
+BOSS
+```
+
+<br/>
 
 ### Breaking CAPTCHAs
 
@@ -312,10 +299,6 @@ echo (new TesseractOCR('img.png'))
 [MacPorts]: https://www.macports.org
 [Homebrew]: https://brew.sh
 [FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
-[quick_brown_fox]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/text.png
-[german]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/german.png
-[mixed_langs]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/mixed-languages.png
-[8055]: https://raw.githubusercontent.com/thiagoalessio/tesseract-ocr-for-php/master/tests/images/8055.png
 [tesseract_langs]: https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc#languages
 [@daijiale]: https://github.com/daijiale
 [Apache License 2.0]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/LICENSE
