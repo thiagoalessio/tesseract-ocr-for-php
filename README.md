@@ -22,7 +22,7 @@ This library depends on [Tesseract OCR][], version **3.03** or later.
 
 <br/>
 
-### Note for Windows users
+### ![][windows_icon] Note for Windows users
 
 There are [many ways][tesseract_installation_on_windows] to install
 [Tesseract OCR][] on your system, but if you just want something quick to
@@ -33,7 +33,7 @@ get up and running, I recommend installing the [Capture2Text][] package with
 
 <br/>
 
-### Note for **macOS** users
+### ![][macos_icon] Note for macOS users
 
 With [MacPorts][] you can install support for individual languages, like so:
 
@@ -293,6 +293,8 @@ echo (new TesseractOCR('img.png'))
 [apache_license]: http://www.apache.org/licenses/LICENSE-2.0
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract
 [Composer]: http://getcomposer.org/
+[windows_icon]: https://thiagoalessio.ams3.digitaloceanspaces.com/windows-18.svg
+[macos_icon]: https://thiagoalessio.ams3.digitaloceanspaces.com/apple-18.svg
 [tesseract_installation_on_windows]: https://github.com/tesseract-ocr/tesseract/wiki#windows
 [Capture2Text]: https://chocolatey.org/packages/capture2text
 [Chocolatey]: https://chocolatey.org
