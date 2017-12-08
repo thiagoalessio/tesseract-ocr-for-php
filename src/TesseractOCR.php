@@ -125,16 +125,6 @@ class TesseractOCR
     }
 
     /**
-     * @DEPRECATED now it always redirects STDERR to /dev/null,
-     * this option will be removed on the next major version, just keeping an
-     * empty method here for backwards compatibility.
-     */
-    public function suppressErrors()
-    {
-        return $this;
-    }
-
-    /**
      * Catch all undeclared method invocations
      * and threat them as command options.
      *

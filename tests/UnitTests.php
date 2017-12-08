@@ -190,15 +190,4 @@ class UnitTests extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
-
-    public function testSuppressErrorsMode()
-    {
-        $expected = '"tesseract" "image.png" stdout';
-
-        $actual = (new TesseractOCR('image.png'))
-            ->suppressErrors()
-            ->buildCommand();
-
-        $this->assertEquals($expected, $actual);
-    }
 }
