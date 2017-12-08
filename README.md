@@ -33,7 +33,7 @@ Please also check the [FAQ for Windows Users][] Wiki Page, if needed.
 
 Given the following image:
 
-![The quick brown fox jumps over the lazy dog][quick_brown_fox]
+![The quick brown fox jumps over the lazy dog.][quick_brown_fox]
 
 And the following code:
 
@@ -54,7 +54,7 @@ the lazy dog.
 
 Given the following image:
 
-![grüßen - Google Translate said it means "to greet" in German][german]
+![Bülowstraße][german]
 
 And the following code:
 
@@ -79,7 +79,7 @@ Produces `Bülowstraße`.
 
 Given the following image:
 
-![The phrase "I each apple sushi", with mixed English, Japanese and Portuguese][mixed_langs]
+![I eat すし y Pollo][mixed_langs]
 
 And the following code:
 
@@ -95,7 +95,7 @@ Produces `I eat すし y Pollo`.
 
 Given the following image:
 
-![Number 8055][8055]
+![8055][8055]
 
 And the following code:
 
