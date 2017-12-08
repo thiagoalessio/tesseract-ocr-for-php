@@ -6,6 +6,7 @@
  */
 
 use PHPUnit\Framework\TestCase;
+use thiagoalessio\TesseractOCR\TesseractOCR;
 
 class UnitTests extends TestCase
 {

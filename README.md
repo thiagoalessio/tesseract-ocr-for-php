@@ -56,7 +56,8 @@ is to install them all:
 <img align="right" width="50%" title="The quick brown fox jumps over the lazy dog." src="./tests/images/text.png"/>
 
 ```php
-echo (new \TesseractOCR('text.png'))
+use thiagoalessio\TesseractOCR\TesseractOCR;
+echo (new TesseractOCR('text.png'))
     ->run();
 ```
 
@@ -73,7 +74,8 @@ the lazy dog.
 <img align="right" width="50%" title="Bülowstraße" src="./tests/images/german.png"/>
 
 ```php
-echo (new \TesseractOCR('german.png'))
+use thiagoalessio\TesseractOCR\TesseractOCR;
+echo (new TesseractOCR('german.png'))
     ->lang('deu')
     ->run();
 ```
@@ -89,7 +91,8 @@ Bülowstraße
 <img align="right" width="50%" title="I eat すし y Pollo" src="./tests/images/mixed-languages.png"/>
 
 ```php
-echo (new \TesseractOCR('mixed-languages.png'))
+use thiagoalessio\TesseractOCR\TesseractOCR;
+echo (new TesseractOCR('mixed-languages.png'))
     ->lang('eng', 'jpn', 'spa')
     ->run();
 ```
@@ -105,7 +108,8 @@ I eat すし y Pollo
 <img align="right" width="50%" title="8055" src="./tests/images/8055.png"/>
 
 ```php
-echo (new \TesseractOCR('8055.png'))
+use thiagoalessio\TesseractOCR\TesseractOCR;
+echo (new TesseractOCR('8055.png'))
     ->whitelist(range('A', 'Z'))
     ->run();
 ```

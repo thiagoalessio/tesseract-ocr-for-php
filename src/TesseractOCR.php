@@ -1,4 +1,5 @@
-<?php
+<?php namespace thiagoalessio\TesseractOCR;
+
 /**
  * A wrapper to work with TesseractOCR inside PHP.
  */
