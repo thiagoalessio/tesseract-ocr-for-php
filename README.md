@@ -18,7 +18,7 @@ Via [Composer][]:
 
     $ composer require thiagoalessio/tesseract_ocr
 
-This library depends on [Tesseract OCR][], version **3.03** or later.
+This library depends on [Tesseract OCR][], version **3.04** or later.
 
 <br/>
 

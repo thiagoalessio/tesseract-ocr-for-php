@@ -125,16 +125,6 @@ class TesseractOCR
     }
 
     /**
-     * @DEPRECATED now it is always quiet by default, this option will be
-     * removed on the next major version, just keeping an empty method here
-     * for backwards compatibility.
-     */
-    public function quietMode()
-    {
-        return $this;
-    }
-
-    /**
      * @DEPRECATED now it always redirects STDERR to /dev/null,
      * this option will be removed on the next major version, just keeping an
      * empty method here for backwards compatibility.
@@ -167,7 +157,7 @@ class TesseractOCR
     {
         $cmd = '"'.addcslashes($this->executable, '\\"').'" ';
         $cmd .= '"'.addcslashes($this->image, '\\"').'" stdout';
-        $cmd .= $this->options.$this->buildConfigurationsParam().' quiet';
+        $cmd .= $this->options.$this->buildConfigurationsParam();
         return $cmd;
     }
 
