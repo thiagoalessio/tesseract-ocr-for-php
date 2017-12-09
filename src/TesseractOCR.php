@@ -62,26 +62,6 @@ class TesseractOCR
     }
 
     /**
-     * Shortcut to set tessedit_char_whitelist values in a more convenient way.
-     * Example:
-     *
-     *     (new WrapTesseractOCR('image.png'))
-     *         ->whitelist(range(0, 9), range('A', 'F'), '-_@')
-     *
-     * @param mixed ...$charlists
-     * @return TesseractOCR
-     */
-    public function whitelist()
-    {
-        $concatenate = function($carry, $item) {
-            return $carry.join('', (array)$item);
-        };
-        $whitelist = array_reduce(func_get_args(), $concatenate, '');
-        $this->config('tessedit_char_whitelist', $whitelist);
-        return $this;
-    }
-
-    /**
      * Catch all undeclared method invocations
      * and threat them as command options.
      *
@@ -89,6 +69,12 @@ class TesseractOCR
      */
     public function __call($method, $args)
     {
+        $className = __NAMESPACE__.'\\Shortcut\\'.ucfirst($method);
+        if (class_exists($className)) {
+            $this->options[] = $className::buildOption(...$args);
+            return $this;
+        }
+
         $className = __NAMESPACE__.'\\Option\\'.ucfirst($method);
         if (class_exists($className)) {
             $this->options[] = new $className(...$args);
