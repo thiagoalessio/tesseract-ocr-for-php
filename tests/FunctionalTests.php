@@ -8,6 +8,16 @@ use thiagoalessio\TesseractOCR\TesseractOCR;
 
 class FunctionalTests extends TestCase
 {
+    private $executable = 'tesseract';
+    private $imagesDir  = './tests/images';
+
+    public function setUp()
+    {
+        if (getenv('TESSERACT_VERSION')) {
+            $this->executable = './tests/support/tesseract';
+        }
+    }
+
     /**
      * Recognizing text from an image.
      */
@@ -15,7 +25,8 @@ class FunctionalTests extends TestCase
     {
         $expected = "The quick brown fox\njumps over\nthe lazy dog.";
 
-        $actual = (new TesseractOCR(__DIR__.'/images/text.png'))
+        $actual = (new TesseractOCR("{$this->imagesDir}/text.png"))
+            ->executable($this->executable)
             ->run();
 
         $this->assertEquals($expected, $actual);
@@ -25,7 +36,8 @@ class FunctionalTests extends TestCase
     {
         $expected = 'Bülowstraße';
 
-        $actual = (new TesseractOCR(__DIR__.'/images/german.png'))
+        $actual = (new TesseractOCR("{$this->imagesDir}/german.png"))
+            ->executable($this->executable)
             ->lang('deu')
             ->run();
 
@@ -36,7 +48,8 @@ class FunctionalTests extends TestCase
     {
         $expected = 'I eat すし y Pollo';
 
-        $actual = (new TesseractOCR(__DIR__.'/images/mixed-languages.png'))
+        $actual = (new TesseractOCR("{$this->imagesDir}/mixed-languages.png"))
+            ->executable($this->executable)
             ->lang('eng', 'jpn', 'spa')
             ->run();
 
@@ -47,7 +60,8 @@ class FunctionalTests extends TestCase
     {
         $expected = 'BOSS';
 
-        $actual = (new TesseractOCR(__DIR__.'/images/8055.png'))
+        $actual = (new TesseractOCR("{$this->imagesDir}/8055.png"))
+            ->executable($this->executable)
             ->whitelist(range('A', 'Z'))
             ->run();
 

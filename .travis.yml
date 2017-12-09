@@ -3,18 +3,29 @@ os: linux
 sudo: required
 
 language: php
-php:
-  - '7.0'
-  - '7.1'
-  - '7.2'
+php: 7.2
+
+matrix:
+  include:
+    - php: 7.0
+    - php: 7.1
+    - php: 7.2
+    - env: TESSERACT_VERSION=3.02.01-2
+    - env: TESSERACT_VERSION=3.02.01-6
+    - env: TESSERACT_VERSION=3.03.02-3
+    - env: TESSERACT_VERSION=3.03.03-1
+    - env: TESSERACT_VERSION=3.04.01-4
+    - env: TESSERACT_VERSION=3.04.01-5
+    - env: TESSERACT_VERSION=3.04.01-6
+
+services:
+  - docker
 
 before_script:
-  - sudo apt-get -y update
-  - sudo apt-get -y install tesseract-ocr tesseract-ocr-eng tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-spa
   - composer install
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit tests/$(test -v TESSERACT_VERSION && echo FunctionalTests.php || echo UnitTests.php)
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

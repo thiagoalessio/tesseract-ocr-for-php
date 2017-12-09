@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+BASEDIR=$(cd "$(dirname "$0")"; pwd)
+BUILDDIR="$BASEDIR/$TESSERACT_VERSION"
+IMAGESDIR=$(cd "$BASEDIR/../images"; pwd)
+
+docker build -f $BUILDDIR/Dockerfile -t tesseract:$TESSERACT_VERSION $BUILDDIR >/dev/null 2>&1
+docker run -it --rm -v $IMAGESDIR/../images:/tests/images tesseract:$TESSERACT_VERSION $@ | tr -d '\r'
