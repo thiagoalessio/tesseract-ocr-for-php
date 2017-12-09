@@ -69,21 +69,19 @@ class TesseractOCR
      */
     public function __call($method, $args)
     {
-        $className = __NAMESPACE__.'\\Shortcut\\'.ucfirst($method);
-        if (class_exists($className)) {
-            $this->options[] = $className::buildOption(...$args);
-            return $this;
+        if ($this->isShortcut($method)) {
+            $class = $this->getShortcutClassName($method);
+            $this->options[] = $class::buildOption(...$args);
         }
-
-        $className = __NAMESPACE__.'\\Option\\'.ucfirst($method);
-        if (class_exists($className)) {
-            $this->options[] = new $className(...$args);
-            return $this;
+        elseif ($this->isOption($method)) {
+            $class = $this->getOptionClassName($method);
+            $this->options[] = new $class(...$args);
         }
-
-        $option = strtolower(preg_replace('/([A-Z])+/', '_$1', $method));
-        $value = $args[0];
-        $this->options[] = new Option\Config($option, $value);
+        else {
+            $var = $this->getConfigVarName($method);
+            $value = $args[0];
+            $this->options[] = new Option\Config($var, $value);
+        }
         return $this;
     }
 
@@ -99,5 +97,25 @@ class TesseractOCR
             $command .= "$option";
         }
         return $command;
+    }
+
+    private function isShortcut($name) {
+        return class_exists($this->getShortcutClassName($name));
+    }
+
+    private function getShortcutClassName($name) {
+        return __NAMESPACE__.'\\Shortcut\\'.ucfirst($name);
+    }
+
+    private function isOption($name) {
+        return class_exists($this->getOptionClassName($name));
+    }
+
+    private function getOptionClassName($name) {
+        return __NAMESPACE__.'\\Option\\'.ucfirst($name);
+    }
+
+    private function getConfigVarName($name) {
+        return strtolower(preg_replace('/([A-Z])+/', '_$1', $name));
     }
 }
