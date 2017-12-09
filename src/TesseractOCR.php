@@ -23,16 +23,9 @@ class TesseractOCR
     /**
      * Command options.
      *
-     * @var string
-     */
-    private $options = '';
-
-    /**
-     * List of tesseract configuration variables.
-     *
      * @var array
      */
-    private $configs = [];
+    private $options = [];
 
     /**
      * Class constructor.
@@ -69,43 +62,6 @@ class TesseractOCR
     }
 
     /**
-     * Sets the language(s).
-     *
-     * @param string ...$languages
-     * @return TesseractOCR
-     */
-    public function lang()
-    {
-        $this->options .= ' -l '.join('+', func_get_args());
-        return $this;
-    }
-
-    /**
-     * Sets the Page Segmentation Mode value.
-     *
-     * @param integer $psm
-     * @return TesseractOCR
-     */
-    public function psm($psm)
-    {
-        $this->options .= ' -psm '.$psm;
-        return $this;
-    }
-
-    /**
-     * Sets a tesseract configuration value.
-     *
-     * @param string $key
-     * @param string $value
-     * @return TesseractOCR
-     */
-    public function config($key, $value)
-    {
-        $this->configs[$key] = $value;
-        return $this;
-    }
-
-    /**
      * Shortcut to set tessedit_char_whitelist values in a more convenient way.
      * Example:
      *
@@ -133,9 +89,15 @@ class TesseractOCR
      */
     public function __call($method, $args)
     {
-        $option = strtolower(preg_replace('/([A-Z])+/', '-$1', $method));
+        $className = __NAMESPACE__.'\\Option\\'.ucfirst($method);
+        if (class_exists($className)) {
+            $this->options[] = new $className(...$args);
+            return $this;
+        }
+
+        $option = strtolower(preg_replace('/([A-Z])+/', '_$1', $method));
         $value = $args[0];
-        $this->options .= ' --'.$option.' "'.addcslashes($value, '\\"').'"';
+        $this->options[] = new Option\Config($option, $value);
         return $this;
     }
 
@@ -148,24 +110,7 @@ class TesseractOCR
     {
         $cmd = '"'.addcslashes($this->executable, '\\"').'" ';
         $cmd .= '"'.addcslashes($this->image, '\\"').'" stdout';
-        $cmd .= $this->options.$this->buildConfigurationsParam();
+        foreach ($this->options as $opt) $cmd .= "$opt";
         return $cmd;
-    }
-
-    /**
-     * Return tesseract command line arguments for every custom configuration.
-     *
-     * @return string
-     */
-    private function buildConfigurationsParam()
-    {
-        $buildParam = function($config, $value) {
-            return ' -c "'.addcslashes("$config=$value", '\\"').'"';
-        };
-        return join('', array_map(
-            $buildParam,
-            array_keys($this->configs),
-            array_values($this->configs)
-        ));
     }
 }

@@ -177,6 +177,20 @@ class UnitTests extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testConfigSugar()
+    {
+        $expected = '"tesseract" "image.png" stdout'
+            .' -c "tessedit_create_pdf=1"'
+            .' -c "load_system_dawg=F"';
+
+        $actual = (new TesseractOCR('image.png'))
+            ->tesseditCreatePdf(1)
+            ->loadSystemDawg('F')
+            ->buildCommand();
+
+        $this->assertEquals($expected, $actual);
+    }
+
     /**
      * Some sugar to make char whitelisting pleasurable to use and read.
      */
