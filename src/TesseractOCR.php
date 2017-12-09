@@ -18,7 +18,7 @@ class TesseractOCR
      *
      * @var string
      */
-    private $executable = 'tesseract';
+    private $executable = '"tesseract"';
 
     /**
      * Command options.
@@ -35,7 +35,7 @@ class TesseractOCR
      */
     public function __construct($image)
     {
-        $this->image = $image;
+        $this->image = '"'.addcslashes($image, '\\"').'"';
         return $this;
     }
 
@@ -57,7 +57,7 @@ class TesseractOCR
      */
     public function executable($executable)
     {
-        $this->executable = $executable;
+        $this->executable = '"'.addcslashes($executable, '\\"').'"';
         return $this;
     }
 
@@ -94,9 +94,10 @@ class TesseractOCR
      */
     public function buildCommand()
     {
-        $cmd = '"'.addcslashes($this->executable, '\\"').'" ';
-        $cmd .= '"'.addcslashes($this->image, '\\"').'" stdout';
-        foreach ($this->options as $opt) $cmd .= "$opt";
-        return $cmd;
+        $command = "{$this->executable} {$this->image} stdout";
+        foreach ($this->options as $option) {
+            $command .= "$option";
+        }
+        return $command;
     }
 }
