@@ -1,11 +1,14 @@
 <?php namespace thiagoalessio\TesseractOCR\Option;
 
-class Psm {
-    public function __construct($psm) {
+class Psm
+{
+    public function __construct($psm)
+    {
         $this->psm = $psm;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return " -psm {$this->psm}";
     }
 }

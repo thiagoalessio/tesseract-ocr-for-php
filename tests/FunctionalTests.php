@@ -1,8 +1,5 @@
-<?php
-/**
- * End-to-end tests, just to get a feeling of how a real user would interact
- * with this library.
- */
+<?php namespace thiagoalessio\TesseractOCR\Tests;
+
 use PHPUnit\Framework\TestCase;
 use thiagoalessio\TesseractOCR\TesseractOCR;
 
@@ -18,9 +15,6 @@ class FunctionalTests extends TestCase
         }
     }
 
-    /**
-     * Recognizing text from an image.
-     */
     public function testBasicUsage()
     {
         $expected = "The quick brown fox\njumps over\nthe lazy dog.";
