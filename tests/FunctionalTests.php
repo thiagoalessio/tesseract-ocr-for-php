@@ -11,13 +11,13 @@ class FunctionalTests extends TestCase
     public function setUp()
     {
         if (getenv('TESSERACT_VERSION')) {
-            $this->executable = './tests/support/tesseract';
+            $this->executable = './tests/support/docker-tesseract';
         }
     }
 
     public function testBasicUsage()
     {
-        $expected = "The quick brown fox\njumps over\nthe lazy dog.";
+        $expected = join(PHP_EOL, ['The quick brown fox', 'jumps over', 'the lazy dog.']);
 
         $actual = (new TesseractOCR("{$this->imagesDir}/text.png"))
             ->executable($this->executable)

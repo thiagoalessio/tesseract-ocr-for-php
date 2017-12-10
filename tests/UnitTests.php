@@ -144,4 +144,23 @@ class UnitTests extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
+
+    public function testAppendQuietFlagForVersion303()
+    {
+        $fakeTesseract = $this->getFakeTesseractExecutable();
+
+        $expected = '"'.addcslashes($fakeTesseract, '\\"').'" "image.png" stdout quiet';
+
+        $actual = (new TesseractOCR('image.png'))
+            ->executable($fakeTesseract)
+            ->buildCommand();
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    private function getFakeTesseractExecutable()
+    {
+        $ext = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'bat' : 'sh';
+        return join(DIRECTORY_SEPARATOR, [__DIR__, 'support', "fake-tesseract.$ext"]);
+    }
 }
