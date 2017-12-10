@@ -96,7 +96,19 @@ class TesseractOCR
         foreach ($this->options as $option) {
             $command .= "$option";
         }
+        $version = $this->getTesseractVersion();
+
+        if (version_compare($version, '3.03', '>=') &&
+            version_compare($version, '3.04', '<')) {
+            $command .= ' quiet';
+        }
+
         return $command;
+    }
+
+    public function getTesseractVersion() {
+        exec("{$this->executable} --version 2>&1", $output);
+        return explode(' ', $output[0])[1];
     }
 
     private function isShortcut($name) {
