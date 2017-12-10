@@ -13,5 +13,4 @@ install:
   - composer install
 
 test_script:
-  - cd c:\tesseract-ocr-for-php
-  - vendor\bin\phpunit -c phpunit.xml
+  - vendor\bin\phpunit

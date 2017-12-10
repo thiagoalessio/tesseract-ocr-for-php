@@ -6,7 +6,7 @@
 [![Total Downloads][total_downloads_badge]][packagist]
 [![Build Status][travisci_badge]][travisci]
 [![Build Status][appveyor_badge]][appveyor]
-[![Scrutinizer Code Quality][scrutinizer_badge]][scrutinizer]
+[![Codacy Badge][codacy_badge]][codacy]
 [![Test Coverage][test_coverage_badge]][test_coverage]
 [![License][license_badge]][apache_license]
 
@@ -289,10 +289,10 @@ echo (new TesseractOCR('img.png'))
 [travisci]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php
 [appveyor_badge]: https://ci.appveyor.com/api/projects/status/xwy5ls0798iwcim3/branch/master?svg=true
 [appveyor]: https://ci.appveyor.com/project/thiagoalessio/tesseract-ocr-for-php/branch/master
-[scrutinizer_badge]: https://scrutinizer-ci.com/g/thiagoalessio/tesseract-ocr-for-php/badges/quality-score.png?b=master
-[scrutinizer]: https://scrutinizer-ci.com/g/thiagoalessio/tesseract-ocr-for-php/?branch=master
-[test_coverage_badge]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php/branch/master/graph/badge.svg
-[test_coverage]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php
+[codacy_badge]: https://api.codacy.com/project/badge/Grade/024c8814aecf40329500df267134c623
+[codacy]: https://www.codacy.com/app/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=thiagoalessio/tesseract-ocr-for-php&amp;utm_campaign=Badge_Grade
+[test_coverage_badge]: https://api.codacy.com/project/badge/Coverage/024c8814aecf40329500df267134c623
+[test_coverage]: https://www.codacy.com/app/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&utm_medium=referral&utm_content=thiagoalessio/tesseract-ocr-for-php&utm_campaign=Badge_Coverage
 [license_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/license
 [apache_license]: http://www.apache.org/licenses/LICENSE-2.0
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract
