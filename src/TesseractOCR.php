@@ -46,7 +46,8 @@ class TesseractOCR
      */
     public function run()
     {
-        return trim(`{$this->buildCommand()}`);
+        exec($this->buildCommand(), $output);
+        return trim(join(PHP_EOL, $output));
     }
 
     /**
