@@ -2,6 +2,8 @@
 
 # Tesseract OCR for PHP
 
+[![Join the chat at https://gitter.im/thiagoalessio/tesseract-ocr-for-php](https://badges.gitter.im/thiagoalessio/tesseract-ocr-for-php.svg)](https://gitter.im/thiagoalessio/tesseract-ocr-for-php?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Latest Stable Version][stable_version_badge]][packagist]
 [![Total Downloads][total_downloads_badge]][packagist]
 [![Build Status][travisci_badge]][travisci]
