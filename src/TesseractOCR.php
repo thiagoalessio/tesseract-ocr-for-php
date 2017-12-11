@@ -9,7 +9,6 @@ class TesseractOCR
     public function __construct($image)
     {
         $this->image = $image;
-        return $this;
     }
 
     public function run()
