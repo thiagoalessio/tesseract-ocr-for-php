@@ -8,6 +8,7 @@
 [![Build Status][appveyor_badge]][appveyor]
 [![Codacy Badge][codacy_badge]][codacy]
 [![Test Coverage][test_coverage_badge]][test_coverage]
+[![Join the chat][gitter_badge]][gitter]
 [![License][license_badge]][apache_license]
 
 A wrapper to work with Tesseract OCR inside PHP.
@@ -273,7 +274,7 @@ echo (new TesseractOCR('img.png'))
 
 ## Where to get help
 
-`#tesseract-ocr-for-php` on freenode IRC.
+Join the chat at <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>
 
 ---
 
@@ -293,6 +294,8 @@ echo (new TesseractOCR('img.png'))
 [codacy]: https://www.codacy.com/app/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=thiagoalessio/tesseract-ocr-for-php&amp;utm_campaign=Badge_Grade
 [test_coverage_badge]: https://api.codacy.com/project/badge/Coverage/024c8814aecf40329500df267134c623
 [test_coverage]: https://www.codacy.com/app/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&utm_medium=referral&utm_content=thiagoalessio/tesseract-ocr-for-php&utm_campaign=Badge_Coverage
+[gitter_badge]: https://badges.gitter.im/thiagoalessio/tesseract-ocr-for-php.svg
+[gitter]: https://gitter.im/thiagoalessio/tesseract-ocr-for-php?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [license_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/license
 [apache_license]: http://www.apache.org/licenses/LICENSE-2.0
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract
