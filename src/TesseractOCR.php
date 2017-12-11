@@ -40,9 +40,7 @@ class TesseractOCR
             $this->options[] = new $class(...$args);
             return $this;
         }
-        $var = $this->getConfigVarName($method);
-        $value = $args[0];
-        $this->options[] = new Option\Config($var, $value);
+        $this->options[] = new Option\Config($method, $args[0]);
         return $this;
     }
 
@@ -64,10 +62,5 @@ class TesseractOCR
     private function getOptionClassName($name)
     {
         return __NAMESPACE__.'\\Option\\'.ucfirst($name);
-    }
-
-    private function getConfigVarName($name)
-    {
-        return strtolower(preg_replace('/([A-Z])+/', '_$1', $name));
     }
 }

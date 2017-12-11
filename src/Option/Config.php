@@ -10,6 +10,12 @@ class Config
 
     public function __toString()
     {
-        return ' -c "'.addcslashes("{$this->var}={$this->value}", '\\"').'"';
+        $configPair = "{$this->toSnakeCase($this->var)}={$this->value}";
+        return ' -c "'.addcslashes($configPair, '\\"').'"';
+    }
+
+    private function toSnakeCase($str)
+    {
+        return strtolower(preg_replace('/([A-Z])+/', '_$1', $str));
     }
 }
