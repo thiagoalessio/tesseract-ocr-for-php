@@ -3,12 +3,12 @@
 class TesseractOCR
 {
     private $image;
-    private $executable = '"tesseract"';
+    private $executable = 'tesseract';
     private $options = [];
 
     public function __construct($image)
     {
-        $this->image = '"'.addcslashes($image, '\\"').'"';
+        $this->image = $image;
         return $this;
     }
 
@@ -20,25 +20,12 @@ class TesseractOCR
 
     public function buildCommand()
     {
-        $command = "{$this->executable} {$this->image} stdout";
-        foreach ($this->options as $option) {
-            $command .= "$option";
-        }
-        if ($this->isVersion303()) {
-            $command .= ' quiet';
-        }
-        return $command;
-    }
-
-    public function getTesseractVersion()
-    {
-        exec("{$this->executable} --version 2>&1", $output);
-        return explode(' ', $output[0])[1];
+        return Command::build($this->image, $this->executable, $this->options);
     }
 
     public function executable($executable)
     {
-        $this->executable = '"'.addcslashes($executable, '\\"').'"';
+        $this->executable = $executable;
         return $this;
     }
 
@@ -83,12 +70,5 @@ class TesseractOCR
     private function getConfigVarName($name)
     {
         return strtolower(preg_replace('/([A-Z])+/', '_$1', $name));
-    }
-
-    private function isVersion303()
-    {
-        $version = $this->getTesseractVersion();
-        return version_compare($version, '3.03', '>=')
-            && version_compare($version, '3.04', '<');
     }
 }
