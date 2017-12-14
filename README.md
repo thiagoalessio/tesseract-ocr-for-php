@@ -2,6 +2,7 @@
 
 # Tesseract OCR for PHP
 
+[![Minimum PHP Version][min_php_version_badge]][php]
 [![Latest Stable Version][stable_version_badge]][packagist]
 [![Total Downloads][total_downloads_badge]][packagist]
 [![Build Status][travisci_badge]][travisci]
@@ -283,6 +284,8 @@ Join the chat at <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>
 [Apache License 2.0][].
 
 [project_logo]: https://thiagoalessio.ams3.digitaloceanspaces.com/tesseract-ocr-for-php-logo.png
+[min_php_version_badge]: https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg
+[php]: https://php.net/
 [stable_version_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/v/stable
 [total_downloads_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/downloads
 [packagist]: https://packagist.org/packages/thiagoalessio/tesseract_ocr
