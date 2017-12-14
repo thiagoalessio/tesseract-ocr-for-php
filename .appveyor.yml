@@ -13,7 +13,7 @@ install:
   - composer install
 
 test_script:
-  - vendor\bin\phpunit
+  - vendor\bin\phpunit -c phpunit.xml
 
 notifications:
   - provider: Webhook

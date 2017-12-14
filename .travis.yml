@@ -23,7 +23,7 @@ before_script:
   - composer install
 
 script:
-  - vendor/bin/phpunit $(test -v TESSERACT_VERSION || echo tests/UnitTests.php)
+  - vendor/bin/phpunit -c phpunit.xml $(test -v TESSERACT_VERSION || echo tests/UnitTests.php)
 
 after_success:
   - test -v TESSERACT_VERSION && vendor/bin/codacycoverage clover ./coverage.xml
