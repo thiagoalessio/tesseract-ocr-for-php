@@ -10,7 +10,7 @@
 [![Codacy Badge][codacy_badge]][codacy]
 [![Test Coverage][test_coverage_badge]][test_coverage]
 [![Join the chat][gitter_badge]][gitter]
-[![License][license_badge]][apache_license]
+[![License][license_badge]][mit_license]
 
 A wrapper to work with Tesseract OCR inside PHP.
 
@@ -281,7 +281,7 @@ Join the chat at <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>
 
 ## License
 
-[Apache License 2.0][].
+tesseract-ocr-for-php is released under the [MIT License][].
 
 [project_logo]: https://thiagoalessio.ams3.digitaloceanspaces.com/tesseract-ocr-for-php-logo.png
 [min_php_version_badge]: https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg
@@ -300,7 +300,7 @@ Join the chat at <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>
 [gitter_badge]: https://badges.gitter.im/thiagoalessio/tesseract-ocr-for-php.svg
 [gitter]: https://gitter.im/thiagoalessio/tesseract-ocr-for-php?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [license_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/license
-[apache_license]: http://www.apache.org/licenses/LICENSE-2.0
+[mit_license]: https://opensource.org/licenses/MIT
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract
 [Composer]: http://getcomposer.org/
 [windows_icon]: https://thiagoalessio.ams3.digitaloceanspaces.com/windows-18.svg
@@ -313,4 +313,4 @@ Join the chat at <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>
 [FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
 [tesseract_langs]: https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc#languages
 [@daijiale]: https://github.com/daijiale
-[Apache License 2.0]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/LICENSE
+[MIT License]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/MIT-LICENSE

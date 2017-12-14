@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "type": "library",
     "keywords": ["Tesseract", "OCR", "text recognition"],
-    "license": "Apache-2.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "thiagoalessio",
