@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phpunit colors="true">
+    <php>
+        <ini name="error_reporting" value="E_ALL"/>
+        <ini name="display_errors" value="On"/>
+        <ini name="display_startup_errors" value="On"/>
+    </php>
     <testsuites>
         <testsuite name="TesseractOCR Test Suite">
             <directory suffix="Tests.php">./tests/</directory>
