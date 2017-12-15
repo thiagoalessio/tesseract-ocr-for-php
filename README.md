@@ -1,18 +1,19 @@
-![Tesseract OCR for PHP logo: A baby elephant reading a book][project_logo]
+<img src="https://thiagoalessio.ams3.digitaloceanspaces.com/tesseract-ocr-for-php-logo.png" alt="Tesseract OCR for PHP" align="right" width="240px"/>
 
 # Tesseract OCR for PHP
 
-[![Minimum PHP Version][min_php_version_badge]][php]
-[![Latest Stable Version][stable_version_badge]][packagist]
-[![Total Downloads][total_downloads_badge]][packagist]
+A wrapper to work with Tesseract OCR inside PHP.
+
 [![Build Status][travisci_badge]][travisci]
 [![Build Status][appveyor_badge]][appveyor]
 [![Codacy Badge][codacy_badge]][codacy]
 [![Test Coverage][test_coverage_badge]][test_coverage]
+<br/>
+[![Minimum PHP Version][min_php_version_badge]][php]
+[![Latest Stable Version][stable_version_badge]][packagist]
+[![Total Downloads][total_downloads_badge]][packagist]
 [![Join the chat][gitter_badge]][gitter]
 [![License][license_badge]][mit_license]
-
-A wrapper to work with Tesseract OCR inside PHP.
 
 ## Installation
 
@@ -283,12 +284,6 @@ Join the chat at <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>
 
 tesseract-ocr-for-php is released under the [MIT License][].
 
-[project_logo]: https://thiagoalessio.ams3.digitaloceanspaces.com/tesseract-ocr-for-php-logo.png
-[min_php_version_badge]: https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg
-[php]: https://php.net/
-[stable_version_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/v/stable
-[total_downloads_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/downloads
-[packagist]: https://packagist.org/packages/thiagoalessio/tesseract_ocr
 [travisci_badge]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php.svg?branch=master
 [travisci]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php
 [appveyor_badge]: https://ci.appveyor.com/api/projects/status/xwy5ls0798iwcim3/branch/master?svg=true
@@ -297,6 +292,11 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [codacy]: https://www.codacy.com/app/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=thiagoalessio/tesseract-ocr-for-php&amp;utm_campaign=Badge_Grade
 [test_coverage_badge]: https://api.codacy.com/project/badge/Coverage/024c8814aecf40329500df267134c623
 [test_coverage]: https://www.codacy.com/app/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&utm_medium=referral&utm_content=thiagoalessio/tesseract-ocr-for-php&utm_campaign=Badge_Coverage
+[min_php_version_badge]: https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg
+[php]: https://php.net/
+[stable_version_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/v/stable
+[total_downloads_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/downloads
+[packagist]: https://packagist.org/packages/thiagoalessio/tesseract_ocr
 [gitter_badge]: https://badges.gitter.im/thiagoalessio/tesseract-ocr-for-php.svg
 [gitter]: https://gitter.im/thiagoalessio/tesseract-ocr-for-php?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [license_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/license
