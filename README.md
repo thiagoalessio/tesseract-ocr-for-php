@@ -50,8 +50,6 @@ is to install them all:
 
 <br/>
 
----
-
 ## Usage
 
 ### Basic usage
@@ -129,8 +127,6 @@ Yes, I know some of you might want to use this library for the *noble* purpose
 of breaking CAPTCHAs, so please take a look on this comment:
 
 <https://github.com/thiagoalessio/tesseract-ocr-for-php/issues/91#issuecomment-342290510>
-
----
 
 ## API
 
@@ -272,13 +268,9 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
----
-
 ## Where to get help
 
 Join the chat at <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>
-
----
 
 ## License
 
