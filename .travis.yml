@@ -14,7 +14,7 @@ matrix:
     - env: TESSERACT_VERSION=3.03.03-1
     - env: TESSERACT_VERSION=3.04.01-4
     - env: TESSERACT_VERSION=3.04.01-5
-    - env: TESSERACT_VERSION=3.04.01-6
+#    - env: TESSERACT_VERSION=3.04.01-6 weird build error because of docker, will check later
 
 services:
   - docker
