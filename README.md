@@ -8,12 +8,13 @@ A wrapper to work with Tesseract OCR inside PHP.
 [![Build Status][appveyor_badge]][appveyor]
 [![Codacy Badge][codacy_badge]][codacy]
 [![Test Coverage][test_coverage_badge]][test_coverage]
-<br/>
 [![Minimum PHP Version][min_php_version_badge]][php]
+<br/>
 [![Latest Stable Version][stable_version_badge]][packagist]
 [![Total Downloads][total_downloads_badge]][packagist]
 [![Join the chat][gitter_badge]][gitter]
 [![License][license_badge]][mit_license]
+[![Tweet][twitter_badge]][tweet_intent]
 
 ## Installation
 
@@ -296,6 +297,8 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [gitter]: https://gitter.im/thiagoalessio/tesseract-ocr-for-php?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [license_badge]: https://poser.pugx.org/thiagoalessio/tesseract_ocr/license
 [mit_license]: https://opensource.org/licenses/MIT
+[twitter_badge]: https://img.shields.io/twitter/url/http/shields.io.svg?style=social
+[tweet_intent]: https://twitter.com/intent/tweet?text=tesseract-ocr-for-php%3A%20A%20wrapper%20to%20work%20with%20Tesseract%20OCR%20inside%20PHP.&url=https://github.com/thiagoalessio/tesseract-ocr-for-php&hashtags=php,tesseract,ocr
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract
 [Composer]: http://getcomposer.org/
 [windows_icon]: https://thiagoalessio.ams3.digitaloceanspaces.com/windows-18.svg
