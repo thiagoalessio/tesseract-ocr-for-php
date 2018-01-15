@@ -2,13 +2,13 @@
 
 class UserPatterns
 {
-    public function __construct($path)
-    {
-        $this->path = $path;
-    }
+	public function __construct($path)
+	{
+		$this->path = $path;
+	}
 
-    public function __toString()
-    {
-        return ' --user-patterns "'.addcslashes($this->path, '\\"').'"';
-    }
+	public function __toString()
+	{
+		return ' --user-patterns "'.addcslashes($this->path, '\\"').'"';
+	}
 }

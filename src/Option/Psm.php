@@ -2,13 +2,13 @@
 
 class Psm
 {
-    public function __construct($psm)
-    {
-        $this->psm = $psm;
-    }
+	public function __construct($psm)
+	{
+		$this->psm = $psm;
+	}
 
-    public function __toString()
-    {
-        return " -psm {$this->psm}";
-    }
+	public function __toString()
+	{
+		return " -psm {$this->psm}";
+	}
 }
