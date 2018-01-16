@@ -20,12 +20,17 @@
 		"php": "^5.6 || ^7.0"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^6.5",
+		"phpunit/php-code-coverage": "^4.0.8",
 		"codacy/coverage": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
 			"thiagoalessio\\TesseractOCR\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"thiagoalessio\\TesseractOCR\\Tests\\": "tests/"
 		}
 	}
 }

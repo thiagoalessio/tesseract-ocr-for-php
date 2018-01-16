@@ -1,6 +1,5 @@
 <?php namespace thiagoalessio\TesseractOCR\Tests;
 
-use PHPUnit\Framework\TestCase;
 use thiagoalessio\TesseractOCR\TesseractOCR;
 
 class UnitTests extends TestCase
