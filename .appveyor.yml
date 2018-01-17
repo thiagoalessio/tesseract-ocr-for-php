@@ -1,15 +1,13 @@
 ---
 build: false
-platform: x86
-
-clone_folder: c:\tesseract-ocr-for-php
 
 install:
+  - ps: Set-Service wuauserv -StartupType Manual
   - choco install php
   - choco install capture2text
   - choco install composer
   - refreshenv
-  - cd c:\tesseract-ocr-for-php
+  - cd %APPVEYOR_BUILD_FOLDER%
   - composer install
 
 test_script:
