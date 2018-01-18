@@ -1,0 +1,11 @@
+FROM base/archlinux:2018.01.01
+MAINTAINER thiagoalessio <thiagoalessio@me.com>
+
+RUN pacman -Sy
+RUN pacman -U --noconfirm https://archive.archlinux.org/packages/t/tesseract/tesseract-3.05.01-3-x86_64.pkg.tar.xz
+RUN pacman -U --noconfirm https://archive.archlinux.org/packages/t/tesseract-data-eng/tesseract-data-eng-3.02.02-5-any.pkg.tar.xz
+RUN pacman -U --noconfirm https://archive.archlinux.org/packages/t/tesseract-data-deu/tesseract-data-deu-3.02.02-5-any.pkg.tar.xz
+RUN pacman -U --noconfirm https://archive.archlinux.org/packages/t/tesseract-data-jpn/tesseract-data-jpn-3.02.02-5-any.pkg.tar.xz
+RUN pacman -U --noconfirm https://archive.archlinux.org/packages/t/tesseract-data-spa/tesseract-data-spa-3.02.02-5-any.pkg.tar.xz
+
+ENTRYPOINT ["/usr/sbin/tesseract"]

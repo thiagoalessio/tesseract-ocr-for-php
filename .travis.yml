@@ -10,11 +10,9 @@ matrix:
     - php: 7.0
     - php: 7.1
     - php: 7.2
-    - env: TESSERACT_VERSION=3.03.02-3
-    - env: TESSERACT_VERSION=3.03.03-1
-    - env: TESSERACT_VERSION=3.04.01-4
-    - env: TESSERACT_VERSION=3.04.01-5
-#    - env: TESSERACT_VERSION=3.04.01-6 weird build error because of docker, will check later
+    - env: TESSERACT_VERSION=3.03
+    - env: TESSERACT_VERSION=3.04
+    - env: TESSERACT_VERSION=3.05
 
 services:
   - docker
