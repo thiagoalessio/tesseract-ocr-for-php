@@ -22,7 +22,7 @@ before_script:
   - composer install
 
 script:
-  - php tests/test-runner.php unit $(test -v TESSERACT_VERSION && echo functional)
+  - php tests/test-runner.php unit $(test -v TESSERACT_VERSION && echo e2e)
 
 after_success:
   - test -v TESSERACT_VERSION && vendor/bin/codacycoverage clover ./coverage.xml

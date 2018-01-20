@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-BASEDIR=$(cd "$(dirname "$0")"; pwd)
-IMAGESDIR=$(cd "$BASEDIR/../images"; pwd)
-
-docker run -it --rm -v $IMAGESDIR:/tests/images thiagoalessio/tesseract:$TESSERACT_VERSION $@ | tr -d '\r'

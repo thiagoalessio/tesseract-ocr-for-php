@@ -1,0 +1,6 @@
+#!/bin/sh
+IMAGESDIR=`dirname "$0"`/images
+
+docker run -it --rm \
+	-v $IMAGESDIR:/tests/EndToEnd/images \
+	thiagoalessio/tesseract:$TESSERACT_VERSION $@ | tr -d '\r'

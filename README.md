@@ -55,7 +55,7 @@ is to install them all:
 
 ### Basic usage
 
-<img align="right" width="50%" title="The quick brown fox jumps over the lazy dog." src="./tests/images/text.png"/>
+<img align="right" width="50%" title="The quick brown fox jumps over the lazy dog." src="./tests/EndToEnd/images/text.png"/>
 
 ```php
 use thiagoalessio\TesseractOCR\TesseractOCR;
@@ -73,7 +73,7 @@ the lazy dog.
 
 ### Other languages
 
-<img align="right" width="50%" title="Bülowstraße" src="./tests/images/german.png"/>
+<img align="right" width="50%" title="Bülowstraße" src="./tests/EndToEnd/images/german.png"/>
 
 ```php
 use thiagoalessio\TesseractOCR\TesseractOCR;
@@ -90,7 +90,7 @@ Bülowstraße
 
 ### Multiple languages
 
-<img align="right" width="50%" title="I eat すし y Pollo" src="./tests/images/mixed-languages.png"/>
+<img align="right" width="50%" title="I eat すし y Pollo" src="./tests/EndToEnd/images/mixed-languages.png"/>
 
 ```php
 use thiagoalessio\TesseractOCR\TesseractOCR;
@@ -107,7 +107,7 @@ I eat すし y Pollo
 
 ### Inducing recognition
 
-<img align="right" width="50%" title="8055" src="./tests/images/8055.png"/>
+<img align="right" width="50%" title="8055" src="./tests/EndToEnd/images/8055.png"/>
 
 ```php
 use thiagoalessio\TesseractOCR\TesseractOCR;
