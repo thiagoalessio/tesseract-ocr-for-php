@@ -125,7 +125,7 @@ BOSS
 ### Breaking CAPTCHAs
 
 Yes, I know some of you might want to use this library for the *noble* purpose
-of breaking CAPTCHAs, so please take a look on this comment:
+of breaking CAPTCHAs, so please take a look at this comment:
 
 <https://github.com/thiagoalessio/tesseract-ocr-for-php/issues/91#issuecomment-342290510>
 
@@ -196,7 +196,8 @@ echo (new TesseractOCR('img.png'))
 ### lang
 
 Define one or more languages to be used during the recognition.
-A complete list of available languages can be found [here][tesseract_langs].
+A complete list of available languages can be found at:
+<https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc#languages>
 
 __Tip from [@daijiale][]:__ Use the combination `->lang('chi_sim', 'chi_tra')`
 for proper recognition of Chinese.
@@ -209,24 +210,10 @@ for proper recognition of Chinese.
 
 ### psm
 
-Specify the Page Segmentation Mode, which instructs `tesseract` how to
+Specify the Page Segmentation Method, which instructs `tesseract` how to
 interpret the given image.
 
-Possible `psm` values are:
-
-| Value | Description                                               |
-| -----:| --------------------------------------------------------- |
-| 0     | Orientation and script detection (OSD) only.              |
-| 1     | Automatic page segmentation with OSD.                     |
-| 2     | Automatic page segmentation, but no OSD, or OCR.          |
-| 3     | Fully automatic page segmentation, but no OSD. (Default)  |
-| 4     | Assume a single column of text of variable sizes.         |
-| 5     | Assume a single uniform block of vertically aligned text. |
-| 6     | Assume a single uniform block of text.                    |
-| 7     | Treat the image as a single text line.                    |
-| 8     | Treat the image as a single word.                         |
-| 9     | Treat the image as a single word in a circle.             |
-| 10    | Treat the image as a single character.                    |
+__More info:__ <https://github.com/tesseract-ocr/tesseract/wiki/ImproveQuality#page-segmentation-method>
 
 ```php
 echo (new TesseractOCR('img.png'))
@@ -246,28 +233,25 @@ echo (new TesseractOCR('img.png'))
 
 ### Other options
 
-Tesseract offers incredible control to the user through its 600+ configuration options.
-You can see the complete list by running the following command:
-
-```
-$ tesseract --print-parameters
-Tesseract parameters:
-... long list with all parameters ...
-```
+Any configuration option offered by Tesseract can be used like that:
 
 ```php
 echo (new TesseractOCR('img.png'))
     ->config('config_var', 'value')
     ->config('other_config_var', 'other value')
     ->run();
+```
 
-// or better yet, just cammel case any of the options:
+Or like that:
 
+```php
 echo (new TesseractOCR('img.png'))
     ->configVar('value')
     ->otherConfigVar('other value')
     ->run();
 ```
+
+__More info:__ <https://github.com/tesseract-ocr/tesseract/wiki/ControlParams>
 
 ## Where to get help
 
@@ -305,7 +289,5 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [Chocolatey]: https://chocolatey.org
 [MacPorts]: https://www.macports.org
 [Homebrew]: https://brew.sh
-[FAQ for Windows Users]:https://github.com/thiagoalessio/tesseract-ocr-for-php/wiki/FAQ-for-Windows-Users
-[tesseract_langs]: https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc#languages
 [@daijiale]: https://github.com/daijiale
 [MIT License]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/MIT-LICENSE
