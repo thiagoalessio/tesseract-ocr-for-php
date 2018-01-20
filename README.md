@@ -280,7 +280,7 @@ tesseract-ocr-for-php is released under the [MIT License][].
 
 <h2></h2><p align="center"><sub>Made with <sub><a href="#"><img src="https://thiagoalessio.ams3.digitaloceanspaces.com/heart.svg" alt="love" width="14px"/></a></sub> in Berlin</sub></p>
 
-[travisci_badge]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php.svg?branch=master
+[travisci_badge]: https://img.shields.io/travis/thiagoalessio/tesseract-ocr-for-php/master.svg?logo=travis
 [travisci]: https://travis-ci.org/thiagoalessio/tesseract-ocr-for-php
 [appveyor_badge]: https://ci.appveyor.com/api/projects/status/xwy5ls0798iwcim3/branch/master?svg=true
 [appveyor]: https://ci.appveyor.com/project/thiagoalessio/tesseract-ocr-for-php/branch/master
