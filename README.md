@@ -253,6 +253,16 @@ echo (new TesseractOCR('img.png'))
 
 __More info:__ <https://github.com/tesseract-ocr/tesseract/wiki/ControlParams>
 
+### Formats
+
+Output formatting options provided by Tesseract (tsv, hocr) can be used like that:
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->tsv()
+    ->run();
+```
+
 ## Where to get help
 
 Join the chat at <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>
