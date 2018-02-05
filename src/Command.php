@@ -2,11 +2,12 @@
 
 class Command
 {
-	public static function build($image, $executable, $options=[])
+	public static function build($image, $executable, $options=[], $format='')
 	{
 		$cmd = self::escape($executable).' '.self::escape($image).' stdout';
 		$cmd.= join('', $options);
 		$cmd.= self::isVersion303($executable) ? ' quiet' : '';
+		$cmd.= $format;
 		return $cmd;
 	}
 
