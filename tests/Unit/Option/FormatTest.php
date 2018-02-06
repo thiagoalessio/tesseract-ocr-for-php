@@ -7,7 +7,7 @@ class FormatTest extends TestCase
 {
 	public function testFormat()
 	{
-		$expected = ' tsv';
+		$expected = 'tsv';
 		$actual = new Format('tsv');
 		$this->assertEquals("$expected", "$actual");
 	}

@@ -9,6 +9,6 @@ class Format
 
 	public function __toString()
 	{
-		return " {$this->format}";
+		return $this->format;
 	}
 }

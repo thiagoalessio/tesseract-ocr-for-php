@@ -9,6 +9,6 @@ class TessdataDir
 
 	public function __toString()
 	{
-		return ' --tessdata-dir "'.addcslashes($this->path, '\\"').'"';
+		return '--tessdata-dir "'.addcslashes($this->path, '\\"').'"';
 	}
 }

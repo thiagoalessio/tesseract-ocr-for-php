@@ -7,7 +7,7 @@ class HocrTest extends TestCase
 {
 	public function testHocrOption()
 	{
-		$expected = ' hocr';
+		$expected = 'hocr';
 		$actual = Hocr::buildOption();
 		$this->assertEquals("$expected", "$actual");
 	}

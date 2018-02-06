@@ -9,6 +9,6 @@ class Lang
 
 	public function __toString()
 	{
-		return ' -l '.join('+', $this->languages);
+		return '-l '.join('+', $this->languages);
 	}
 }

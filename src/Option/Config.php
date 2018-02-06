@@ -11,7 +11,7 @@ class Config
 	public function __toString()
 	{
 		$configPair = "{$this->toSnakeCase($this->var)}={$this->value}";
-		return ' -c "'.addcslashes($configPair, '\\"').'"';
+		return '-c "'.addcslashes($configPair, '\\"').'"';
 	}
 
 	private function toSnakeCase($str)

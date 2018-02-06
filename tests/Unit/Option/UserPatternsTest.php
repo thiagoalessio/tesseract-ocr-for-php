@@ -7,14 +7,14 @@ class UserPatternsTest extends TestCase
 {
 	public function testSimplePath()
 	{
-		$expected = ' --user-patterns "/path/to/userpatterns"';
+		$expected = '--user-patterns "/path/to/userpatterns"';
 		$actual = new UserPatterns('/path/to/userpatterns');
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testPathWithBackslashes()
 	{
-		$expected = ' --user-patterns "c:\\\\path\\\\to\\\\userpatterns"';
+		$expected = '--user-patterns "c:\\\\path\\\\to\\\\userpatterns"';
 		$actual = new UserPatterns('c:\path\to\userpatterns');
 		$this->assertEquals("$expected", "$actual");
 	}

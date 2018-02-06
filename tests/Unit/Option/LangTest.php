@@ -7,14 +7,14 @@ class LangTest extends TestCase
 {
 	public function testSingleLanguage()
 	{
-		$expected = ' -l eng';
+		$expected = '-l eng';
 		$actual = new Lang('eng');
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testMultipleLanguages()
 	{
-		$expected = ' -l eng+deu+jpn';
+		$expected = '-l eng+deu+jpn';
 		$actual = new Lang('eng', 'deu', 'jpn');
 		$this->assertEquals("$expected", "$actual");
 	}

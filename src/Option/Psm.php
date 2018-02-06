@@ -9,6 +9,6 @@ class Psm
 
 	public function __toString()
 	{
-		return " -psm {$this->psm}";
+		return "-psm {$this->psm}";
 	}
 }

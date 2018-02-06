@@ -9,6 +9,6 @@ class UserWords
 
 	public function __toString()
 	{
-		return ' --user-words "'.addcslashes($this->path, '\\"').'"';
+		return '--user-words "'.addcslashes($this->path, '\\"').'"';
 	}
 }

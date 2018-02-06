@@ -7,7 +7,7 @@ class TsvTest extends TestCase
 {
 	public function testTsvOption()
 	{
-		$expected = ' tsv';
+		$expected = 'tsv';
 		$actual = Tsv::buildOption();
 		$this->assertEquals("$expected", "$actual");
 	}

@@ -4,10 +4,15 @@ class Command
 {
 	public static function build($image, $executable, $options=[])
 	{
-		$cmd = self::escape($executable).' '.self::escape($image).' stdout';
-		$cmd.= join('', $options);
-		$cmd.= self::isVersion303($executable) ? ' quiet' : '';
-		return $cmd;
+		$cmd = [];
+		$cmd[] = self::escape($executable);
+		$cmd[] = self::escape($image);
+		$cmd[] = 'stdout';
+
+		if (!empty($options)) $cmd[] = join(' ', $options);
+		if (self::isVersion303($executable)) $cmd[] = 'quiet';
+
+		return join(' ', $cmd);
 	}
 
 	private static function isVersion303($executable)

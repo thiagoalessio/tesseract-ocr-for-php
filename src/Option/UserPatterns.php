@@ -9,6 +9,6 @@ class UserPatterns
 
 	public function __toString()
 	{
-		return ' --user-patterns "'.addcslashes($this->path, '\\"').'"';
+		return '--user-patterns "'.addcslashes($this->path, '\\"').'"';
 	}
 }

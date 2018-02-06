@@ -7,14 +7,14 @@ class UserWordsTest extends TestCase
 {
 	public function testSimplePath()
 	{
-		$expected = ' --user-words "/path/to/userwords"';
+		$expected = '--user-words "/path/to/userwords"';
 		$actual = new UserWords('/path/to/userwords');
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testPathWithBackslashes()
 	{
-		$expected = ' --user-words "c:\\\\path\\\\to\\\\userwords"';
+		$expected = '--user-words "c:\\\\path\\\\to\\\\userwords"';
 		$actual = new UserWords('c:\path\to\userwords');
 		$this->assertEquals("$expected", "$actual");
 	}
