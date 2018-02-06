@@ -12,6 +12,7 @@ $testSuites = [
 		'Unit\\Option\\UserPatternsTest',
 		'Unit\\Option\\UserWordsTest',
 		'Unit\\Shortcut\\WhitelistTest',
+		'Unit\\Shortcut\\HocrTest',
 		'Unit\\TesseractOCRTest',
 	],
 	'e2e' => [

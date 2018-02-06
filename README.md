@@ -242,6 +242,16 @@ echo (new TesseractOCR('img.png'))
 	->run();
 ```
 
+### hocr
+
+Shortcut for `->format('hocr')`.
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->hocr()
+	->run();
+```
+
 ### Other options
 
 Any configuration option offered by Tesseract can be used like that:
