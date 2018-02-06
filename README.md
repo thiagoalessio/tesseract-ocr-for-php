@@ -231,6 +231,17 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
+### format
+
+Specify an output format other than text.
+Available options are [HOCR][] and [TSV][] (TSV is only available on Tesseract 3.05+)
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->format('hocr')
+	->run();
+```
+
 ### Other options
 
 Any configuration option offered by Tesseract can be used like that:
@@ -252,16 +263,6 @@ echo (new TesseractOCR('img.png'))
 ```
 
 __More info:__ <https://github.com/tesseract-ocr/tesseract/wiki/ControlParams>
-
-### Formats
-
-Output formatting options provided by Tesseract (tsv, hocr) can be used like that:
-
-```php
-echo (new TesseractOCR('img.png'))
-    ->tsv()
-    ->run();
-```
 
 ## Where to get help
 
@@ -300,4 +301,6 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [MacPorts]: https://www.macports.org
 [Homebrew]: https://brew.sh
 [@daijiale]: https://github.com/daijiale
+[HOCR]: https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage#hocr-output
+[TSV]: https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage#tsv-output-currently-available-in-305-dev-in-master-branch-on-github
 [MIT License]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/MIT-LICENSE

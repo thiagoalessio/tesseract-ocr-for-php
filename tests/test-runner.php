@@ -6,6 +6,7 @@ $testSuites = [
 		'Unit\\CommandTest',
 		'Unit\\Option\\ConfigTest',
 		'Unit\\Option\\LangTest',
+		'Unit\\Option\\FormatTest',
 		'Unit\\Option\\PsmTest',
 		'Unit\\Option\\TessdataDirTest',
 		'Unit\\Option\\UserPatternsTest',

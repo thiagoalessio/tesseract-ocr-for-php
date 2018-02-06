@@ -23,10 +23,11 @@ class TesseractOCRTest extends TestCase
 
 	public function testDefiningOptions()
 	{
-		$expected = '"tesseract" "image.png" stdout -l eng -psm 6';
+		$expected = '"tesseract" "image.png" stdout -l eng -psm 6 hocr';
 		$actual = (new TesseractOCR('image.png'))
 			->lang('eng')
 			->psm(6)
+			->format('hocr')
 			->buildCommand();
 		$this->assertEquals("$expected", "$actual");
 	}
@@ -49,15 +50,6 @@ class TesseractOCRTest extends TestCase
 		$actual = (new TesseractOCR('image.png'))
 			->loadSystemDawg('F')
 			->tesseditCreatePdf(1)
-			->buildCommand();
-		$this->assertEquals("$expected", "$actual");
-	}
-
-	public function testDefiningFormats()
-	{
-		$expected = '"tesseract" "image.png" stdout tsv';
-		$actual = (new TesseractOCR('image.png'))
-			->tsv()
 			->buildCommand();
 		$this->assertEquals("$expected", "$actual");
 	}
