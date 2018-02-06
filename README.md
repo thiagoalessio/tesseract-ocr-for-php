@@ -252,6 +252,16 @@ echo (new TesseractOCR('img.png'))
 	->run();
 ```
 
+### tsv
+
+Shortcut for `->format('tsv')`.
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->tsv()
+	->run();
+```
+
 ### Other options
 
 Any configuration option offered by Tesseract can be used like that:
