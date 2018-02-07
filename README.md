@@ -239,7 +239,7 @@ Available options are [HOCR][] and [TSV][] (TSV is only available on Tesseract 3
 ```php
 echo (new TesseractOCR('img.png'))
     ->format('hocr')
-	->run();
+    ->run();
 ```
 
 ### hocr
@@ -249,7 +249,7 @@ Shortcut for `->format('hocr')`.
 ```php
 echo (new TesseractOCR('img.png'))
     ->hocr()
-	->run();
+    ->run();
 ```
 
 ### tsv
@@ -259,7 +259,7 @@ Shortcut for `->format('tsv')`.
 ```php
 echo (new TesseractOCR('img.png'))
     ->tsv()
-	->run();
+    ->run();
 ```
 
 ### Other options
