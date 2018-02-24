@@ -10,12 +10,12 @@ class Command
 		$cmd[] = 'stdout';
 
 		if (!empty($options)) $cmd[] = join(' ', $options);
-		if (self::isVersion303($executable)) $cmd[] = 'quiet';
+		if (static::isVersion303($executable)) $cmd[] = 'quiet';
 
 		return join(' ', $cmd);
 	}
 
-	private static function isVersion303($executable)
+	protected static function isVersion303($executable)
 	{
 		$version = self::getTesseractVersion($executable);
 		return version_compare($version, '3.03', '>=')
