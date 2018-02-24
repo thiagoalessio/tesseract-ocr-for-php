@@ -8,13 +8,6 @@ class ReadmeExamples extends TestCase
 	private $executable = 'tesseract';
 	private $imagesDir  = './tests/EndToEnd/images';
 
-	public function setUp()
-	{
-		if (getenv('TESSERACT_VERSION')) {
-			$this->executable = __DIR__.'/docker-tesseract';
-		}
-	}
-
 	public function testBasicUsage()
 	{
 		$expected = join(PHP_EOL, ['The quick brown fox', 'jumps over', 'the lazy dog.']);
