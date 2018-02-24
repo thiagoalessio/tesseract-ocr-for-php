@@ -72,3 +72,7 @@ workflows:
           requires: *php_jobs
       - tess-3.05:
           requires: *php_jobs
+
+notify:
+  webhooks:
+    - url: https://webhooks.gitter.im/e/2a55ca057ba4a0b16123
