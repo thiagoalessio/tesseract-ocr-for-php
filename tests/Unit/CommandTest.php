@@ -22,16 +22,16 @@ class CommandTest extends TestCase
 		$this->assertEquals("$expected", "$actual");
 	}
 
-	public function testAppendQuietFlagForTesseract3_03()
+	public function testAppendQuietFlagForVersion303()
 	{
-		$executable = $this->getFakeTesseract3_03();
+		$executable = $this->getFakeTesseract303();
 
 		$expected = "\"$executable\" \"image.png\" stdout -psm 3 quiet";
 		$actual = Command::build('image.png', $executable, [new Psm(3)]);
 		$this->assertEquals("$expected", "$actual");
 	}
 
-	private function getFakeTesseract3_03()
+	private function getFakeTesseract303()
 	{
 		$ext = strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' ? 'bat' : 'sh';
 		return "./tests/Unit/fake-tesseract.$ext";
