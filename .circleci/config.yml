@@ -1,0 +1,74 @@
+---
+version: 2
+
+unit_tests: &unit_tests
+  - run: apt-get -y update && apt-get -y install git
+  - checkout
+  - run: >
+      curl -o- 'https://getcomposer.org/installer' |
+      php -- --quiet --filename=composer --install-dir=/usr/local/bin
+  - run: composer install
+  - run: php tests/test-runner.php unit
+
+all_tests: &all_tests
+  - checkout
+  - run: composer install
+  - run: php tests/test-runner.php unit e2e
+  - run: vendor/bin/codacycoverage clover ./coverage.xml
+
+jobs:
+  php-5.6:
+    docker:
+      - image: php:5.6
+    steps: *unit_tests
+
+  php-7.0:
+    docker:
+      - image: php:7.0
+    steps: *unit_tests
+
+  php-7.1:
+    docker:
+      - image: php:7.1
+    steps: *unit_tests
+
+  php-7.2:
+    docker:
+      - image: php:7.2
+    steps: *unit_tests
+
+  tess-3.03:
+    docker:
+      - image: thiagoalessio/tesseract:3.03
+    steps: *all_tests
+
+  tess-3.04:
+    docker:
+      - image: thiagoalessio/tesseract:3.04
+    steps: *all_tests
+
+  tess-3.05:
+    docker:
+      - image: thiagoalessio/tesseract:3.05
+    steps: *all_tests
+
+php_jobs: &php_jobs
+  - php-5.6
+  - php-7.0
+  - php-7.1
+  - php-7.2
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - php-5.6
+      - php-7.0
+      - php-7.1
+      - php-7.2
+      - tess-3.03:
+          requires: *php_jobs
+      - tess-3.04:
+          requires: *php_jobs
+      - tess-3.05:
+          requires: *php_jobs
