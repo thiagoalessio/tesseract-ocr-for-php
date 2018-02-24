@@ -3,12 +3,14 @@
 class TesseractOCR
 {
 	private $image;
+	private $command;
 	private $executable = 'tesseract';
 	private $options = [];
 
-	public function __construct($image)
+	public function __construct($image, $command=null)
 	{
 		$this->image = $image;
+		$this->command = $command;
 	}
 
 	public function run()
@@ -19,7 +21,8 @@ class TesseractOCR
 
 	public function buildCommand()
 	{
-		return Command::build($this->image, $this->executable, $this->options);
+		$class = $this->getCommandClassName();
+		return $class::build($this->image, $this->executable, $this->options);
 	}
 
 	public function executable($executable)
@@ -42,6 +45,11 @@ class TesseractOCR
 		}
 		$this->options[] = new Option\Config($method, $args[0]);
 		return $this;
+	}
+
+	private function getCommandClassName()
+	{
+		return $this->command ?: __NAMESPACE__.'\\Command';
 	}
 
 	private function isShortcut($name)
