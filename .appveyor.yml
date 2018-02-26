@@ -11,7 +11,7 @@ install:
   - composer install
 
 test_script:
-  - php tests\test-runner.php unit e2e
+  - php tests\run.php unit e2e
 
 notifications:
   - provider: Webhook

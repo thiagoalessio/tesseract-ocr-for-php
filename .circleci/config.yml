@@ -8,12 +8,12 @@ unit_tests: &unit_tests
       curl -o- 'https://getcomposer.org/installer' |
       php -- --quiet --filename=composer --install-dir=/usr/local/bin
   - run: composer install
-  - run: php tests/test-runner.php unit
+  - run: php tests/run.php unit
 
 all_tests: &all_tests
   - checkout
   - run: composer install
-  - run: php tests/test-runner.php unit e2e
+  - run: php tests/run.php unit e2e
   - run: vendor/bin/codacycoverage clover ./coverage.xml
 
 jobs:
