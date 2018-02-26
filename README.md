@@ -288,6 +288,10 @@ __More info:__ <https://github.com/tesseract-ocr/tesseract/wiki/ControlParams>
 
 Join the chat at <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>
 
+## How to contribute
+
+See [CONTRIBUTING.md][].
+
 ## License
 
 tesseract-ocr-for-php is released under the [MIT License][].
@@ -323,4 +327,5 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [@daijiale]: https://github.com/daijiale
 [HOCR]: https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage#hocr-output
 [TSV]: https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage#tsv-output-currently-available-in-305-dev-in-master-branch-on-github
+[CONTRIBUTING.md]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/CONTRIBUTING.md
 [MIT License]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/MIT-LICENSE
