@@ -39,11 +39,21 @@ class ReadmeExamples extends TestCase
 
 	public function testInducingRecognition()
 	{
+		// https://github.com/tesseract-ocr/tesseract/issues/751
+		if ($this->isVersion4()) $this->skip();
+
 		$expected = 'BOSS';
 		$actual = (new TesseractOCR("{$this->imagesDir}/8055.png"))
 			->executable($this->executable)
 			->whitelist(range('A', 'Z'))
 			->run();
 		$this->assertEquals($expected, $actual);
+	}
+
+	protected function isVersion4()
+	{
+		exec('tesseract --version 2>&1', $output);
+		$version = explode(' ', $output[0])[1];
+		return version_compare($version, '4.00', '>=');
 	}
 }

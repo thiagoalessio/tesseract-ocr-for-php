@@ -52,6 +52,11 @@ jobs:
       - image: thiagoalessio/tesseract:3.05
     steps: *all_tests
 
+  tess-4.00:
+    docker:
+      - image: thiagoalessio/tesseract:4.00
+    steps: *all_tests
+
 php_jobs: &php_jobs
   - php-5.6
   - php-7.0
@@ -71,6 +76,8 @@ workflows:
       - tess-3.04:
           requires: *php_jobs
       - tess-3.05:
+          requires: *php_jobs
+      - tess-4.00:
           requires: *php_jobs
 
 notify:
