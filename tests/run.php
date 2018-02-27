@@ -17,7 +17,9 @@ if (extension_loaded('xdebug')) {
 }
 
 // running tests
-$isTest = function($class) { return strstr($class, __NAMESPACE__); };
+$isTest = function($class) {
+	return strstr($class, __NAMESPACE__) && !strstr($class, 'Common');
+};
 $tests = array_filter(get_declared_classes(), $isTest);
 $rc = 0;
 foreach ($tests as $test) {
@@ -25,9 +27,20 @@ foreach ($tests as $test) {
 
 	$results = (new $test)->run();
 	foreach ($results as $name => $result) {
-		echo "\t", ($result['failed'] ? "\e[31m✕" : "\e[32m✓"), " {$name}\e[0m", PHP_EOL;
+		switch ($result['status']) {
+			case 'fail':
+				$status = "\e[31m✕";
+				break;
+			case 'pass':
+				$status = "\e[32m✓";
+				break;
+			case 'skip':
+				$status = "\e[33m‖";
+				break;
+		}
+		echo "\t{$status} {$name}\e[0m", PHP_EOL;
 
-		if ($result['failed']) {
+		if ($result['status'] == 'fail') {
 			$rc++;
 			echo "\e[35m{$result['msg']}\e[0m", PHP_EOL;
 		}

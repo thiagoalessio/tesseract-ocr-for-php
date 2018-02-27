@@ -11,9 +11,11 @@ class TestCase
 			if (method_exists($this, 'beforeEach')) $this->beforeEach();
 			try {
 				$this->$test();
-				$results[$test] = ['failed' => false, 'msg' => null];
+				$results[$test] = ['status' => 'pass'];
+			} catch (SkipException $e) {
+				$results[$test] = ['status' => 'skip'];
 			} catch (\Exception $e) {
-				$results[$test] = ['failed' => true, 'msg' => $e->getMessage()];
+				$results[$test] = ['status' => 'fail', 'msg' => $e->getMessage()];
 			}
 			if (method_exists($this, 'afterEach')) $this->afterEach();
 		}
@@ -35,4 +37,11 @@ class TestCase
 			throw new \Exception("\t\tExpected: $expected\n\t\t  Actual: $actual");
 		}
 	}
+
+	protected function skip()
+	{
+		throw new SkipException();
+	}
 }
+
+class SkipException extends \Exception {}
