@@ -1,3 +1,8 @@
+*IMPORTANT:* Just open issues for bugs found on this library.
+If you are getting an empty result, please don't open an issue,
+it is a usage problem that was already extensively covered on
+Gitter <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>.
+
 ### Expected behavior
 
 Add relevant code snippet, and what you expect it to do.
