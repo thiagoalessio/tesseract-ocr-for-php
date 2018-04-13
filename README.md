@@ -33,7 +33,9 @@ There are [many ways][tesseract_installation_on_windows] to install
 get up and running, I recommend installing the [Capture2Text][] package with
 [Chocolatey][].
 
-    choco install capture2text
+    choco install capture2text --version 3.9
+
+:warning: Recent versions of [Capture2Text][] stopped shipping the `tesseract` binary.
 
 <br/>
 

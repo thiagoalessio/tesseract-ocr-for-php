@@ -4,7 +4,7 @@ build: false
 install:
   - ps: Set-Service wuauserv -StartupType Manual
   - choco install php
-  - choco install capture2text
+  - choco install capture2text --version 3.9
   - choco install composer
   - refreshenv
   - cd %APPVEYOR_BUILD_FOLDER%
