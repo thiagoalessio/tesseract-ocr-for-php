@@ -35,6 +35,12 @@ class TesseractOCR
 		return $this;
 	}
 
+	public function oem($oem)
+	{
+		$this->command->options[] = Option::oem($oem);
+		return $this;
+	}
+
 	public function __call($method, $args)
 	{
 		if ($this->isShortcut($method)) {

@@ -223,6 +223,16 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
+### oem
+
+Specify the OCR Engine Mode. (see `tesseract --help-oem`)
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->oem(2)
+    ->run();
+```
+
 ### whitelist
 
 This is a shortcut for `->config('tessedit_char_whitelist', 'abcdef....')`.
