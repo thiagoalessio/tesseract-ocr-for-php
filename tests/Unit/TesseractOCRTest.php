@@ -26,8 +26,8 @@ class TesseractOCRTest extends TestCase
 
 	public function testDefiningOptions()
 	{
-		$expected = '"tesseract" "image.png" stdout -l eng -psm 6 hocr';
-		$actual = $this->tess->lang('eng')->psm(6)->format('hocr')->buildCommand();
+		$expected = '"tesseract" "image.png" stdout -l eng hocr';
+		$actual = $this->tess->lang('eng')->format('hocr')->buildCommand();
 		$this->assertEquals("$expected", "$actual");
 	}
 

@@ -17,13 +17,12 @@ class CommandTest extends TestCase
 		$this->assertEquals("$expected", "$actual");
 	}
 
-	public function testWithSomeOptions()
+	public function testCommandWithOption()
 	{
 		$cmd = new TestableCommand('image.png');
 		$cmd->options[] = new Lang('eng');
-		$cmd->options[] = Option::psm(6);
 
-		$expected = '"tesseract" "image.png" stdout -l eng -psm 6';
+		$expected = '"tesseract" "image.png" stdout -l eng';
 		$actual = $cmd->build();
 		$this->assertEquals("$expected", "$actual");
 	}
