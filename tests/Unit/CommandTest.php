@@ -13,7 +13,7 @@ class CommandTest extends TestCase
 		$cmd = new TestableCommand('image.png');
 
 		$expected = '"tesseract" "image.png" stdout';
-		$actual = $cmd->build('tesseract');
+		$actual = $cmd->build();
 		$this->assertEquals("$expected", "$actual");
 	}
 
@@ -22,7 +22,7 @@ class CommandTest extends TestCase
 		$cmd = new TestableCommand('image.png');
 
 		$expected = '"tesseract" "image.png" stdout -l eng -psm 6';
-		$actual = $cmd->build('tesseract', [new Lang('eng'), new Psm(6)]);
+		$actual = $cmd->build([new Lang('eng'), new Psm(6)]);
 		$this->assertEquals("$expected", "$actual");
 	}
 
@@ -30,9 +30,10 @@ class CommandTest extends TestCase
 	{
 		$executable = $this->getFakeTesseract303();
 		$cmd = new Command('image.png');
+		$cmd->executable = $executable;
 
 		$expected = "\"$executable\" \"image.png\" stdout -psm 3 quiet";
-		$actual = $cmd->build($executable, [new Psm(3)]);
+		$actual = $cmd->build([new Psm(3)]);
 		$this->assertEquals("$expected", "$actual");
 	}
 

@@ -3,7 +3,6 @@
 class TesseractOCR
 {
 	private $command;
-	private $executable = 'tesseract';
 	private $options = [];
 
 	public function __construct($image, $command=null)
@@ -20,12 +19,12 @@ class TesseractOCR
 
 	public function buildCommand()
 	{
-		return $this->command->build($this->executable, $this->options);
+		return $this->command->build($this->options);
 	}
 
 	public function executable($executable)
 	{
-		$this->executable = $executable;
+		$this->command->executable = $executable;
 		return $this;
 	}
 
