@@ -1,5 +1,9 @@
-FROM debian:sid
+FROM ubuntu:bionic
 MAINTAINER thiagoalessio <thiagoalessio@me.com>
+
+RUN export TZ=Europe/Berlin \
+	&& ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+	&& echo $TZ > /etc/timezone
 
 RUN apt-get -y update && \
 	apt-get -y install curl git-core unzip php-cli php-xdebug php-xml php-curl \
