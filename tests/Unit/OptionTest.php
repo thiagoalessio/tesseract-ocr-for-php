@@ -18,6 +18,7 @@ class OptionTest extends TestCase
 		$this->assertEquals('--oem 2', $oem('3.05.01'));
 		try {
 			$oem('3.04.01');
+			throw new \Exception('Expected Exception to be thrown');
 		} catch (\Exception $e) {
 			$expected = 'oem option is only available on Tesseract 3.05 or later.';
 			$expected.= PHP_EOL."Your version of Tesseract is 3.04.01";
@@ -35,6 +36,7 @@ class OptionTest extends TestCase
 
 		try {
 			$userWords('3.03');
+			throw new \Exception('Expected Exception to be thrown');
 		} catch (\Exception $e) {
 			$expected = 'user-words option is only available on Tesseract 3.04 or later.';
 			$expected.= PHP_EOL."Your version of Tesseract is 3.03";
@@ -52,6 +54,7 @@ class OptionTest extends TestCase
 
 		try {
 			$userPatterns('3.03');
+			throw new \Exception('Expected Exception to be thrown');
 		} catch (\Exception $e) {
 			$expected = 'user-patterns option is only available on Tesseract 3.04 or later.';
 			$expected.= PHP_EOL."Your version of Tesseract is 3.03";
