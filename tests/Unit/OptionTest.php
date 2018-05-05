@@ -28,9 +28,17 @@ class OptionTest extends TestCase
 	public function testUserWords()
 	{
 		$userWords = Option::userWords('/path/to/words');
-		$this->assertEquals('--user-words "/path/to/words"', $userWords());
+		$this->assertEquals('--user-words "/path/to/words"', $userWords('3.04'));
 
 		$userWords = Option::userWords('c:\path\to\words');
-		$this->assertEquals('--user-words "c:\\\\path\\\\to\\\\words"', $userWords());
+		$this->assertEquals('--user-words "c:\\\\path\\\\to\\\\words"', $userWords('3.04'));
+
+		try {
+			$userWords('3.03');
+		} catch (\Exception $e) {
+			$expected = 'user-words option is only available on Tesseract 3.04 or later.';
+			$expected.= PHP_EOL."Your version of Tesseract is 3.03";
+			$this->assertEquals($expected, $e->getMessage());
+		}
 	}
 }
