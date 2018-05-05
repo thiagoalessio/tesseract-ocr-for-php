@@ -2,7 +2,7 @@
 
 class Command
 {
-	public static function build($image, $executable, $options=[])
+	public function build($image, $executable, $options=[])
 	{
 		$cmd = [];
 		$cmd[] = self::escape($executable);

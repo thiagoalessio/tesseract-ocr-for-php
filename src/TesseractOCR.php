@@ -22,7 +22,8 @@ class TesseractOCR
 	public function buildCommand()
 	{
 		$class = $this->getCommandClassName();
-		return $class::build($this->image, $this->executable, $this->options);
+		$cmd = new $class();
+		return $cmd->build($this->image, $this->executable, $this->options);
 	}
 
 	public function executable($executable)

@@ -10,24 +10,29 @@ class CommandTest extends TestCase
 {
 	public function testSimplestCommand()
 	{
+		$cmd = new TestableCommand();
+
 		$expected = '"tesseract" "image.png" stdout';
-		$actual = TestableCommand::build('image.png', 'tesseract');
+		$actual = $cmd->build('image.png', 'tesseract');
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testWithSomeOptions()
 	{
+		$cmd = new TestableCommand();
+
 		$expected = '"tesseract" "image.png" stdout -l eng -psm 6';
-		$actual = TestableCommand::build('image.png', 'tesseract', [new Lang('eng'), new Psm(6)]);
+		$actual = $cmd->build('image.png', 'tesseract', [new Lang('eng'), new Psm(6)]);
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testAppendQuietFlagForVersion303()
 	{
 		$executable = $this->getFakeTesseract303();
+		$cmd = new Command();
 
 		$expected = "\"$executable\" \"image.png\" stdout -psm 3 quiet";
-		$actual = Command::build('image.png', $executable, [new Psm(3)]);
+		$actual = $cmd->build('image.png', $executable, [new Psm(3)]);
 		$this->assertEquals("$expected", "$actual");
 	}
 
