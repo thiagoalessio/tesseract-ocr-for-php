@@ -35,7 +35,12 @@ class Option
 
 	public static function userPatterns($path)
 	{
-		return function() use ($path) {
+		return function($version) use ($path) {
+			if (version_compare($version, '3.04', '<')) {
+				$msg = 'user-patterns option is only available on Tesseract 3.04 or later.';
+				$msg.= PHP_EOL."Your version of Tesseract is $version";
+				throw new \Exception($msg);
+			}
 			return '--user-patterns "'.addcslashes($path, '\\"').'"';
 		};
 	}

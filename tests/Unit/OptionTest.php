@@ -45,9 +45,17 @@ class OptionTest extends TestCase
 	public function testUserPatterns()
 	{
 		$userPatterns = Option::userPatterns('/path/to/patterns');
-		$this->assertEquals('--user-patterns "/path/to/patterns"', $userPatterns());
+		$this->assertEquals('--user-patterns "/path/to/patterns"', $userPatterns('3.04'));
 
 		$userPatterns = Option::userPatterns('c:\path\to\patterns');
-		$this->assertEquals('--user-patterns "c:\\\\path\\\\to\\\\patterns"', $userPatterns());
+		$this->assertEquals('--user-patterns "c:\\\\path\\\\to\\\\patterns"', $userPatterns('3.04'));
+
+		try {
+			$userPatterns('3.03');
+		} catch (\Exception $e) {
+			$expected = 'user-patterns option is only available on Tesseract 3.04 or later.';
+			$expected.= PHP_EOL."Your version of Tesseract is 3.03";
+			$this->assertEquals($expected, $e->getMessage());
+		}
 	}
 }
