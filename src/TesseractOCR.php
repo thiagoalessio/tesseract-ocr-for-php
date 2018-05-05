@@ -41,6 +41,12 @@ class TesseractOCR
 		return $this;
 	}
 
+	public function userWords($path)
+	{
+		$this->command->options[] = Option::userWords($path);
+		return $this;
+	}
+
 	public function __call($method, $args)
 	{
 		if ($this->isShortcut($method)) {

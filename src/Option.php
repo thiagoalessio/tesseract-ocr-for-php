@@ -20,4 +20,11 @@ class Option
 			return "--oem $oem";
 		};
 	}
+
+	public static function userWords($path)
+	{
+		return function() use ($path) {
+			return '--user-words "'.addcslashes($path, '\\"').'"';
+		};
+	}
 }

@@ -24,4 +24,13 @@ class OptionTest extends TestCase
 			$this->assertEquals($expected, $e->getMessage());
 		}
 	}
+
+	public function testUserWords()
+	{
+		$userWords = Option::userWords('/path/to/words');
+		$this->assertEquals('--user-words "/path/to/words"', $userWords());
+
+		$userWords = Option::userWords('c:\path\to\words');
+		$this->assertEquals('--user-words "c:\\\\path\\\\to\\\\words"', $userWords());
+	}
 }
