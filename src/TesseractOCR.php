@@ -3,7 +3,6 @@
 class TesseractOCR
 {
 	private $command;
-	private $options = [];
 
 	public function __construct($image, $command=null)
 	{
@@ -19,7 +18,7 @@ class TesseractOCR
 
 	public function buildCommand()
 	{
-		return $this->command->build($this->options);
+		return $this->command->build();
 	}
 
 	public function executable($executable)
@@ -32,15 +31,15 @@ class TesseractOCR
 	{
 		if ($this->isShortcut($method)) {
 			$class = $this->getShortcutClassName($method);
-			$this->options[] = $class::buildOption(...$args);
+			$this->command->options[] = $class::buildOption(...$args);
 			return $this;
 		}
 		if ($this->isOption($method)) {
 			$class = $this->getOptionClassName($method);
-			$this->options[] = new $class(...$args);
+			$this->command->options[] = new $class(...$args);
 			return $this;
 		}
-		$this->options[] = new Option\Config($method, $args[0]);
+		$this->command->options[] = new Option\Config($method, $args[0]);
 		return $this;
 	}
 

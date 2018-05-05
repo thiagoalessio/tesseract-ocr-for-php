@@ -3,6 +3,7 @@
 class Command
 {
 	public $executable = 'tesseract';
+	public $options = [];
 	private $image;
 
 	public function __construct($image)
@@ -10,14 +11,14 @@ class Command
 		$this->image = $image;
 	}
 
-	public function build($options=[])
+	public function build()
 	{
 		$cmd = [];
 		$cmd[] = self::escape($this->executable);
 		$cmd[] = self::escape($this->image);
 		$cmd[] = 'stdout';
 
-		if (!empty($options)) $cmd[] = join(' ', $options);
+		if (!empty($this->options)) $cmd[] = join(' ', $this->options);
 		if (static::isVersion303($this->executable)) $cmd[] = 'quiet';
 
 		return join(' ', $cmd);

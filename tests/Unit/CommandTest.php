@@ -20,9 +20,11 @@ class CommandTest extends TestCase
 	public function testWithSomeOptions()
 	{
 		$cmd = new TestableCommand('image.png');
+		$cmd->options[] = new Lang('eng');
+		$cmd->options[] = new Psm(6);
 
 		$expected = '"tesseract" "image.png" stdout -l eng -psm 6';
-		$actual = $cmd->build([new Lang('eng'), new Psm(6)]);
+		$actual = $cmd->build();
 		$this->assertEquals("$expected", "$actual");
 	}
 
@@ -31,9 +33,10 @@ class CommandTest extends TestCase
 		$executable = $this->getFakeTesseract303();
 		$cmd = new Command('image.png');
 		$cmd->executable = $executable;
+		$cmd->options[] = new Psm(3);
 
 		$expected = "\"$executable\" \"image.png\" stdout -psm 3 quiet";
-		$actual = $cmd->build([new Psm(3)]);
+		$actual = $cmd->build();
 		$this->assertEquals("$expected", "$actual");
 	}
 
