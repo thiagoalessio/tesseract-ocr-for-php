@@ -2,11 +2,18 @@
 
 class Command
 {
-	public function build($image, $executable, $options=[])
+	private $image;
+
+	public function __construct($image)
+	{
+		$this->image = $image;
+	}
+
+	public function build($executable, $options=[])
 	{
 		$cmd = [];
 		$cmd[] = self::escape($executable);
-		$cmd[] = self::escape($image);
+		$cmd[] = self::escape($this->image);
 		$cmd[] = 'stdout';
 
 		if (!empty($options)) $cmd[] = join(' ', $options);
