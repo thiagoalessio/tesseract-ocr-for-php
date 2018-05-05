@@ -2,7 +2,6 @@
 
 use thiagoalessio\TesseractOCR\Tests\Common\TestCase;
 use thiagoalessio\TesseractOCR\Tests\Unit\TestableCommand;
-use thiagoalessio\TesseractOCR\Option\Lang;
 use thiagoalessio\TesseractOCR\Option;
 use thiagoalessio\TesseractOCR\Command;
 
@@ -20,7 +19,7 @@ class CommandTest extends TestCase
 	public function testCommandWithOption()
 	{
 		$cmd = new TestableCommand('image.png');
-		$cmd->options[] = new Lang('eng');
+		$cmd->options[] = Option::lang(['eng']);
 
 		$expected = '"tesseract" "image.png" stdout -l eng';
 		$actual = $cmd->build();

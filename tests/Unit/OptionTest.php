@@ -70,4 +70,13 @@ class OptionTest extends TestCase
 		$tessdataDir = Option::tessdataDir('c:\path\to\tessdata');
 		$this->assertEquals('--tessdata-dir "c:\\\\path\\\\to\\\\tessdata"', $tessdataDir());
 	}
+
+	public function testLang()
+	{
+		$lang = Option::lang(['eng']);
+		$this->assertEquals('-l eng', $lang());
+
+		$lang = Option::lang(['eng', 'deu', 'jpn']);
+		$this->assertEquals('-l eng+deu+jpn', $lang());
+	}
 }

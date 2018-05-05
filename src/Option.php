@@ -51,4 +51,11 @@ class Option
 			return '--tessdata-dir "'.addcslashes($path, '\\"').'"';
 		};
 	}
+
+	public static function lang($languages)
+	{
+		return function() use ($languages) {
+			return '-l '.join('+', $languages);
+		};
+	}
 }
