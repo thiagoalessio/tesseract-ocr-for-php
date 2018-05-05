@@ -3,7 +3,7 @@
 use thiagoalessio\TesseractOCR\Tests\Common\TestCase;
 use thiagoalessio\TesseractOCR\Tests\Unit\TestableCommand;
 use thiagoalessio\TesseractOCR\Option\Lang;
-use thiagoalessio\TesseractOCR\Option\Psm;
+use thiagoalessio\TesseractOCR\Option;
 use thiagoalessio\TesseractOCR\Command;
 
 class CommandTest extends TestCase
@@ -21,7 +21,7 @@ class CommandTest extends TestCase
 	{
 		$cmd = new TestableCommand('image.png');
 		$cmd->options[] = new Lang('eng');
-		$cmd->options[] = new Psm(6);
+		$cmd->options[] = Option::psm(6);
 
 		$expected = '"tesseract" "image.png" stdout -l eng -psm 6';
 		$actual = $cmd->build();
@@ -33,7 +33,7 @@ class CommandTest extends TestCase
 		$executable = $this->getFakeTesseract303();
 		$cmd = new Command('image.png');
 		$cmd->executable = $executable;
-		$cmd->options[] = new Psm(3);
+		$cmd->options[] = Option::psm(3);
 
 		$expected = "\"$executable\" \"image.png\" stdout -psm 3 quiet";
 		$actual = $cmd->build();

@@ -1,5 +1,7 @@
 <?php namespace thiagoalessio\TesseractOCR;
 
+use thiagoalessio\TesseractOCR\Option;
+
 class TesseractOCR
 {
 	private $command;
@@ -24,6 +26,12 @@ class TesseractOCR
 	public function executable($executable)
 	{
 		$this->command->executable = $executable;
+		return $this;
+	}
+
+	public function psm($psm)
+	{
+		$this->command->options[] = Option::psm($psm);
 		return $this;
 	}
 

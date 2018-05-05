@@ -18,7 +18,11 @@ class Command
 		$cmd[] = self::escape($this->image);
 		$cmd[] = 'stdout';
 
-		if (!empty($this->options)) $cmd[] = join(' ', $this->options);
+		$version = self::getTesseractVersion($this->executable);
+
+		foreach ($this->options as $option) {
+			$cmd[] = is_callable($option) ? $option($version) : "$option";
+		}
 		if (static::isVersion303($this->executable)) $cmd[] = 'quiet';
 
 		return join(' ', $cmd);
