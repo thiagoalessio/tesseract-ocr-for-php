@@ -47,6 +47,12 @@ class TesseractOCR
 		return $this;
 	}
 
+	public function userPatterns($path)
+	{
+		$this->command->options[] = Option::userPatterns($path);
+		return $this;
+	}
+
 	public function __call($method, $args)
 	{
 		if ($this->isShortcut($method)) {

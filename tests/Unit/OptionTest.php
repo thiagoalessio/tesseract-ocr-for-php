@@ -41,4 +41,13 @@ class OptionTest extends TestCase
 			$this->assertEquals($expected, $e->getMessage());
 		}
 	}
+
+	public function testUserPatterns()
+	{
+		$userPatterns = Option::userPatterns('/path/to/patterns');
+		$this->assertEquals('--user-patterns "/path/to/patterns"', $userPatterns());
+
+		$userPatterns = Option::userPatterns('c:\path\to\patterns');
+		$this->assertEquals('--user-patterns "c:\\\\path\\\\to\\\\patterns"', $userPatterns());
+	}
 }

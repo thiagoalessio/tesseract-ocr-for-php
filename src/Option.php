@@ -32,4 +32,11 @@ class Option
 			return '--user-words "'.addcslashes($path, '\\"').'"';
 		};
 	}
+
+	public static function userPatterns($path)
+	{
+		return function() use ($path) {
+			return '--user-patterns "'.addcslashes($path, '\\"').'"';
+		};
+	}
 }
