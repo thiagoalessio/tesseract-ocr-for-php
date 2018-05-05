@@ -61,4 +61,13 @@ class OptionTest extends TestCase
 			$this->assertEquals($expected, $e->getMessage());
 		}
 	}
+
+	public function testTessdataDir()
+	{
+		$tessdataDir = Option::tessdataDir('/path/to/tessdata');
+		$this->assertEquals('--tessdata-dir "/path/to/tessdata"', $tessdataDir());
+
+		$tessdataDir = Option::tessdataDir('c:\path\to\tessdata');
+		$this->assertEquals('--tessdata-dir "c:\\\\path\\\\to\\\\tessdata"', $tessdataDir());
+	}
 }

@@ -53,6 +53,12 @@ class TesseractOCR
 		return $this;
 	}
 
+	public function tessdataDir($path)
+	{
+		$this->command->options[] = Option::tessdataDir($path);
+		return $this;
+	}
+
 	public function __call($method, $args)
 	{
 		if ($this->isShortcut($method)) {

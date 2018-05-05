@@ -44,4 +44,11 @@ class Option
 			return '--user-patterns "'.addcslashes($path, '\\"').'"';
 		};
 	}
+
+	public static function tessdataDir($path)
+	{
+		return function() use ($path) {
+			return '--tessdata-dir "'.addcslashes($path, '\\"').'"';
+		};
+	}
 }
