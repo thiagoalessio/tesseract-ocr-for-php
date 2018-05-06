@@ -4,7 +4,7 @@ use thiagoalessio\TesseractOCR\Command;
 
 class TestableCommand extends Command
 {
-	protected static function isVersion303()
+	protected function isVersion303()
 	{
 		return false;
 	}

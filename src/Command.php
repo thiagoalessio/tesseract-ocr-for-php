@@ -21,27 +21,27 @@ class Command
 		$cmd[] = self::escape($this->image);
 		$cmd[] = 'stdout';
 
-		$version = self::getTesseractVersion($this->executable);
+		$version = $this->getTesseractVersion();
 
 		foreach ($this->options as $option) {
 			$cmd[] = is_callable($option) ? $option($version) : "$option";
 		}
-		if (static::isVersion303($this->executable)) $this->configFile = 'quiet';
+		if ($this->isVersion303()) $this->configFile = 'quiet';
 		if ($this->configFile) $cmd[] = $this->configFile;
 
 		return join(' ', $cmd);
 	}
 
-	protected static function isVersion303($executable)
+	protected function isVersion303()
 	{
-		$version = self::getTesseractVersion($executable);
+		$version = $this->getTesseractVersion();
 		return version_compare($version, '3.03', '>=')
 			&& version_compare($version, '3.04', '<');
 	}
 
-	private static function getTesseractVersion($executable)
+	private function getTesseractVersion()
 	{
-		exec(self::escape($executable).' --version 2>&1', $output);
+		exec(self::escape($this->executable).' --version 2>&1', $output);
 		return explode(' ', $output[0])[1];
 	}
 
