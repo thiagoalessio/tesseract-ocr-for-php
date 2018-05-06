@@ -2,12 +2,13 @@
 
 use thiagoalessio\TesseractOCR\Tests\Common\TestCase;
 use thiagoalessio\TesseractOCR\TesseractOCR;
+use thiagoalessio\TesseractOCR\Tests\Unit\TestableCommand;
 
 class TesseractOCRTest extends TestCase
 {
 	public function beforeEach()
 	{
-		$this->tess = new TesseractOCR('image.png', __NAMESPACE__.'\\TestableCommand');
+		$this->tess = new TesseractOCR(null, new TestableCommand('image.png'));
 	}
 
 	public function testSimplestUsage()

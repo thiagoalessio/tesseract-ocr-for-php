@@ -1,5 +1,6 @@
 <?php namespace thiagoalessio\TesseractOCR;
 
+use thiagoalessio\TesseractOCR\Command;
 use thiagoalessio\TesseractOCR\Option;
 
 class TesseractOCR
@@ -8,8 +9,7 @@ class TesseractOCR
 
 	public function __construct($image, $command=null)
 	{
-		$class = $this->getCommandClassName($command);
-		$this->command = new $class($image);
+		$this->command = $command ?: new Command($image);
 	}
 
 	public function run()
@@ -51,11 +51,6 @@ class TesseractOCR
 		}
 		$this->command->options[] = Option::config($method, $args[0]);
 		return $this;
-	}
-
-	private function getCommandClassName($command)
-	{
-		return $command ?: __NAMESPACE__.'\\Command';
 	}
 
 	private function isConfigFile($name)
