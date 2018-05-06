@@ -38,42 +38,6 @@ class TesseractOCR
 	// @deprecated
 	public function format($fmt) { return $this->configFile($fmt); }
 
-	public function psm($psm)
-	{
-		$this->command->options[] = Option::psm($psm);
-		return $this;
-	}
-
-	public function oem($oem)
-	{
-		$this->command->options[] = Option::oem($oem);
-		return $this;
-	}
-
-	public function userWords($path)
-	{
-		$this->command->options[] = Option::userWords($path);
-		return $this;
-	}
-
-	public function userPatterns($path)
-	{
-		$this->command->options[] = Option::userPatterns($path);
-		return $this;
-	}
-
-	public function tessdataDir($path)
-	{
-		$this->command->options[] = Option::tessdataDir($path);
-		return $this;
-	}
-
-	public function lang()
-	{
-		$this->command->options[] = Option::lang(func_get_args());
-		return $this;
-	}
-
 	public function __call($method, $args)
 	{
 		if ($this->isShortcut($method)) {
@@ -82,8 +46,8 @@ class TesseractOCR
 			return $this;
 		}
 		if ($this->isOption($method)) {
-			$class = $this->getOptionClassName($method);
-			$this->command->options[] = new $class(...$args);
+			$option = $this->getOptionClassName().'::'.$method;
+			$this->command->options[] = call_user_func($option, $args);
 			return $this;
 		}
 		$this->command->options[] = Option::config($method, $args[0]);
@@ -107,11 +71,11 @@ class TesseractOCR
 
 	private function isOption($name)
 	{
-		return class_exists($this->getOptionClassName($name));
+		return in_array($name, get_class_methods($this->getOptionClassName()));
 	}
 
-	private function getOptionClassName($name)
+	private function getOptionClassName()
 	{
-		return __NAMESPACE__.'\\Option\\'.ucfirst($name);
+		return __NAMESPACE__.'\\Option';
 	}
 }
