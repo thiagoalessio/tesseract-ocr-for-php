@@ -12,7 +12,9 @@ class Command
 		$this->image = $image;
 	}
 
-	public function build()
+	public function build() { return "$this"; }
+
+	public function __toString()
 	{
 		$cmd = [];
 		$cmd[] = self::escape($this->executable);

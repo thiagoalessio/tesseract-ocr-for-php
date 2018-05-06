@@ -12,8 +12,7 @@ class CommandTest extends TestCase
 		$cmd = new TestableCommand('image.png');
 
 		$expected = '"tesseract" "image.png" stdout';
-		$actual = $cmd->build();
-		$this->assertEquals("$expected", "$actual");
+		$this->assertEquals("$expected", "$cmd");
 	}
 
 	public function testCommandWithOption()
@@ -22,8 +21,7 @@ class CommandTest extends TestCase
 		$cmd->options[] = Option::lang(['eng']);
 
 		$expected = '"tesseract" "image.png" stdout -l eng';
-		$actual = $cmd->build();
-		$this->assertEquals("$expected", "$actual");
+		$this->assertEquals("$expected", "$cmd");
 	}
 
 	public function testAppendQuietFlagForVersion303()
@@ -34,8 +32,7 @@ class CommandTest extends TestCase
 		$cmd->options[] = Option::psm(3);
 
 		$expected = "\"$executable\" \"image.png\" stdout -psm 3 quiet";
-		$actual = $cmd->build();
-		$this->assertEquals("$expected", "$actual");
+		$this->assertEquals("$expected", "$cmd");
 	}
 
 	public function testWithConfigFile()
@@ -44,8 +41,7 @@ class CommandTest extends TestCase
 		$cmd->configFile = 'hocr';
 
 		$expected = '"tesseract" "image.png" stdout hocr';
-		$actual = $cmd->build();
-		$this->assertEquals("$expected", "$actual");
+		$this->assertEquals("$expected", "$cmd");
 	}
 
 	private function getFakeTesseract303()
