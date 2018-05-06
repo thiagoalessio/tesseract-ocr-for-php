@@ -4,6 +4,7 @@ class Command
 {
 	public $executable = 'tesseract';
 	public $options = [];
+	public $configFile;
 	private $image;
 
 	public function __construct($image)
@@ -23,7 +24,8 @@ class Command
 		foreach ($this->options as $option) {
 			$cmd[] = is_callable($option) ? $option($version) : "$option";
 		}
-		if (static::isVersion303($this->executable)) $cmd[] = 'quiet';
+		if (static::isVersion303($this->executable)) $this->configFile = 'quiet';
+		if ($this->configFile) $cmd[] = $this->configFile;
 
 		return join(' ', $cmd);
 	}

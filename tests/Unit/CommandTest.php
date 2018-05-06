@@ -38,6 +38,16 @@ class CommandTest extends TestCase
 		$this->assertEquals("$expected", "$actual");
 	}
 
+	public function testWithConfigFile()
+	{
+		$cmd = new TestableCommand('image.png');
+		$cmd->configFile = 'hocr';
+
+		$expected = '"tesseract" "image.png" stdout hocr';
+		$actual = $cmd->build();
+		$this->assertEquals("$expected", "$actual");
+	}
+
 	private function getFakeTesseract303()
 	{
 		$ext = strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' ? 'bat' : 'sh';

@@ -29,6 +29,12 @@ class TesseractOCR
 		return $this;
 	}
 
+	public function configFile($configFile)
+	{
+		$this->command->configFile = $configFile;
+		return $this;
+	}
+
 	public function psm($psm)
 	{
 		$this->command->options[] = Option::psm($psm);

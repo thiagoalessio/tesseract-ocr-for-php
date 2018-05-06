@@ -47,4 +47,11 @@ class TesseractOCRTest extends TestCase
 		$actual = $this->tess->loadSystemDawg('F')->tesseditCreatePdf(1)->buildCommand();
 		$this->assertEquals("$expected", "$actual");
 	}
+
+	public function testDefiningConfigFile()
+	{
+		$expected = '"tesseract" "image.png" stdout tsv';
+		$actual = $this->tess->configFile('tsv')->buildCommand();
+		$this->assertEquals("$expected", "$actual");
+	}
 }

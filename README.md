@@ -243,6 +243,18 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
+### configFile
+
+Specify a config file to be used. It can either be the path to your own
+config file or the name of one of the predefined config files:
+<https://github.com/tesseract-ocr/tesseract/tree/master/tessdata/configs>
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->configFile('hocr')
+    ->run();
+```
+
 ### format
 
 Specify an output format other than text.
