@@ -31,11 +31,38 @@ class TesseractOCRTest extends TestCase
 		$this->assertEquals("$expected", "$actual");
 	}
 
-	public function testDefiningShortcuts()
+	public function testWhitelistSingleStringArgument()
 	{
-		$expected = '"tesseract" "image.png" stdout '
-			.'-c "tessedit_char_whitelist=0123456789"';
-		$actual = $this->tess->whitelist(range(0, 9))->command;
+		$expected = '"tesseract" "image.png" stdout -c "tessedit_char_whitelist=abcdefghij"';
+		$actual = $this->tess->whitelist('abcdefghij')->command;
+		$this->assertEquals("$expected", $actual);
+	}
+
+	public function testWhitelistMultipleStringArguments()
+	{
+		$expected = '"tesseract" "image.png" stdout -c "tessedit_char_whitelist=abcdefghij"';
+		$actual = $this->tess->whitelist('ab', 'cd', 'ef', 'gh', 'ij')->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testWhitelistSingleArrayArgument()
+	{
+		$expected = '"tesseract" "image.png" stdout -c "tessedit_char_whitelist=abcdefghij"';
+		$actual = $this->tess->whitelist(range('a', 'j'))->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testWhitelistMultipleArrayArguments()
+	{
+		$expected = '"tesseract" "image.png" stdout -c "tessedit_char_whitelist=abcdefghij"';
+		$actual = $this->tess->whitelist(range('a', 'e'), range('f', 'j'))->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testWhitelistMixedArguments()
+	{
+		$expected = '"tesseract" "image.png" stdout -c "tessedit_char_whitelist=0123456789abcdefghij"';
+		$actual = $this->tess->whitelist(range(0, 9), 'abcd', range('e', 'j'))->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
@@ -60,6 +87,20 @@ class TesseractOCRTest extends TestCase
 	{
 		$expected = '"tesseract" "image.png" stdout tsv';
 		$actual = $this->tess->format('tsv')->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testHocr()
+	{
+		$expected = '"tesseract" "image.png" stdout hocr';
+		$actual = $this->tess->hocr()->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testTsv()
+	{
+		$expected = '"tesseract" "image.png" stdout tsv';
+		$actual = $this->tess->tsv()->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 }

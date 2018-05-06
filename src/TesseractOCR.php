@@ -33,13 +33,19 @@ class TesseractOCR
 	// @deprecated
 	public function format($fmt) { return $this->configFile($fmt); }
 
+	public function whitelist()
+	{
+		$concat = function ($arg) { return is_array($arg) ? join('', $arg) : $arg; };
+		$whitelist = join('', array_map($concat, func_get_args()));
+		$this->command->options[] = Option::config('tessedit_char_whitelist', $whitelist);
+		return $this;
+	}
+
+	public function hocr() { return $this->configFile('hocr'); }
+	public function tsv() { return $this->configFile('tsv'); }
+
 	public function __call($method, $args)
 	{
-		if ($this->isShortcut($method)) {
-			$class = $this->getShortcutClassName($method);
-			$this->command->options[] = $class::buildOption(...$args);
-			return $this;
-		}
 		if ($this->isOption($method)) {
 			$option = $this->getOptionClassName().'::'.$method;
 			$this->command->options[] = call_user_func($option, $args);
@@ -52,16 +58,6 @@ class TesseractOCR
 	private function getCommandClassName($command)
 	{
 		return $command ?: __NAMESPACE__.'\\Command';
-	}
-
-	private function isShortcut($name)
-	{
-		return class_exists($this->getShortcutClassName($name));
-	}
-
-	private function getShortcutClassName($name)
-	{
-		return __NAMESPACE__.'\\Shortcut\\'.ucfirst($name);
 	}
 
 	private function isOption($name)
