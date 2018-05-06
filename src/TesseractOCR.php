@@ -41,11 +41,9 @@ class TesseractOCR
 		return $this;
 	}
 
-	public function hocr() { return $this->configFile('hocr'); }
-	public function tsv() { return $this->configFile('tsv'); }
-
 	public function __call($method, $args)
 	{
+		if ($this->isConfigFile($method)) return $this->configFile($method);
 		if ($this->isOption($method)) {
 			$option = $this->getOptionClassName().'::'.$method;
 			$this->command->options[] = call_user_func($option, $args);
@@ -58,6 +56,11 @@ class TesseractOCR
 	private function getCommandClassName($command)
 	{
 		return $command ?: __NAMESPACE__.'\\Command';
+	}
+
+	private function isConfigFile($name)
+	{
+		return in_array($name, ['hocr', 'tsv']);
 	}
 
 	private function isOption($name)
