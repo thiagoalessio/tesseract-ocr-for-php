@@ -13,21 +13,21 @@ class TesseractOCRTest extends TestCase
 	public function testSimplestUsage()
 	{
 		$expected = '"tesseract" "image.png" stdout';
-		$actual = $this->tess->buildCommand();
+		$actual = $this->tess->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testCustomExecutablePath()
 	{
 		$expected = '"/custom/path/to/tesseract" "image.png" stdout';
-		$actual = $this->tess->executable('/custom/path/to/tesseract')->buildCommand();
+		$actual = $this->tess->executable('/custom/path/to/tesseract')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testDefiningOptions()
 	{
 		$expected = '"tesseract" "image.png" stdout -l eng hocr';
-		$actual = $this->tess->lang('eng')->format('hocr')->buildCommand();
+		$actual = $this->tess->lang('eng')->format('hocr')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
@@ -35,7 +35,7 @@ class TesseractOCRTest extends TestCase
 	{
 		$expected = '"tesseract" "image.png" stdout '
 			.'-c "tessedit_char_whitelist=0123456789"';
-		$actual = $this->tess->whitelist(range(0, 9))->buildCommand();
+		$actual = $this->tess->whitelist(range(0, 9))->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
@@ -44,14 +44,14 @@ class TesseractOCRTest extends TestCase
 		$expected = '"tesseract" "image.png" stdout '
 			.'-c "load_system_dawg=F" '
 			.'-c "tessedit_create_pdf=1"';
-		$actual = $this->tess->loadSystemDawg('F')->tesseditCreatePdf(1)->buildCommand();
+		$actual = $this->tess->loadSystemDawg('F')->tesseditCreatePdf(1)->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testDefiningConfigFile()
 	{
 		$expected = '"tesseract" "image.png" stdout tsv';
-		$actual = $this->tess->configFile('tsv')->buildCommand();
+		$actual = $this->tess->configFile('tsv')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
@@ -59,7 +59,7 @@ class TesseractOCRTest extends TestCase
 	public function testDefiningFormat()
 	{
 		$expected = '"tesseract" "image.png" stdout tsv';
-		$actual = $this->tess->format('tsv')->buildCommand();
+		$actual = $this->tess->format('tsv')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 }

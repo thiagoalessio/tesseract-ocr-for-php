@@ -4,7 +4,7 @@ use thiagoalessio\TesseractOCR\Option;
 
 class TesseractOCR
 {
-	private $command;
+	public $command;
 
 	public function __construct($image, $command=null)
 	{
@@ -14,13 +14,8 @@ class TesseractOCR
 
 	public function run()
 	{
-		exec($this->buildCommand(), $output);
+		exec("{$this->command}", $output);
 		return trim(join(PHP_EOL, $output));
-	}
-
-	public function buildCommand()
-	{
-		return $this->command->build();
 	}
 
 	public function executable($executable)
