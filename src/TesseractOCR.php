@@ -60,7 +60,7 @@ class TesseractOCR
 
 	private function isConfigFile($name)
 	{
-		return in_array($name, ['hocr', 'tsv']);
+		return in_array($name, ['digits', 'hocr', 'pdf', 'quiet', 'tsv', 'txt']);
 	}
 
 	private function isOption($name)

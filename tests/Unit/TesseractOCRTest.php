@@ -90,6 +90,13 @@ class TesseractOCRTest extends TestCase
 		$this->assertEquals("$expected", "$actual");
 	}
 
+	public function testDigits()
+	{
+		$expected = '"tesseract" "image.png" stdout digits';
+		$actual = $this->tess->digits()->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
 	public function testHocr()
 	{
 		$expected = '"tesseract" "image.png" stdout hocr';
@@ -97,10 +104,31 @@ class TesseractOCRTest extends TestCase
 		$this->assertEquals("$expected", "$actual");
 	}
 
+	public function testPdf()
+	{
+		$expected = '"tesseract" "image.png" stdout pdf';
+		$actual = $this->tess->pdf()->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testQuiet()
+	{
+		$expected = '"tesseract" "image.png" stdout quiet';
+		$actual = $this->tess->quiet()->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
 	public function testTsv()
 	{
 		$expected = '"tesseract" "image.png" stdout tsv';
 		$actual = $this->tess->tsv()->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testTxt()
+	{
+		$expected = '"tesseract" "image.png" stdout txt';
+		$actual = $this->tess->txt()->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 }

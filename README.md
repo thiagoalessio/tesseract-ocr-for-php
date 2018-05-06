@@ -266,9 +266,19 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
+### digits
+
+Shortcut for `->configFile('digits')`.
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->digits()
+    ->run();
+```
+
 ### hocr
 
-Shortcut for `->format('hocr')`.
+Shortcut for `->configFile('hocr')`.
 
 ```php
 echo (new TesseractOCR('img.png'))
@@ -276,13 +286,43 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
+### pdf
+
+Shortcut for `->configFile('pdf')`.
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->pdf()
+    ->run();
+```
+
+### quiet
+
+Shortcut for `->configFile('quiet')`.
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->quiet()
+    ->run();
+```
+
 ### tsv
 
-Shortcut for `->format('tsv')`.
+Shortcut for `->configFile('tsv')`.
 
 ```php
 echo (new TesseractOCR('img.png'))
     ->tsv()
+    ->run();
+```
+
+### txt
+
+Shortcut for `->configFile('txt')`.
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->txt()
     ->run();
 ```
 
