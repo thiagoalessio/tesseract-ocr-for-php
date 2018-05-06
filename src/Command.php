@@ -32,14 +32,14 @@ class Command
 		return join(' ', $cmd);
 	}
 
-	protected function isVersion303()
+	private function isVersion303()
 	{
 		$version = $this->getTesseractVersion();
 		return version_compare($version, '3.03', '>=')
 			&& version_compare($version, '3.04', '<');
 	}
 
-	private function getTesseractVersion()
+	protected function getTesseractVersion()
 	{
 		exec(self::escape($this->executable).' --version 2>&1', $output);
 		return explode(' ', $output[0])[1];

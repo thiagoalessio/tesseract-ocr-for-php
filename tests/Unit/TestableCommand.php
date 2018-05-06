@@ -4,8 +4,11 @@ use thiagoalessio\TesseractOCR\Command;
 
 class TestableCommand extends Command
 {
-	protected function isVersion303()
+	public function __construct($image, $version='3.05')
 	{
-		return false;
+		parent::__construct($image);
+		$this->version = $version;
 	}
+
+	protected function getTesseractVersion() { return $this->version; }
 }

@@ -3,7 +3,6 @@
 use thiagoalessio\TesseractOCR\Tests\Common\TestCase;
 use thiagoalessio\TesseractOCR\Tests\Unit\TestableCommand;
 use thiagoalessio\TesseractOCR\Option;
-use thiagoalessio\TesseractOCR\Command;
 
 class CommandTest extends TestCase
 {
@@ -26,12 +25,10 @@ class CommandTest extends TestCase
 
 	public function testAppendQuietFlagForVersion303()
 	{
-		$executable = $this->getFakeTesseract303();
-		$cmd = new Command('image.png');
-		$cmd->executable = $executable;
+		$cmd = new TestableCommand('image.png', '3.03');
 		$cmd->options[] = Option::psm(3);
 
-		$expected = "\"$executable\" \"image.png\" stdout -psm 3 quiet";
+		$expected = '"tesseract" "image.png" stdout -psm 3 quiet';
 		$this->assertEquals("$expected", "$cmd");
 	}
 
@@ -42,11 +39,5 @@ class CommandTest extends TestCase
 
 		$expected = '"tesseract" "image.png" stdout hocr';
 		$this->assertEquals("$expected", "$cmd");
-	}
-
-	private function getFakeTesseract303()
-	{
-		$ext = strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' ? 'bat' : 'sh';
-		return "./tests/Unit/fake-tesseract.$ext";
 	}
 }
