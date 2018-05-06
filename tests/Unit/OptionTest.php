@@ -79,4 +79,16 @@ class OptionTest extends TestCase
 		$lang = Option::lang(['eng', 'deu', 'jpn']);
 		$this->assertEquals('-l eng+deu+jpn', $lang());
 	}
+
+	public function testConfig()
+	{
+		$config = Option::config('var', 'value');
+		$this->assertEquals('-c "var=value"', $config());
+
+		$config = Option::config('chars', '\'"!$@%&?`');
+		$this->assertEquals('-c "chars=\'\\"!$@%&?`"', $config());
+
+		$config = Option::config('fooBarBazChunkyBacon', 'value');
+		$this->assertEquals('-c "foo_bar_baz_chunky_bacon=value"', $config());
+	}
 }

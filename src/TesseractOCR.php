@@ -77,7 +77,7 @@ class TesseractOCR
 			$this->command->options[] = new $class(...$args);
 			return $this;
 		}
-		$this->command->options[] = new Option\Config($method, $args[0]);
+		$this->command->options[] = Option::config($method, $args[0]);
 		return $this;
 	}
 

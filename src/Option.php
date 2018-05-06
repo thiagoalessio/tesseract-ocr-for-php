@@ -58,4 +58,15 @@ class Option
 			return '-l '.join('+', $languages);
 		};
 	}
+
+	public static function config($var, $value)
+	{
+		return function() use($var, $value) {
+			$snakeCase = function($str) {
+				return strtolower(preg_replace('/([A-Z])+/', '_$1', $str));
+			};
+			$pair = $snakeCase($var).'='.$value;
+			return '-c "'.addcslashes($pair, '\\"').'"';
+		};
+	}
 }

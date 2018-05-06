@@ -1,6 +1,6 @@
 <?php namespace thiagoalessio\TesseractOCR\Shortcut;
 
-use thiagoalessio\TesseractOCR\Option\Config;
+use thiagoalessio\TesseractOCR\Option;
 
 class Whitelist
 {
@@ -10,6 +10,6 @@ class Whitelist
 		foreach ($args as $arg) {
 			$whitelist .= is_array($arg) ? join('', $arg) : $arg;
 		}
-		return new Config('tessedit_char_whitelist', $whitelist);
+		return Option::config('tessedit_char_whitelist', $whitelist);
 	}
 }
