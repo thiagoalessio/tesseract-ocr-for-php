@@ -12,11 +12,7 @@ class Option
 	public static function oem($oem)
 	{
 		return function($version) use ($oem) {
-			if (version_compare($version, '3.05', '<')) {
-				$msg = 'oem option is only available on Tesseract 3.05 or later.';
-				$msg.= PHP_EOL."Your version of Tesseract is $version";
-				throw new \Exception($msg);
-			}
+			self::checkMinVersion('3.05', $version, 'oem');
 			return "--oem $oem";
 		};
 	}
@@ -24,11 +20,7 @@ class Option
 	public static function userWords($path)
 	{
 		return function($version) use ($path) {
-			if (version_compare($version, '3.04', '<')) {
-				$msg = 'user-words option is only available on Tesseract 3.04 or later.';
-				$msg.= PHP_EOL."Your version of Tesseract is $version";
-				throw new \Exception($msg);
-			}
+			self::checkMinVersion('3.04', $version, 'user-words');
 			return '--user-words "'.addcslashes($path, '\\"').'"';
 		};
 	}
@@ -36,11 +28,7 @@ class Option
 	public static function userPatterns($path)
 	{
 		return function($version) use ($path) {
-			if (version_compare($version, '3.04', '<')) {
-				$msg = 'user-patterns option is only available on Tesseract 3.04 or later.';
-				$msg.= PHP_EOL."Your version of Tesseract is $version";
-				throw new \Exception($msg);
-			}
+			self::checkMinVersion('3.04', $version, 'user-patterns');
 			return '--user-patterns "'.addcslashes($path, '\\"').'"';
 		};
 	}
@@ -68,5 +56,13 @@ class Option
 			$pair = $snakeCase($var).'='.$value;
 			return '-c "'.addcslashes($pair, '\\"').'"';
 		};
+	}
+
+	public static function checkMinVersion($minVersion, $currVersion, $option)
+	{
+		if (!version_compare($currVersion, $minVersion, '<')) return;
+		$msg = "$option option is only available on Tesseract $minVersion or later.";
+		$msg.= PHP_EOL."Your version of Tesseract is $currVersion";
+		throw new \Exception($msg);
 	}
 }
