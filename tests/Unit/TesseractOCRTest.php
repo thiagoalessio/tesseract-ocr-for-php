@@ -54,4 +54,12 @@ class TesseractOCRTest extends TestCase
 		$actual = $this->tess->configFile('tsv')->buildCommand();
 		$this->assertEquals("$expected", "$actual");
 	}
+
+	// @deprecated
+	public function testDefiningFormat()
+	{
+		$expected = '"tesseract" "image.png" stdout tsv';
+		$actual = $this->tess->format('tsv')->buildCommand();
+		$this->assertEquals("$expected", "$actual");
+	}
 }

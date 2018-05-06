@@ -255,7 +255,7 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
-### format
+### format (deprecated)
 
 Specify an output format other than text.
 Available options are [HOCR][] and [TSV][] (TSV is only available on Tesseract 3.05+)

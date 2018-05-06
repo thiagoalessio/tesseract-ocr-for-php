@@ -35,6 +35,9 @@ class TesseractOCR
 		return $this;
 	}
 
+	// @deprecated
+	public function format($fmt) { return $this->configFile($fmt); }
+
 	public function psm($psm)
 	{
 		$this->command->options[] = Option::psm($psm);
