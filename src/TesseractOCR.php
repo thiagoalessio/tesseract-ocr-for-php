@@ -46,7 +46,7 @@ class TesseractOCR
 		if ($this->isConfigFile($method)) return $this->configFile($method);
 		if ($this->isOption($method)) {
 			$option = $this->getOptionClassName().'::'.$method;
-			$this->command->options[] = call_user_func($option, $args);
+			$this->command->options[] = call_user_func_array($option, $args);
 			return $this;
 		}
 		$this->command->options[] = Option::config($method, $args[0]);
