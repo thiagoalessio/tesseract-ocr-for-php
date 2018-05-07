@@ -40,8 +40,9 @@ class Option
 		};
 	}
 
-	public static function lang($languages)
+	public static function lang()
 	{
+		$languages = func_get_args();
 		return function() use ($languages) {
 			return '-l '.join('+', $languages);
 		};
