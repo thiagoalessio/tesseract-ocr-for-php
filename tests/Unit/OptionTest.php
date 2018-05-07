@@ -73,10 +73,10 @@ class OptionTest extends TestCase
 
 	public function testLang()
 	{
-		$lang = Option::lang(['eng']);
+		$lang = Option::lang('eng');
 		$this->assertEquals('-l eng', $lang());
 
-		$lang = Option::lang(['eng', 'deu', 'jpn']);
+		$lang = Option::lang('eng', 'deu', 'jpn');
 		$this->assertEquals('-l eng+deu+jpn', $lang());
 	}
 

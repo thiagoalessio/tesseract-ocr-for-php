@@ -17,7 +17,7 @@ class CommandTest extends TestCase
 	public function testCommandWithOption()
 	{
 		$cmd = new TestableCommand('image.png');
-		$cmd->options[] = Option::lang(['eng']);
+		$cmd->options[] = Option::lang('eng');
 
 		$expected = '"tesseract" "image.png" stdout -l eng';
 		$this->assertEquals("$expected", "$cmd");
