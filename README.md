@@ -403,5 +403,5 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [@daijiale]: https://github.com/daijiale
 [HOCR]: https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage#hocr-output
 [TSV]: https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage#tsv-output-currently-available-in-305-dev-in-master-branch-on-github
-[CONTRIBUTING.md]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/CONTRIBUTING.md
+[CONTRIBUTING.md]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/.github/CONTRIBUTING.md
 [MIT License]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/MIT-LICENSE
