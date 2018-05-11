@@ -132,4 +132,11 @@ class TesseractOCRTest extends TestCase
 		$actual = $this->tess->txt()->command;
 		$this->assertEquals("$expected", "$actual");
 	}
+
+	public function testThreadLimit()
+	{
+		$expected = 'OMP_THREAD_LIMIT=4 "tesseract" "image.png" stdout';
+		$actual = $this->tess->threadLimit(4)->command;
+		$this->assertEquals("$expected", "$actual");
+	}
 }

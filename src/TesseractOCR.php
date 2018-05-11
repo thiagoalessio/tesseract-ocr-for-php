@@ -30,6 +30,12 @@ class TesseractOCR
 		return $this;
 	}
 
+	public function threadLimit($limit)
+	{
+		$this->command->threadLimit = $limit;
+		return $this;
+	}
+
 	// @deprecated
 	public function format($fmt) { return $this->configFile($fmt); }
 
