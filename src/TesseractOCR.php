@@ -12,14 +12,13 @@ class TesseractOCR
 		$this->command = $command ?: new Command($image);
 	}
 
-	public function run($thread_limit=0)
+	public function run($threadLimit=0)
 	{
-        if ($thread_limit > 0) {
-            $cmd = "OMP_THREAD_LIMIT=" . $thread_limit . " {$this->command}";
-        } else {
-            $cmd = "{$this->command}";
+        $cmd = "{$this->command}";
+        if ($threadLimit > 0) {
+            $cmd = "OMP_THREAD_LIMIT=" . $threadLimit . " " . $cmd;
         }
-		exec($cmd, $output);
+        exec($cmd, $output);
 		return trim(join(PHP_EOL, $output));
 	}
 
