@@ -352,11 +352,12 @@ __More info:__ <https://github.com/tesseract-ocr/tesseract/wiki/ControlParams>
 
 Sometimes, it may be useful to limit the number of threads that tesseract is
 allowed to use (e.g. in [this case](https://github.com/tesseract-ocr/tesseract/issues/898)).
-Set the maxmium number of threads as param for the run()-function:
+Set the maxmium number of threads as param for the `run` function:
 
 ```php
 echo (new TesseractOCR('img.png'))
-    ->run(1);
+    ->threadLimit(1)
+    ->run();
 ```
 
 ## Where to get help

@@ -40,4 +40,13 @@ class CommandTest extends TestCase
 		$expected = '"tesseract" "image.png" stdout hocr';
 		$this->assertEquals("$expected", "$cmd");
 	}
+
+	public function testCommandWithThreadLimit()
+	{
+		$cmd = new TestableCommand('image.png');
+		$cmd->threadLimit = 2;
+
+		$expected = 'OMP_THREAD_LIMIT=2 "tesseract" "image.png" stdout';
+		$this->assertEquals("$expected", "$cmd");
+	}
 }

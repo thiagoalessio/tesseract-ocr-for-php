@@ -5,6 +5,7 @@ class Command
 	public $executable = 'tesseract';
 	public $options = [];
 	public $configFile;
+	public $threadLimit;
 	private $image;
 
 	public function __construct($image)
@@ -17,6 +18,7 @@ class Command
 	public function __toString()
 	{
 		$cmd = [];
+		if ($this->threadLimit) $cmd[] = "OMP_THREAD_LIMIT={$this->threadLimit}";
 		$cmd[] = self::escape($this->executable);
 		$cmd[] = self::escape($this->image);
 		$cmd[] = 'stdout';
