@@ -3,9 +3,9 @@
 ## Introduction to the project
 
 **tesseract-ocr-for-php** is just a convenient way to generate and execute
-`tesseract` commands inside PHP scripts, offering some [syntactic sugar][]
-for lengthy options and accounting for differences required by different
-Tesseract versions.
+`tesseract` commands inside PHP scripts, offering some [syntactic sugar][] for
+lengthy options and accounting for differences required by different Tesseract
+versions.
 
 In a nutshell, it simply gathers the options set by the user, builds a valid
 `tesseract` command as a string, runs it with [exec][] and returns the command
@@ -21,39 +21,23 @@ maintain.
 	src/
 	├── TesseractOCR.php
 	├── Command.php
-	├── Option/
-	└── Shortcut/
+	└── Option.php
 
 ###### `src/TesseractOCR.php` 
 
 This is the only class exposed for consumption, the project's public [API][].
 The user sets Tesseract options by invoking methods to an instance of this
-class. Those method calls are collected as options and then sent to the
-command builder.
+class. Those method calls are collected as command options.
 
 ###### `src/Command.php`
 
 This class is responsible for building the `tesseract` command, with all flags
-and options on the expected order and accounting any particularities required
-by the specific Tesseract version present on the system.
+and options on the expected order.
 
-###### `src/Option/`
+###### `src/Option.php`
 
-Classes on this directory represent command-line options offered by the
-`tesseract` binary.
-They are very simple classes with generally only 2 methods:
-
-* A constructor, which might receive and store arguments for that particular
-option.
-* And a `__toString` that knows how to print that option for the command line,
-with its arguments (if any);
-
-###### `src/Shortcut/`
-
-Shortcuts are [syntactic sugar][] for generating some of the command-line
-options mentioned above.
-They implement one public static method called `buildOption` that returns an
-instance of an option.
+Each method of this class represents a corresponding command-line option
+offered by the `tesseract` binary.
 
 ## Tests
 
@@ -78,8 +62,7 @@ corresponding `src` class:
 	tests/Unit/
 	├── TesseractOCRTest.php
 	├── CommandTest.php
-	├── Option/
-	└── Shortcut/
+	└── OptionTest.php
 
 Important to highlight that Unit Tests will never invoke the real `tesseract`
 binary.
