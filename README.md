@@ -362,11 +362,19 @@ echo (new TesseractOCR('img.png'))
 
 ## Where to get help
 
-Join the chat at <https://gitter.im/thiagoalessio/tesseract-ocr-for-php>
+Join the chat on [Gitter][].
 
 ## How to contribute
 
-See [CODE_OF_CONDUCT.md][] and [CONTRIBUTING.md][].
+You can contribute to this project by:
+
+* Helping new users on [Gitter][];
+* Opening an [Issue][] if you found a bug or wish to propose a new feature;
+* Placing a [Pull Request][] with code that fix a bug, missing/wrong documentation
+  or implement a new feature;
+
+Just make sure you take a look at our [Code of Conduct][] and [Contributing][]
+instructions.
 
 ## License
 
@@ -403,6 +411,9 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [@daijiale]: https://github.com/daijiale
 [HOCR]: https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage#hocr-output
 [TSV]: https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage#tsv-output-currently-available-in-305-dev-in-master-branch-on-github
-[CODE_OF_CONDUCT.md]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/.github/CODE_OF_CONDUCT.md
-[CONTRIBUTING.md]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/.github/CONTRIBUTING.md
+[Gitter]: https://gitter.im/thiagoalessio/tesseract-ocr-for-php
+[Issue]: https://github.com/thiagoalessio/tesseract-ocr-for-php/issues
+[Pull Request]: https://github.com/thiagoalessio/tesseract-ocr-for-php/pulls
+[Code of Conduct]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/.github/CODE_OF_CONDUCT.md
+[Contributing]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/.github/CONTRIBUTING.md
 [MIT License]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/MIT-LICENSE
