@@ -1,7 +1,7 @@
 {
 	"name": "thiagoalessio/tesseract_ocr",
 	"description": "A wrapper to work with Tesseract OCR inside PHP.",
-	"version": "2.3.1",
+	"version": "2.4.0",
 	"type": "library",
 	"keywords": ["Tesseract", "OCR", "text recognition"],
 	"license": "MIT",
