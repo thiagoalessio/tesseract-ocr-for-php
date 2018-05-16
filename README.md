@@ -1,3 +1,5 @@
+!!!
+
 <img src="https://thiagoalessio.ams3.digitaloceanspaces.com/tesseract-ocr-for-php-logo.png" alt="Tesseract OCR for PHP" align="right" width="240px"/>
 
 # Tesseract OCR for PHP
