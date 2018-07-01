@@ -11,4 +11,6 @@ class TestableCommand extends Command
 	}
 
 	protected function getTesseractVersion() { return $this->version; }
+
+	public function getOutputFile() { return 'tmpfile'; }
 }

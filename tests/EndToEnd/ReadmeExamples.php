@@ -10,7 +10,7 @@ class ReadmeExamples extends TestCase
 
 	public function testBasicUsage()
 	{
-		$expected = join(PHP_EOL, ['The quick brown fox', 'jumps over', 'the lazy dog.']);
+		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
 		$actual = (new TesseractOCR("{$this->imagesDir}/text.png"))
 			->executable($this->executable)
 			->run();
