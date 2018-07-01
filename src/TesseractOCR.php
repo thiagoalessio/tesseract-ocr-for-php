@@ -14,8 +14,9 @@ class TesseractOCR
 
 	public function run()
 	{
-		exec("{$this->command}", $output);
-		return trim(join(PHP_EOL, $output));
+		exec("{$this->command} 2>&1");
+		$text = file_get_contents("{$this->command->getOutputFile()}.txt");
+		return trim($text, " \t\n\r\0\x0A\x0B\x0C");
 	}
 
 	public function executable($executable)

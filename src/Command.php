@@ -7,6 +7,7 @@ class Command
 	public $configFile;
 	public $threadLimit;
 	private $image;
+	private $outputFile;
 
 	public function __construct($image)
 	{
@@ -21,7 +22,7 @@ class Command
 		if ($this->threadLimit) $cmd[] = "OMP_THREAD_LIMIT={$this->threadLimit}";
 		$cmd[] = self::escape($this->executable);
 		$cmd[] = self::escape($this->image);
-		$cmd[] = 'stdout';
+		$cmd[] = $this->getOutputFile();
 
 		$version = $this->getTesseractVersion();
 
@@ -32,6 +33,13 @@ class Command
 		if ($this->configFile) $cmd[] = $this->configFile;
 
 		return join(' ', $cmd);
+	}
+
+	public function getOutputFile()
+	{
+		if (!$this->outputFile)
+			$this->outputFile = tempnam(sys_get_temp_dir(), 'ocr');
+		return $this->outputFile;
 	}
 
 	private function isVersion303()
