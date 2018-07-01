@@ -23,15 +23,6 @@ class CommandTest extends TestCase
 		$this->assertEquals("$expected", "$cmd");
 	}
 
-	public function testAppendQuietFlagForVersion303()
-	{
-		$cmd = new TestableCommand('image.png', '3.03');
-		$cmd->options[] = Option::psm(3);
-
-		$expected = '"tesseract" "image.png" tmpfile -psm 3 quiet';
-		$this->assertEquals("$expected", "$cmd");
-	}
-
 	public function testWithConfigFile()
 	{
 		$cmd = new TestableCommand('image.png');

@@ -29,7 +29,6 @@ class Command
 		foreach ($this->options as $option) {
 			$cmd[] = is_callable($option) ? $option($version) : "$option";
 		}
-		if ($this->isVersion303()) $this->configFile = 'quiet';
 		if ($this->configFile) $cmd[] = $this->configFile;
 
 		return join(' ', $cmd);
@@ -40,13 +39,6 @@ class Command
 		if (!$this->outputFile)
 			$this->outputFile = tempnam(sys_get_temp_dir(), 'ocr');
 		return $this->outputFile;
-	}
-
-	private function isVersion303()
-	{
-		$version = $this->getTesseractVersion();
-		return version_compare($version, '3.03', '>=')
-			&& version_compare($version, '3.04', '<');
 	}
 
 	protected function getTesseractVersion()
