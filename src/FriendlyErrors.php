@@ -22,8 +22,10 @@ class FriendlyErrors
 
 	public static function checkTesseractPresence($executable)
 	{
-		$cmd = stristr(PHP_OS, 'win') ? "where $executable" : "type $executable";
-		exec("$cmd 2>&1", $_, $exitCode);
+		$cmd = stristr(PHP_OS, 'win')
+			? "where $executable > NUL 2>&1"
+			: "type $executable > /dev/null 2>&1";
+		system($cmd, $exitCode);
 
 		if ($exitCode == 0) return;
 
