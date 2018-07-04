@@ -1,0 +1,680 @@
+{
+	"_readme": [
+		"This file locks the dependencies of your project to a known state",
+		"Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+		"This file is @generated automatically"
+	],
+	"content-hash": "0bd36476c8a4a65c06dd8d3a18f2c660",
+	"packages": [],
+	"packages-dev": [
+	{
+		"name": "codacy/coverage",
+		"version": "dev-master",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/codacy/php-codacy-coverage.git",
+			"reference": "629d1fd597f91fb072bd822830059fd5145ce49a"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/codacy/php-codacy-coverage/zipball/629d1fd597f91fb072bd822830059fd5145ce49a",
+			"reference": "629d1fd597f91fb072bd822830059fd5145ce49a",
+			"shasum": ""
+		},
+		"require": {
+			"gitonomy/gitlib": ">=1.0",
+			"php": ">=5.3.3",
+			"symfony/console": "~2.5|~3.0|~4.0"
+		},
+		"require-dev": {
+			"phpunit/phpunit": "~6.5"
+		},
+		"bin": [
+			"bin/codacycoverage"
+		],
+		"type": "library",
+		"autoload": {
+			"classmap": [
+				"src/"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"MIT"
+		],
+		"authors": [
+		{
+			"name": "Jakob Pupke",
+			"email": "jakob.pupke@gmail.com"
+		}
+		],
+		"description": "Sends PHP test coverage information to Codacy.",
+		"homepage": "https://github.com/codacy/php-codacy-coverage",
+		"time": "2018-04-30T16:23:12+00:00"
+	},
+	{
+		"name": "gitonomy/gitlib",
+		"version": "v1.0.4",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/gitonomy/gitlib.git",
+			"reference": "932a960221ae3484a3e82553b3be478e56beb68d"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/gitonomy/gitlib/zipball/932a960221ae3484a3e82553b3be478e56beb68d",
+			"reference": "932a960221ae3484a3e82553b3be478e56beb68d",
+			"shasum": ""
+		},
+		"require": {
+			"php": "^5.3 || ^7.0",
+			"symfony/process": "^2.3|^3.0|^4.0"
+		},
+		"require-dev": {
+			"phpunit/phpunit": "^4.8.35|^5.7",
+			"psr/log": "^1.0"
+		},
+		"suggest": {
+			"psr/log": "Add some log"
+		},
+		"type": "library",
+		"extra": {
+			"branch-alias": {
+				"dev-master": "1.0-dev"
+			}
+		},
+		"autoload": {
+			"psr-4": {
+				"Gitonomy\\Git\\": "src/Gitonomy/Git/"
+			}
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"MIT"
+		],
+		"authors": [
+		{
+			"name": "Alexandre Salomé",
+			"email": "alexandre.salome@gmail.com",
+			"homepage": "http://alexandre-salome.fr"
+		},
+		{
+			"name": "Julien DIDIER",
+			"email": "genzo.wm@gmail.com",
+			"homepage": "http://www.jdidier.net"
+		}
+		],
+		"description": "Library for accessing git",
+		"homepage": "http://gitonomy.com",
+		"time": "2018-04-22T19:55:36+00:00"
+	},
+	{
+		"name": "phpunit/php-code-coverage",
+		"version": "2.2.4",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/sebastianbergmann/php-code-coverage.git",
+			"reference": "eabf68b476ac7d0f73793aada060f1c1a9bf8979"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/eabf68b476ac7d0f73793aada060f1c1a9bf8979",
+			"reference": "eabf68b476ac7d0f73793aada060f1c1a9bf8979",
+			"shasum": ""
+		},
+		"require": {
+			"php": ">=5.3.3",
+			"phpunit/php-file-iterator": "~1.3",
+			"phpunit/php-text-template": "~1.2",
+			"phpunit/php-token-stream": "~1.3",
+			"sebastian/environment": "^1.3.2",
+			"sebastian/version": "~1.0"
+		},
+		"require-dev": {
+			"ext-xdebug": ">=2.1.4",
+			"phpunit/phpunit": "~4"
+		},
+		"suggest": {
+			"ext-dom": "*",
+			"ext-xdebug": ">=2.2.1",
+			"ext-xmlwriter": "*"
+		},
+		"type": "library",
+		"extra": {
+			"branch-alias": {
+				"dev-master": "2.2.x-dev"
+			}
+		},
+		"autoload": {
+			"classmap": [
+				"src/"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"BSD-3-Clause"
+		],
+		"authors": [
+		{
+			"name": "Sebastian Bergmann",
+			"email": "sb@sebastian-bergmann.de",
+			"role": "lead"
+		}
+		],
+		"description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
+		"homepage": "https://github.com/sebastianbergmann/php-code-coverage",
+		"keywords": [
+			"coverage",
+		"testing",
+		"xunit"
+		],
+		"time": "2015-10-06T15:47:00+00:00"
+	},
+	{
+		"name": "phpunit/php-file-iterator",
+		"version": "1.4.5",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/sebastianbergmann/php-file-iterator.git",
+			"reference": "730b01bc3e867237eaac355e06a36b85dd93a8b4"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/730b01bc3e867237eaac355e06a36b85dd93a8b4",
+			"reference": "730b01bc3e867237eaac355e06a36b85dd93a8b4",
+			"shasum": ""
+		},
+		"require": {
+			"php": ">=5.3.3"
+		},
+		"type": "library",
+		"extra": {
+			"branch-alias": {
+				"dev-master": "1.4.x-dev"
+			}
+		},
+		"autoload": {
+			"classmap": [
+				"src/"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"BSD-3-Clause"
+		],
+		"authors": [
+		{
+			"name": "Sebastian Bergmann",
+			"email": "sb@sebastian-bergmann.de",
+			"role": "lead"
+		}
+		],
+		"description": "FilterIterator implementation that filters files based on a list of suffixes.",
+		"homepage": "https://github.com/sebastianbergmann/php-file-iterator/",
+		"keywords": [
+			"filesystem",
+		"iterator"
+		],
+		"time": "2017-11-27T13:52:08+00:00"
+	},
+	{
+		"name": "phpunit/php-text-template",
+		"version": "1.2.1",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/sebastianbergmann/php-text-template.git",
+			"reference": "31f8b717e51d9a2afca6c9f046f5d69fc27c8686"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/31f8b717e51d9a2afca6c9f046f5d69fc27c8686",
+			"reference": "31f8b717e51d9a2afca6c9f046f5d69fc27c8686",
+			"shasum": ""
+		},
+		"require": {
+			"php": ">=5.3.3"
+		},
+		"type": "library",
+		"autoload": {
+			"classmap": [
+				"src/"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"BSD-3-Clause"
+		],
+		"authors": [
+		{
+			"name": "Sebastian Bergmann",
+			"email": "sebastian@phpunit.de",
+			"role": "lead"
+		}
+		],
+		"description": "Simple template engine.",
+		"homepage": "https://github.com/sebastianbergmann/php-text-template/",
+		"keywords": [
+			"template"
+		],
+		"time": "2015-06-21T13:50:34+00:00"
+	},
+	{
+		"name": "phpunit/php-token-stream",
+		"version": "1.4.12",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/sebastianbergmann/php-token-stream.git",
+			"reference": "1ce90ba27c42e4e44e6d8458241466380b51fa16"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/1ce90ba27c42e4e44e6d8458241466380b51fa16",
+			"reference": "1ce90ba27c42e4e44e6d8458241466380b51fa16",
+			"shasum": ""
+		},
+		"require": {
+			"ext-tokenizer": "*",
+			"php": ">=5.3.3"
+		},
+		"require-dev": {
+			"phpunit/phpunit": "~4.2"
+		},
+		"type": "library",
+		"extra": {
+			"branch-alias": {
+				"dev-master": "1.4-dev"
+			}
+		},
+		"autoload": {
+			"classmap": [
+				"src/"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"BSD-3-Clause"
+		],
+		"authors": [
+		{
+			"name": "Sebastian Bergmann",
+			"email": "sebastian@phpunit.de"
+		}
+		],
+		"description": "Wrapper around PHP's tokenizer extension.",
+		"homepage": "https://github.com/sebastianbergmann/php-token-stream/",
+		"keywords": [
+			"tokenizer"
+		],
+		"time": "2017-12-04T08:55:13+00:00"
+	},
+	{
+		"name": "psr/log",
+		"version": "1.0.2",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/php-fig/log.git",
+			"reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+			"reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+			"shasum": ""
+		},
+		"require": {
+			"php": ">=5.3.0"
+		},
+		"type": "library",
+		"extra": {
+			"branch-alias": {
+				"dev-master": "1.0.x-dev"
+			}
+		},
+		"autoload": {
+			"psr-4": {
+				"Psr\\Log\\": "Psr/Log/"
+			}
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"MIT"
+		],
+		"authors": [
+		{
+			"name": "PHP-FIG",
+			"homepage": "http://www.php-fig.org/"
+		}
+		],
+		"description": "Common interface for logging libraries",
+		"homepage": "https://github.com/php-fig/log",
+		"keywords": [
+			"log",
+		"psr",
+		"psr-3"
+		],
+		"time": "2016-10-10T12:19:37+00:00"
+	},
+	{
+		"name": "sebastian/environment",
+		"version": "1.3.8",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/sebastianbergmann/environment.git",
+			"reference": "be2c607e43ce4c89ecd60e75c6a85c126e754aea"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/be2c607e43ce4c89ecd60e75c6a85c126e754aea",
+			"reference": "be2c607e43ce4c89ecd60e75c6a85c126e754aea",
+			"shasum": ""
+		},
+		"require": {
+			"php": "^5.3.3 || ^7.0"
+		},
+		"require-dev": {
+			"phpunit/phpunit": "^4.8 || ^5.0"
+		},
+		"type": "library",
+		"extra": {
+			"branch-alias": {
+				"dev-master": "1.3.x-dev"
+			}
+		},
+		"autoload": {
+			"classmap": [
+				"src/"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"BSD-3-Clause"
+		],
+		"authors": [
+		{
+			"name": "Sebastian Bergmann",
+			"email": "sebastian@phpunit.de"
+		}
+		],
+		"description": "Provides functionality to handle HHVM/PHP environments",
+		"homepage": "http://www.github.com/sebastianbergmann/environment",
+		"keywords": [
+			"Xdebug",
+		"environment",
+		"hhvm"
+		],
+		"time": "2016-08-18T05:49:44+00:00"
+	},
+	{
+		"name": "sebastian/version",
+		"version": "1.0.6",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/sebastianbergmann/version.git",
+			"reference": "58b3a85e7999757d6ad81c787a1fbf5ff6c628c6"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/sebastianbergmann/version/zipball/58b3a85e7999757d6ad81c787a1fbf5ff6c628c6",
+			"reference": "58b3a85e7999757d6ad81c787a1fbf5ff6c628c6",
+			"shasum": ""
+		},
+		"type": "library",
+		"autoload": {
+			"classmap": [
+				"src/"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"BSD-3-Clause"
+		],
+		"authors": [
+		{
+			"name": "Sebastian Bergmann",
+			"email": "sebastian@phpunit.de",
+			"role": "lead"
+		}
+		],
+		"description": "Library that helps with managing the version number of Git-hosted PHP projects",
+		"homepage": "https://github.com/sebastianbergmann/version",
+		"time": "2015-06-21T13:59:46+00:00"
+	},
+	{
+		"name": "symfony/console",
+		"version": "v2.8.42",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/symfony/console.git",
+			"reference": "e8e59b74ad1274714dad2748349b55e3e6e630c7"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/symfony/console/zipball/e8e59b74ad1274714dad2748349b55e3e6e630c7",
+			"reference": "e8e59b74ad1274714dad2748349b55e3e6e630c7",
+			"shasum": ""
+		},
+		"require": {
+			"php": ">=5.3.9",
+			"symfony/debug": "^2.7.2|~3.0.0",
+			"symfony/polyfill-mbstring": "~1.0"
+		},
+		"require-dev": {
+			"psr/log": "~1.0",
+			"symfony/event-dispatcher": "~2.1|~3.0.0",
+			"symfony/process": "~2.1|~3.0.0"
+		},
+		"suggest": {
+			"psr/log-implementation": "For using the console logger",
+			"symfony/event-dispatcher": "",
+			"symfony/process": ""
+		},
+		"type": "library",
+		"extra": {
+			"branch-alias": {
+				"dev-master": "2.8-dev"
+			}
+		},
+		"autoload": {
+			"psr-4": {
+				"Symfony\\Component\\Console\\": ""
+			},
+			"exclude-from-classmap": [
+				"/Tests/"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"MIT"
+		],
+		"authors": [
+		{
+			"name": "Fabien Potencier",
+			"email": "fabien@symfony.com"
+		},
+		{
+			"name": "Symfony Community",
+			"homepage": "https://symfony.com/contributors"
+		}
+		],
+		"description": "Symfony Console Component",
+		"homepage": "https://symfony.com",
+		"time": "2018-05-15T21:17:45+00:00"
+	},
+	{
+		"name": "symfony/debug",
+		"version": "v2.8.42",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/symfony/debug.git",
+			"reference": "a26ddce7fe4e884097d72435653bc7e703411f26"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/symfony/debug/zipball/a26ddce7fe4e884097d72435653bc7e703411f26",
+			"reference": "a26ddce7fe4e884097d72435653bc7e703411f26",
+			"shasum": ""
+		},
+		"require": {
+			"php": ">=5.3.9",
+			"psr/log": "~1.0"
+		},
+		"conflict": {
+			"symfony/http-kernel": ">=2.3,<2.3.24|~2.4.0|>=2.5,<2.5.9|>=2.6,<2.6.2"
+		},
+		"require-dev": {
+			"symfony/class-loader": "~2.2|~3.0.0",
+			"symfony/http-kernel": "~2.3.24|~2.5.9|^2.6.2|~3.0.0"
+		},
+		"type": "library",
+		"extra": {
+			"branch-alias": {
+				"dev-master": "2.8-dev"
+			}
+		},
+		"autoload": {
+			"psr-4": {
+				"Symfony\\Component\\Debug\\": ""
+			},
+			"exclude-from-classmap": [
+				"/Tests/"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"MIT"
+		],
+		"authors": [
+		{
+			"name": "Fabien Potencier",
+			"email": "fabien@symfony.com"
+		},
+		{
+			"name": "Symfony Community",
+			"homepage": "https://symfony.com/contributors"
+		}
+		],
+		"description": "Symfony Debug Component",
+		"homepage": "https://symfony.com",
+		"time": "2018-06-22T15:01:26+00:00"
+	},
+	{
+		"name": "symfony/polyfill-mbstring",
+		"version": "v1.8.0",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/symfony/polyfill-mbstring.git",
+			"reference": "3296adf6a6454a050679cde90f95350ad604b171"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/3296adf6a6454a050679cde90f95350ad604b171",
+			"reference": "3296adf6a6454a050679cde90f95350ad604b171",
+			"shasum": ""
+		},
+		"require": {
+			"php": ">=5.3.3"
+		},
+		"suggest": {
+			"ext-mbstring": "For best performance"
+		},
+		"type": "library",
+		"extra": {
+			"branch-alias": {
+				"dev-master": "1.8-dev"
+			}
+		},
+		"autoload": {
+			"psr-4": {
+				"Symfony\\Polyfill\\Mbstring\\": ""
+			},
+			"files": [
+				"bootstrap.php"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"MIT"
+		],
+		"authors": [
+		{
+			"name": "Nicolas Grekas",
+			"email": "p@tchwork.com"
+		},
+		{
+			"name": "Symfony Community",
+			"homepage": "https://symfony.com/contributors"
+		}
+		],
+		"description": "Symfony polyfill for the Mbstring extension",
+		"homepage": "https://symfony.com",
+		"keywords": [
+			"compatibility",
+		"mbstring",
+		"polyfill",
+		"portable",
+		"shim"
+		],
+		"time": "2018-04-26T10:06:28+00:00"
+	},
+	{
+		"name": "symfony/process",
+		"version": "v2.8.42",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/symfony/process.git",
+			"reference": "542d88b350c42750fdc14e73860ee96dd423e95d"
+		},
+		"dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/symfony/process/zipball/542d88b350c42750fdc14e73860ee96dd423e95d",
+			"reference": "542d88b350c42750fdc14e73860ee96dd423e95d",
+			"shasum": ""
+		},
+		"require": {
+			"php": ">=5.3.9"
+		},
+		"type": "library",
+		"extra": {
+			"branch-alias": {
+				"dev-master": "2.8-dev"
+			}
+		},
+		"autoload": {
+			"psr-4": {
+				"Symfony\\Component\\Process\\": ""
+			},
+			"exclude-from-classmap": [
+				"/Tests/"
+			]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+			"MIT"
+		],
+		"authors": [
+		{
+			"name": "Fabien Potencier",
+			"email": "fabien@symfony.com"
+		},
+		{
+			"name": "Symfony Community",
+			"homepage": "https://symfony.com/contributors"
+		}
+		],
+		"description": "Symfony Process Component",
+		"homepage": "https://symfony.com",
+		"time": "2018-05-27T07:40:52+00:00"
+	}
+	],
+	"aliases": [],
+	"minimum-stability": "stable",
+	"stability-flags": {
+		"codacy/coverage": 20
+	},
+	"prefer-stable": false,
+	"prefer-lowest": false,
+	"platform": {
+		"php": "^5.4 || ^7.0"
+	},
+	"platform-dev": []
+}
