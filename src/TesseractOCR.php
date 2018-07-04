@@ -63,7 +63,8 @@ class TesseractOCR
 			$this->command->options[] = call_user_func_array($option, $args);
 			return $this;
 		}
-		$this->command->options[] = Option::config($method, $args[0]);
+		$arg = empty($args) ? null : $args[0];
+		$this->command->options[] = Option::config($method, $arg);
 		return $this;
 	}
 
