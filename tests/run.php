@@ -11,7 +11,7 @@ if (in_array('e2e', $argv))
 
 // setting up code coverage
 if (extension_loaded('xdebug')) {
-	$coverage = new \SebastianBergmann\CodeCoverage\CodeCoverage;
+	$coverage = new \PHP_CodeCoverage;
 	$coverage->filter()->addDirectoryToWhitelist('./src');
 	$coverage->start('tests');
 }
@@ -51,7 +51,7 @@ foreach ($tests as $test) {
 // saving coverage results
 if (isset($coverage)) {
 	$coverage->stop();
-	$writer = new \SebastianBergmann\CodeCoverage\Report\Clover;
+	$writer = new \PHP_CodeCoverage_Report_Clover;
 	$writer->process($coverage, 'coverage.xml');
 }
 exit($rc);
