@@ -2,6 +2,7 @@
 
 use thiagoalessio\TesseractOCR\Command;
 use thiagoalessio\TesseractOCR\Option;
+use thiagoalessio\TesseractOCR\FriendlyErrors;
 
 class TesseractOCR
 {
@@ -9,12 +10,18 @@ class TesseractOCR
 
 	public function __construct($image, $command=null)
 	{
+		FriendlyErrors::checkImagePath($image);
 		$this->command = $command ?: new Command($image);
 	}
 
 	public function run()
 	{
-		exec("{$this->command} 2>&1");
+		FriendlyErrors::checkTesseractPresence($this->command->executable);
+
+		exec("{$this->command} 2>&1", $stdout);
+
+		FriendlyErrors::checkCommandExecution($this->command, $stdout);
+
 		$text = file_get_contents("{$this->command->getOutputFile()}.txt");
 		return trim($text, " \t\n\r\0\x0A\x0B\x0C");
 	}
