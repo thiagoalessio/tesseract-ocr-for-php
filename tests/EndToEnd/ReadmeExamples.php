@@ -29,6 +29,9 @@ class ReadmeExamples extends TestCase
 
 	public function testMultipleLanguages()
 	{
+		// training data for this old version returns different output
+		if ($this->isVersion302()) $this->skip();
+
 		$expected = 'I eat すし y Pollo';
 		$actual = (new TesseractOCR("{$this->imagesDir}/mixed-languages.png"))
 			->executable($this->executable)
@@ -40,7 +43,7 @@ class ReadmeExamples extends TestCase
 	public function testInducingRecognition()
 	{
 		// https://github.com/tesseract-ocr/tesseract/issues/751
-		if ($this->isVersion4()) $this->skip();
+		if ($this->isVersion302() || $this->isVersion4()) $this->skip();
 
 		$expected = 'BOSS';
 		$actual = (new TesseractOCR("{$this->imagesDir}/8055.png"))
@@ -48,6 +51,14 @@ class ReadmeExamples extends TestCase
 			->whitelist(range('A', 'Z'))
 			->run();
 		$this->assertEquals($expected, $actual);
+	}
+
+	protected function isVersion302()
+	{
+		exec('tesseract --version 2>&1', $output);
+		$version = explode(' ', $output[0])[1];
+		return version_compare($version, '3.02', '>=')
+			&& version_compare($version, '3.03', '<');
 	}
 
 	protected function isVersion4()

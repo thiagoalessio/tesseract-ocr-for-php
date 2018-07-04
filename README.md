@@ -22,7 +22,7 @@ Via [Composer][]:
 
     $ composer require thiagoalessio/tesseract_ocr
 
-:bangbang: **This library depends on [Tesseract OCR][], version _3.03_ or later.**
+:bangbang: **This library depends on [Tesseract OCR][], version _3.02_ or later.**
 
 <br/>
 

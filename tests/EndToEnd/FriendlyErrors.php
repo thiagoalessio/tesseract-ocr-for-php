@@ -62,24 +62,45 @@ class FriendlyErrors extends TestCase
 		$expected[] = '"tesseract" "./tests/EndToEnd/images/not-an-image.txt" tmpfile quiet';
 		$expected[] = '';
 		$expected[] = 'Returned message:';
-		if ($this->isVersion('3.04.01')) {
-			$expected[] = 'Tesseract Open Source OCR Engine v3.04.01 with Leptonica';
-		}
-		if ($this->isVersion('3.03')) {
-			$expected[] = 'Tesseract Open Source OCR Engine v3.03 with Leptonica';
-			$expected[] = 'Error in pixReadStream: Unknown format: no pix returned';
-			$expected[] = 'Error in pixRead: pix not read';
-			$expected[] = 'Error in pixGetInputFormat: pix not defined';
-		}
-		if ($this->isVersion('3.05.00dev')) {
-			$expected[] = 'Tesseract Open Source OCR Engine v3.05.00dev with Leptonica';
-			$expected[] = 'read_params_file: Can\'t open quiet';
-			$expected[] = 'Image file not an image cannot be read!';
-			$expected[] = 'Error during processing.';
-		} else {
-			$expected[] = 'Error in fopenReadStream: file not found';
-			$expected[] = 'Error in pixRead: image file not found: not an image';
-			$expected[] = 'Error during processing.';
+
+		switch (true) {
+
+			case ($this->isVersion('3.02')):
+				$expected[] = 'read_params_file: Can\'t open quiet';
+				$expected[] = 'Error in pixReadStream: Unknown format: no pix returned';
+				$expected[] = 'Error in pixRead: pix not read';
+				$expected[] = 'Tesseract Open Source OCR Engine v3.02 with Leptonica';
+				$expected[] = 'Unsupported image type.';
+				break;
+
+			case ($this->isVersion('3.03')):
+				$expected[] = 'Tesseract Open Source OCR Engine v3.03 with Leptonica';
+				$expected[] = 'Error in pixReadStream: Unknown format: no pix returned';
+				$expected[] = 'Error in pixRead: pix not read';
+				$expected[] = 'Error in pixGetInputFormat: pix not defined';
+				$expected[] = 'Error in fopenReadStream: file not found';
+				$expected[] = 'Error in pixRead: image file not found: not an image';
+				$expected[] = 'Error during processing.';
+				break;
+
+			case ($this->isVersion('3.04.01')):
+				$expected[] = 'Tesseract Open Source OCR Engine v3.04.01 with Leptonica';
+				$expected[] = 'Error in fopenReadStream: file not found';
+				$expected[] = 'Error in pixRead: image file not found: not an image';
+				$expected[] = 'Error during processing.';
+				break;
+
+			case ($this->isVersion('3.05.00dev')):
+				$expected[] = 'Tesseract Open Source OCR Engine v3.05.00dev with Leptonica';
+				$expected[] = 'read_params_file: Can\'t open quiet';
+				$expected[] = 'Image file not an image cannot be read!';
+				$expected[] = 'Error during processing.';
+				break;
+
+			default:
+				$expected[] = 'Error in fopenReadStream: file not found';
+				$expected[] = 'Error in pixRead: image file not found: not an image';
+				$expected[] = 'Error during processing.';
 		}
 		$expected = join(PHP_EOL, $expected);
 
