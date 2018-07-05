@@ -8,7 +8,7 @@ class FriendlyErrors
 {
 	public static function checkImagePath($image)
 	{
-		if (is_null($image) || file_exists($image)) return;
+		if (file_exists($image)) return;
 
 		$currentDir = __DIR__;
 		$msg = array();

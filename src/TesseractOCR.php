@@ -8,15 +8,16 @@ class TesseractOCR
 {
 	public $command;
 
-	public function __construct($image, $command=null)
+	public function __construct($image=null, $command=null)
 	{
-		FriendlyErrors::checkImagePath($image);
-		$this->command = $command ?: new Command($image);
+		$this->command = $command ?: new Command;
+		$this->image("$image");
 	}
 
 	public function run()
 	{
 		FriendlyErrors::checkTesseractPresence($this->command->executable);
+		FriendlyErrors::checkImagePath($this->command->image);
 
 		exec("{$this->command} 2>&1", $stdout);
 
@@ -24,6 +25,12 @@ class TesseractOCR
 
 		$text = file_get_contents("{$this->command->getOutputFile()}.txt");
 		return trim($text, " \t\n\r\0\x0A\x0B\x0C");
+	}
+
+	public function image($image)
+	{
+		$this->command->image = $image;
+		return $this;
 	}
 
 	public function executable($executable)

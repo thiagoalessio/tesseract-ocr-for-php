@@ -6,10 +6,10 @@ class Command
 	public $options = [];
 	public $configFile;
 	public $threadLimit;
-	private $image;
+	public $image;
 	private $outputFile;
 
-	public function __construct($image)
+	public function __construct($image=null)
 	{
 		$this->image = $image;
 	}

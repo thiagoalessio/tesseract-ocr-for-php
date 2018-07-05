@@ -133,6 +133,16 @@ of breaking CAPTCHAs, so please take a look at this comment:
 
 ## API
 
+### image
+
+Define the path of an image to be recognized by `tesseract`.
+
+```php
+$ocr = new TesseractOCR();
+$ocr->image('/path/to/image.png');
+$ocr->run();
+```
+
 ### executable
 
 Define a custom location of the `tesseract` executable,

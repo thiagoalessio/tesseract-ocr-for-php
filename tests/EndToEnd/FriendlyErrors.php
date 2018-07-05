@@ -104,9 +104,9 @@ class FriendlyErrors extends TestCase
 		}
 		$expected = join(PHP_EOL, $expected);
 
-		$cmd = new TestableCommand('./tests/EndToEnd/images/not-an-image.txt');
+		$cmd = new TestableCommand();
 		try {
-			(new TesseractOCR(null, $cmd))
+			(new TesseractOCR('./tests/EndToEnd/images/not-an-image.txt', $cmd))
 				->quiet()
 				->run();
 			throw new \Exception('UnsuccessfulCommandException not thrown');

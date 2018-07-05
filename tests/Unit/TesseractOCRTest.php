@@ -8,13 +8,24 @@ class TesseractOCRTest extends TestCase
 {
 	public function beforeEach()
 	{
-		$this->tess = new TesseractOCR(null, new TestableCommand('image.png'));
+		$this->tess = new TesseractOCR('image.png', new TestableCommand());
 	}
 
 	public function testSimplestUsage()
 	{
 		$expected = '"tesseract" "image.png" tmpfile';
 		$actual = $this->tess->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testDelayedSettingOfImagePath()
+	{
+		$expected = '"tesseract" "image.png" tmpfile';
+
+		$ocr = new TesseractOCR(null, new TestableCommand());
+		$ocr->image('image.png');
+		$actual = $ocr->command;
+
 		$this->assertEquals("$expected", "$actual");
 	}
 

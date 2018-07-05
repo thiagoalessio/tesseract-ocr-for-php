@@ -4,7 +4,7 @@ use thiagoalessio\TesseractOCR\Command;
 
 class TestableCommand extends Command
 {
-	public function __construct($image, $version='3.05')
+	public function __construct($image=null, $version='3.05')
 	{
 		parent::__construct($image);
 		$this->version = $version;
