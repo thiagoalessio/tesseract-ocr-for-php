@@ -1,4 +1,4 @@
-<img src="https://thiagoalessio.ams3.digitaloceanspaces.com/tesseract-ocr-for-php-logo.png" alt="Tesseract OCR for PHP" align="right" width="240px"/>
+<img src="https://thiagoalessio.github.io/tesseract-ocr-for-php/images/logo.png" alt="Tesseract OCR for PHP" align="right" width="320px"/>
 
 # Tesseract OCR for PHP
 
