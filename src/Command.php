@@ -47,7 +47,7 @@ class Command
 		return explode(' ', $output[0])[1];
 	}
 
-	private static function escape($str)
+	public static function escape($str)
 	{
 		return '"'.str_replace('$', '\$', addcslashes($str, '\\"')).'"';
 	}
