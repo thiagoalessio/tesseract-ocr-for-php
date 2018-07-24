@@ -40,4 +40,12 @@ class CommandTest extends TestCase
 		$expected = 'OMP_THREAD_LIMIT=2 "tesseract" "image.png" tmpfile';
 		$this->assertEquals("$expected", "$cmd");
 	}
+
+	public function testEscapeSpecialCharactersOnFilename()
+	{
+		$cmd = new TestableCommand('$@ ! ? "#\'.png');
+
+		$expected = '"tesseract" "\$@ ! ? \\"#\'.png" tmpfile';
+		$this->assertEquals("$expected", "$cmd");
+	}
 }

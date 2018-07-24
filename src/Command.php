@@ -49,6 +49,6 @@ class Command
 
 	private static function escape($str)
 	{
-		return '"'.addcslashes($str, '\\"').'"';
+		return '"'.str_replace('$', '\$', addcslashes($str, '\\"')).'"';
 	}
 }
