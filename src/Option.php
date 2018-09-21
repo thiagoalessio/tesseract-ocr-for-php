@@ -5,6 +5,7 @@ class Option
 	public static function psm($psm)
 	{
 		return function($version) use ($psm) {
+			$version = preg_replace('/^v/', '', $version);
 			return (version_compare($version, 4, '>=') ? '-' : '')."-psm $psm";
 		};
 	}

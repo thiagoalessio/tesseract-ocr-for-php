@@ -10,6 +10,7 @@ class OptionTest extends TestCase
 		$psm = Option::psm(8);
 		$this->assertEquals('-psm 8', $psm('3.05.01'));
 		$this->assertEquals('--psm 8', $psm('4.0.0-beta.1'));
+		$this->assertEquals('--psm 8', $psm('v4.0.0-beta.4.20180912'));
 	}
 
 	public function testOem()
