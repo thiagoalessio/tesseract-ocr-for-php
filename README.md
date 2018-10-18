@@ -154,6 +154,24 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
+### version
+
+Returns the current version of `tesseract`.
+
+```php
+echo (new TesseractOCR())->version();
+```
+
+### availableLanguages
+
+Returns a list of available languages/scripts.
+
+```php
+foreach((new TesseractOCR())->availableLanguages() as $lang) echo $lang;
+```
+
+__More info:__ <https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc#languages-and-scripts>
+
 ### tessdataDir
 
 Specify a custom location for the tessdata directory.

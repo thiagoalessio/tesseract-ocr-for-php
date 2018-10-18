@@ -53,6 +53,18 @@ class ReadmeExamples extends TestCase
 		$this->assertEquals($expected, $actual);
 	}
 
+	public function testListAvailableLanguages()
+	{
+		// feature not available in this version of tesseract
+		if ($this->isVersion302()) $this->skip();
+
+		$actual = (new TesseractOCR())->availableLanguages();
+		$this->assertEquals(true, in_array('deu', $actual));
+		$this->assertEquals(true, in_array('eng', $actual));
+		$this->assertEquals(true, in_array('jpn', $actual));
+		$this->assertEquals(true, in_array('spa', $actual));
+	}
+
 	protected function isVersion302()
 	{
 		exec('tesseract --version 2>&1', $output);

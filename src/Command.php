@@ -41,10 +41,18 @@ class Command
 		return $this->outputFile;
 	}
 
-	protected function getTesseractVersion()
+	public function getTesseractVersion()
 	{
 		exec(self::escape($this->executable).' --version 2>&1', $output);
 		return explode(' ', $output[0])[1];
+	}
+
+	public function getAvailableLanguages()
+	{
+		exec(self::escape($this->executable) . ' --list-langs 2>&1', $output);
+		array_shift($output);
+		sort($output);
+		return $output;
 	}
 
 	public static function escape($str)
