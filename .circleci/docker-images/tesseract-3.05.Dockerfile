@@ -1,5 +1,4 @@
 FROM base/archlinux:2018.01.01
-MAINTAINER thiagoalessio <thiagoalessio@me.com>
 
 RUN pacman -Sy --noconfirm curl git php xdebug && \
 	pacman -U  --noconfirm https://archive.archlinux.org/packages/t/tesseract/tesseract-3.05.01-3-x86_64.pkg.tar.xz && \
