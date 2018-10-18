@@ -41,10 +41,36 @@ class Command
 		return $this->outputFile;
 	}
 
+	/**
+	 * Retrieves the Tesseract binary version number.
+	 *
+	 * @return string The version Tesseract binary is at.
+	 */
+
 	public function getTesseractVersion()
 	{
 		exec(self::escape($this->executable).' --version 2>&1', $output);
 		return explode(' ', $output[0])[1];
+	}
+
+	/**
+	 * Finds what language files Tesseract binary is installed with.
+	 *
+	 * @return array Codes loosely based on ISO 3166-1 alpha 3 codes.
+	 *               Language localizations are defined by an appended _ followed by the localization name.
+	 *               OSD language stands for 'Orientation and script detection'
+	 */
+
+	public function getTesseractLangs()
+	{
+		exec(self::escape($this->executable) . ' --list-langs 2>&1', $output);
+
+		foreach ($output as $key => $lang) {
+			if (! preg_match('/^[a-z]{3}(_[a-z_]+)?$/m', $lang)) {
+				unset ($output[$key]);
+			}
+		}
+		return $output;
 	}
 
 	public static function escape($str)
