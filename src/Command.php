@@ -41,7 +41,7 @@ class Command
 		return $this->outputFile;
 	}
 
-	protected function getTesseractVersion()
+	public function getTesseractVersion()
 	{
 		exec(self::escape($this->executable).' --version 2>&1', $output);
 		return explode(' ', $output[0])[1];
