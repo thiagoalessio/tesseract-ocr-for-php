@@ -150,4 +150,11 @@ class TesseractOCRTest extends TestCase
 		$actual = $this->tess->threadLimit(4)->command;
 		$this->assertEquals("$expected", "$actual");
 	}
+
+	public function testVersion()
+	{
+		$expected = '3.05';
+		$actual = $this->tess->version();
+		$this->assertEquals("$expected", "$actual");
+	}
 }

@@ -154,6 +154,14 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
+### version
+
+Returns the current version of `tesseract`.
+
+```php
+echo (new TesseractOCR())->version();
+```
+
 ### tessdataDir
 
 Specify a custom location for the tessdata directory.

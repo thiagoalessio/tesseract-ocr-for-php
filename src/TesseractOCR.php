@@ -62,6 +62,11 @@ class TesseractOCR
 		return $this;
 	}
 
+	public function version()
+	{
+		return $this->command->getTesseractVersion();
+	}
+
 	public function __call($method, $args)
 	{
 		if ($this->isConfigFile($method)) return $this->configFile($method);

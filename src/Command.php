@@ -41,12 +41,6 @@ class Command
 		return $this->outputFile;
 	}
 
-	/**
-	 * Retrieves the Tesseract binary version number.
-	 *
-	 * @return string The version Tesseract binary is at.
-	 */
-
 	public function getTesseractVersion()
 	{
 		exec(self::escape($this->executable).' --version 2>&1', $output);
