@@ -10,7 +10,7 @@ class TestableCommand extends Command
 		$this->version = $version;
 	}
 
-	protected function getTesseractVersion() { return $this->version; }
+	public function getTesseractVersion() { return $this->version; }
 
 	public function getOutputFile() { return 'tmpfile'; }
 }
