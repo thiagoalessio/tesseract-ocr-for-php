@@ -22,6 +22,8 @@ class FriendlyErrors
 
 	public static function checkTesseractPresence($executable)
 	{
+		if (file_exists($executable)) return;
+
 		$cmd = stripos(PHP_OS, 'win') === 0
 			? 'where.exe '.Command::escape($executable).' > NUL 2>&1'
 			: 'type '.Command::escape($executable).' > /dev/null 2>&1';
