@@ -6,11 +6,9 @@ class TestableCommand extends Command
 {
 	public function __construct($image=null, $version='3.05')
 	{
-		parent::__construct($image);
+		parent::__construct($image, 'tmpfile');
 		$this->version = $version;
 	}
 
 	public function getTesseractVersion() { return $this->version; }
-
-	public function getOutputFile() { return 'tmpfile'; }
 }
