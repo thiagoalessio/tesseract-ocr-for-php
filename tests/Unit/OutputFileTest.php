@@ -25,4 +25,11 @@ class OutputFileTest extends TestCase
 		$expected = '/path/to/output/file.hocr';
 		$this->assertEquals($expected, $this->cmd->getOutputFile());
 	}
+
+	public function testTsv()
+	{
+		$this->cmd->configFile = 'tsv';
+		$expected = '/path/to/output/file.tsv';
+		$this->assertEquals($expected, $this->cmd->getOutputFile());
+	}
 }

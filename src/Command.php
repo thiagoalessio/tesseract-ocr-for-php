@@ -39,6 +39,7 @@ class Command
 	{
 		switch ($this->configFile) {
 			case 'hocr': $ext = 'hocr'; break;
+			case 'tsv': $ext = 'tsv'; break;
 			default: $ext = 'txt';
 		}
 		return "{$this->outputFile}.{$ext}";
