@@ -18,4 +18,11 @@ class OutputFileTest extends TestCase
 			$this->assertEquals($expected, $this->cmd->getOutputFile());
 		}
 	}
+
+	public function testHocr()
+	{
+		$this->cmd->configFile = 'hocr';
+		$expected = '/path/to/output/file.hocr';
+		$this->assertEquals($expected, $this->cmd->getOutputFile());
+	}
 }

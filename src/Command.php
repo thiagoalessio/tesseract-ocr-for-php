@@ -37,7 +37,10 @@ class Command
 
 	public function getOutputFile()
 	{
-		$ext = 'txt';
+		switch ($this->configFile) {
+			case 'hocr': $ext = 'hocr'; break;
+			default: $ext = 'txt';
+		}
 		return "{$this->outputFile}.{$ext}";
 	}
 
