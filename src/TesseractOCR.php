@@ -23,7 +23,7 @@ class TesseractOCR
 
 		FriendlyErrors::checkCommandExecution($this->command, $stdout);
 
-		$text = file_get_contents("{$this->command->getOutputFile()}.txt");
+		$text = file_get_contents($this->command->getOutputFile());
 		return trim($text, " \t\n\r\0\x0A\x0B\x0C");
 	}
 

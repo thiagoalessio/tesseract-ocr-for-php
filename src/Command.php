@@ -37,7 +37,8 @@ class Command
 
 	public function getOutputFile()
 	{
-		return $this->outputFile;
+		$ext = 'txt';
+		return "{$this->outputFile}.{$ext}";
 	}
 
 	public function getTesseractVersion()
