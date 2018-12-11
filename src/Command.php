@@ -37,12 +37,8 @@ class Command
 
 	public function getOutputFile()
 	{
-		switch ($this->configFile) {
-			case 'hocr': $ext = 'hocr'; break;
-			case 'tsv': $ext = 'tsv'; break;
-			case 'pdf': $ext = 'pdf'; break;
-			default: $ext = 'txt';
-		}
+		$hasCustomExt = ['hocr', 'tsv', 'pdf'];
+		$ext = in_array($this->configFile, $hasCustomExt) ? $this->configFile : 'txt';
 		return "{$this->outputFile}.{$ext}";
 	}
 
