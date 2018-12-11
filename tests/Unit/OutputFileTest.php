@@ -32,4 +32,11 @@ class OutputFileTest extends TestCase
 		$expected = '/path/to/output/file.tsv';
 		$this->assertEquals($expected, $this->cmd->getOutputFile());
 	}
+
+	public function testPdf()
+	{
+		$this->cmd->configFile = 'pdf';
+		$expected = '/path/to/output/file.pdf';
+		$this->assertEquals($expected, $this->cmd->getOutputFile());
+	}
 }
