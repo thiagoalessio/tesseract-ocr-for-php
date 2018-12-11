@@ -1,4 +1,5 @@
 <?php namespace thiagoalessio\TesseractOCR\Tests;
+
 require_once __DIR__.'/../vendor/autoload.php';
 
 if (in_array('unit', $argv)) {
