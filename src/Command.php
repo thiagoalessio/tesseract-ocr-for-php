@@ -12,7 +12,7 @@ class Command
 	public function __construct($image=null, $outputFile=null)
 	{
 		$this->image = $image;
-		$this->outputFile = $outputFile ?: tempnam(sys_get_temp_dir(), 'ocr');
+		$this->outputFile = $outputFile;
 	}
 
 	public function build() { return "$this"; }
@@ -23,7 +23,7 @@ class Command
 		if ($this->threadLimit) $cmd[] = "OMP_THREAD_LIMIT={$this->threadLimit}";
 		$cmd[] = self::escape($this->executable);
 		$cmd[] = self::escape($this->image);
-		$cmd[] = $this->outputFile;
+		$cmd[] = $this->getOutputFile(false);
 
 		$version = $this->getTesseractVersion();
 
@@ -35,11 +35,19 @@ class Command
 		return join(' ', $cmd);
 	}
 
-	public function getOutputFile()
+	public function getOutputFile($withExt=true)
 	{
+		if (!$this->outputFile) $this->outputFile = tempnam($this->getTempDir(), 'ocr');
+		if (!$withExt) return $this->outputFile;
+
 		$hasCustomExt = ['hocr', 'tsv', 'pdf'];
 		$ext = in_array($this->configFile, $hasCustomExt) ? $this->configFile : 'txt';
 		return "{$this->outputFile}.{$ext}";
+	}
+
+	public function getTempDir()
+	{
+		return sys_get_temp_dir();
 	}
 
 	public function getTesseractVersion()
