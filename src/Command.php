@@ -5,6 +5,7 @@ class Command
 	public $executable = 'tesseract';
 	public $options = [];
 	public $configFile;
+	public $tempDir;
 	public $threadLimit;
 	public $image;
 	private $outputFile;
@@ -47,7 +48,7 @@ class Command
 
 	public function getTempDir()
 	{
-		return sys_get_temp_dir();
+		return $this->tempDir ?: sys_get_temp_dir();
 	}
 
 	public function getTesseractVersion()
