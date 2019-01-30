@@ -2,10 +2,24 @@
 
 use thiagoalessio\TesseractOCR\Tests\Common\TestCase;
 use thiagoalessio\TesseractOCR\TesseractOCR;
+use thiagoalessio\TesseractOCR\Command;
 use thiagoalessio\TesseractOCR\Tests\Unit\TestableCommand;
 
 class TesseractOCRTest extends TestCase
 {
+	public function setUp()
+	{
+		$this->customTempDir = __DIR__.DIRECTORY_SEPARATOR.'custom-temp-dir';
+		mkdir($this->customTempDir);
+	}
+
+	public function tearDown()
+	{
+		$files = glob(join(DIRECTORY_SEPARATOR, [$this->customTempDir, '*']));
+		array_map('unlink', $files);
+		rmdir($this->customTempDir);
+	}
+
 	public function beforeEach()
 	{
 		$this->tess = new TesseractOCR('image.png', new TestableCommand());
@@ -141,6 +155,17 @@ class TesseractOCRTest extends TestCase
 	{
 		$expected = '"tesseract" "image.png" tmpfile txt';
 		$actual = $this->tess->txt()->command;
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testCustomTempDir()
+	{
+		$cmd = (new TesseractOCR('image.png'))
+			->tempDir($this->customTempDir)
+			->command;
+
+		$expected = "\"tesseract\" \"image.png\" {$this->customTempDir}";
+		$actual = substr("$cmd", 0, strlen($expected));
 		$this->assertEquals("$expected", "$actual");
 	}
 

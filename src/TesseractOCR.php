@@ -45,6 +45,12 @@ class TesseractOCR
 		return $this;
 	}
 
+	public function tempDir($tempDir)
+	{
+		$this->command->tempDir = $tempDir;
+		return $this;
+	}
+
 	public function threadLimit($limit)
 	{
 		$this->command->threadLimit = $limit;
