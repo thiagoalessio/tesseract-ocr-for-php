@@ -421,7 +421,7 @@ instructions.
 tesseract-ocr-for-php is released under the [MIT License][].
 
 
-<h2></h2><p align="center"><sub>Made with <sub><a href="#"><img src="https://thiagoalessio.ams3.digitaloceanspaces.com/heart.svg" alt="love" width="14px"/></a></sub> in Berlin</sub></p>
+<h2></h2><p align="center"><sub>Made with <sub><a href="#"><img src="https://thiagoalessio.github.io/tesseract-ocr-for-php/images/heart.svg" alt="love" width="14px"/></a></sub> in Berlin</sub></p>
 
 [circleci_badge]: https://circleci.com/gh/thiagoalessio/tesseract-ocr-for-php/tree/master.svg?style=shield
 [circleci]: https://circleci.com/gh/thiagoalessio/workflows/tesseract-ocr-for-php/tree/master
@@ -441,8 +441,8 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [tweet_intent]: https://twitter.com/intent/tweet?text=tesseract-ocr-for-php%3A%20A%20wrapper%20to%20work%20with%20Tesseract%20OCR%20inside%20PHP.&url=https://github.com/thiagoalessio/tesseract-ocr-for-php&hashtags=php,tesseract,ocr
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract
 [Composer]: http://getcomposer.org/
-[windows_icon]: https://thiagoalessio.ams3.digitaloceanspaces.com/windows-18.svg
-[macos_icon]: https://thiagoalessio.ams3.digitaloceanspaces.com/apple-18.svg
+[windows_icon]: https://thiagoalessio.github.io/tesseract-ocr-for-php/images/windows-18.svg
+[macos_icon]: https://thiagoalessio.github.io/tesseract-ocr-for-php/images/apple-18.svg
 [tesseract_installation_on_windows]: https://github.com/tesseract-ocr/tesseract/wiki#windows
 [Capture2Text]: https://chocolatey.org/packages/capture2text
 [Chocolatey]: https://chocolatey.org
