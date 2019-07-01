@@ -92,4 +92,10 @@ class OptionTest extends TestCase
 		$config = Option::config('fooBarBazChunkyBacon', 'value');
 		$this->assertEquals('-c "foo_bar_baz_chunky_bacon=value"', $config());
 	}
+
+	public function testCheckMinVersion()
+	{
+		Option::checkMinVersion('3.05', '4.0.0.20190314', 'option');
+		Option::checkMinVersion('3.05', 'v4.0.0.20190314', 'option');
+	}
 }

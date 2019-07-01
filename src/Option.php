@@ -62,6 +62,8 @@ class Option
 
 	public static function checkMinVersion($minVersion, $currVersion, $option)
 	{
+		$minVersion = preg_replace('/^v/', '', $minVersion);
+		$currVersion = preg_replace('/^v/', '', $currVersion);
 		if (!version_compare($currVersion, $minVersion, '<')) return;
 		$msg = "$option option is only available on Tesseract $minVersion or later.";
 		$msg.= PHP_EOL."Your version of Tesseract is $currVersion";
