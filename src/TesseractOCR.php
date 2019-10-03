@@ -109,6 +109,7 @@ class TesseractOCR
 
 	private function cleanTempFiles()
 	{
-		array_map('unlink', glob("{$this->command->getOutputFile(false)}*"));
+		unlink($this->command->getOutputFile(false));
+		unlink($this->command->getOutputFile(true));
 	}
 }

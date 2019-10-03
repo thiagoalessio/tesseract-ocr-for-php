@@ -71,10 +71,8 @@ class ReadmeExamples extends TestCase
 		$ocr = new TesseractOCR("{$this->imagesDir}/text.png");
 		$ocr->run();
 
-		$expected = 0;
-		$actual = sizeof(glob("{$ocr->command->getOutputFile(false)}*"));
-
-		$this->assertEquals($expected, $actual);
+		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(false)));
+		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(true)));
 	}
 
 	protected function isVersion302()
