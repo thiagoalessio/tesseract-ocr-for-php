@@ -65,6 +65,18 @@ class ReadmeExamples extends TestCase
 		$this->assertEquals(true, in_array('spa', $actual));
 	}
 
+	public function testTemporaryFilesAreDeleted()
+	{
+		// https://github.com/thiagoalessio/tesseract-ocr-for-php/issues/169
+		$ocr = new TesseractOCR("{$this->imagesDir}/text.png");
+		$ocr->run();
+
+		$expected = 0;
+		$actual = sizeof(glob("{$ocr->command->getOutputFile(false)}*"));
+
+		$this->assertEquals($expected, $actual);
+	}
+
 	protected function isVersion302()
 	{
 		exec('tesseract --version 2>&1', $output);

@@ -24,6 +24,7 @@ class TesseractOCR
 		FriendlyErrors::checkCommandExecution($this->command, $stdout);
 
 		$text = file_get_contents($this->command->getOutputFile());
+		$this->cleanTempFiles();
 		return trim($text, " \t\n\r\0\x0A\x0B\x0C");
 	}
 
@@ -104,5 +105,10 @@ class TesseractOCR
 	private function getOptionClassName()
 	{
 		return __NAMESPACE__.'\\Option';
+	}
+
+	private function cleanTempFiles()
+	{
+		array_map('unlink', glob("{$this->command->getOutputFile(false)}*"));
 	}
 }
