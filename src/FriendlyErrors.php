@@ -46,7 +46,7 @@ class FriendlyErrors
 
 	public static function checkCommandExecution($command, $stdout)
 	{
-		$file = $command->getOutputFile();
+		$file = $command->getOutputFileWithExt();
 
 		if (file_exists($file) && filesize($file) > 0) return;
 

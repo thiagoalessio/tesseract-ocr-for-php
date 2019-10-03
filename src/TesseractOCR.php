@@ -23,7 +23,7 @@ class TesseractOCR
 
 		FriendlyErrors::checkCommandExecution($this->command, $stdout);
 
-		$text = file_get_contents($this->command->getOutputFile());
+		$text = file_get_contents($this->command->getOutputFileWithExt());
 		$this->cleanTempFiles();
 		return trim($text, " \t\n\r\0\x0A\x0B\x0C");
 	}
@@ -109,7 +109,7 @@ class TesseractOCR
 
 	private function cleanTempFiles()
 	{
-		unlink($this->command->getOutputFile(false));
-		unlink($this->command->getOutputFile(true));
+		unlink($this->command->getOutputFile());
+		unlink($this->command->getOutputFileWithExt());
 	}
 }

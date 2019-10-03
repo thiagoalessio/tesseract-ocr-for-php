@@ -24,7 +24,7 @@ class Command
 		if ($this->threadLimit) $cmd[] = "OMP_THREAD_LIMIT={$this->threadLimit}";
 		$cmd[] = self::escape($this->executable);
 		$cmd[] = self::escape($this->image);
-		$cmd[] = $this->getOutputFile(false);
+		$cmd[] = $this->getOutputFile();
 
 		$version = $this->getTesseractVersion();
 
@@ -36,14 +36,17 @@ class Command
 		return join(' ', $cmd);
 	}
 
-	public function getOutputFile($withExt=true)
+	public function getOutputFile()
 	{
 		if (!$this->outputFile) $this->outputFile = tempnam($this->getTempDir(), 'ocr');
-		if (!$withExt) return $this->outputFile;
+		return $this->outputFile;
+	}
 
+	public function getOutputFileWithExt()
+	{
 		$hasCustomExt = ['hocr', 'tsv', 'pdf'];
 		$ext = in_array($this->configFile, $hasCustomExt) ? $this->configFile : 'txt';
-		return "{$this->outputFile}.{$ext}";
+		return "{$this->getOutputFile()}.{$ext}";
 	}
 
 	public function getTempDir()
