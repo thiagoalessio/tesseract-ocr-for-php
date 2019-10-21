@@ -75,6 +75,54 @@ class ReadmeExamples extends TestCase
 		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(true)));
 	}
 
+	public function testWithoutInputFile()
+	{
+		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
+		$actual = (new TesseractOCR)
+			->imageData(file_get_contents("{$this->imagesDir}/text.png"), filesize("{$this->imagesDir}/text.png"))
+			->executable($this->executable)
+			->run();
+		$this->assertEquals($expected, $actual);
+	}
+
+	public function testWithCraftedImage()
+	{
+		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
+
+		$image = imagecreatetruecolor(600, 1200);
+		$text_color = imagecolorallocate($image, 200, 200, 50);
+		imagettftext($image, 20, 0, 10, 40, $text_color, "/usr/share/fonts/TTF/DejaVuSans.ttf", $expected);
+		list($png, $size) = $this->getPNGImage($image);
+		imagedestroy($image);
+
+		$actual = (new TesseractOCR)
+			->imageData($png, $size)
+			->executable($this->executable)
+			->run();
+		$this->assertEquals($expected, $actual);
+	}
+
+	public function testWithoutOutputFile()
+	{
+		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
+		$actual = (new TesseractOCR("{$this->imagesDir}/text.png"))
+			->executable($this->executable)
+			->withoutTempFiles()
+			->run();
+		$this->assertEquals($expected, $actual);
+	}
+
+	public function testWithoutFiles()
+	{
+		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
+		$actual = (new TesseractOCR)
+			->imageData(file_get_contents("{$this->imagesDir}/text.png"), filesize("{$this->imagesDir}/text.png"))
+			->executable($this->executable)
+			->withoutTempFiles()
+			->run();
+		$this->assertEquals($expected, $actual);
+	}
+
 	protected function isVersion302()
 	{
 		exec('tesseract --version 2>&1', $output);
@@ -88,5 +136,14 @@ class ReadmeExamples extends TestCase
 		exec('tesseract --version 2>&1', $output);
 		$version = explode(' ', $output[0])[1];
 		return version_compare($version, '4.00', '>=');
+	}
+
+	protected function getPNGImage($img)
+	{
+		ob_start();
+		imagepng($img, null, 0);
+		$size = ob_get_length();
+		$img = ob_get_clean();
+		return [$img, $size];
 	}
 }

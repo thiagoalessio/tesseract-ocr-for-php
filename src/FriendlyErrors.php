@@ -44,11 +44,12 @@ class FriendlyErrors
 		throw new TesseractNotFoundException($msg);
 	}
 
-	public static function checkCommandExecution($command, $stdout)
+	public static function checkCommandExecution($command, $stdout, $stderr)
 	{
 		$file = $command->getOutputFileWithExt();
 
-		if (file_exists($file) && filesize($file) > 0) return;
+		if (($command->useFileAsOutput && file_exists($file) && filesize($file) > 0) ||
+			(!$command->useFileAsOutput && $stdout)) return;
 
 		$msg = array();
 		$msg[] = 'Error! The command did not produce any output.';
@@ -57,9 +58,26 @@ class FriendlyErrors
 		$msg[] = "$command";
 		$msg[] = '';
 		$msg[] = 'Returned message:';
-		$msg = array_merge($msg, $stdout);
+		$arrayStderr = explode(PHP_EOL, $stderr);
+		array_pop($arrayStderr);
+		$msg = array_merge($msg, $arrayStderr);
 		$msg = join(PHP_EOL, $msg);
 
 		throw new UnsuccessfulCommandException($msg);
 	}
+
+	public static function checkProcessCreation($processHandle, $command)
+	{
+		if ($processHandle !== FALSE) return;
+
+		$msg = array();
+		$msg[] = 'Error! The command could not be launched.';
+		$msg[] = '';
+		$msg[] = 'Generated command:';
+		$msg[] = "$command";
+		$msg = join(PHP_EOL, $msg);
+
+		throw new UnsuccessfulCommandException($msg);
+	}
+
 }
