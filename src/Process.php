@@ -1,4 +1,5 @@
-<?php namespace thiagoalessio\TesseractOCR;
+<?php
+namespace thiagoalessio\TesseractOCR;
 
 
 class Process {
@@ -23,7 +24,6 @@ class Process {
         //This is can avoid deadlock on some cases (when stderr buffer is filled up before writing to stdout and vice-versa)
         stream_set_blocking($this->stdout, 0);
         stream_set_blocking($this->stderr, 0);
-
     }
 
     public function write($data, $len)
@@ -72,5 +72,4 @@ class Process {
             $stream = NULL;
         }
     }
-
 }

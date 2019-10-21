@@ -90,8 +90,8 @@ class ReadmeExamples extends TestCase
 		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
 
 		$image = imagecreatetruecolor(600, 1200);
-		$text_color = imagecolorallocate($image, 200, 200, 50);
-		imagettftext($image, 20, 0, 10, 40, $text_color, "/usr/share/fonts/TTF/DejaVuSans.ttf", $expected);
+		$textColor = imagecolorallocate($image, 200, 200, 50);
+		imagettftext($image, 20, 0, 10, 40, $textColor, "/usr/share/fonts/TTF/DejaVuSans.ttf", $expected);
 		list($png, $size) = $this->getPNGImage($image);
 		imagedestroy($image);
 
