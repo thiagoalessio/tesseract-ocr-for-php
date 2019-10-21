@@ -1,6 +1,4 @@
-<?php
-namespace thiagoalessio\TesseractOCR;
-
+<?php namespace thiagoalessio\TesseractOCR;
 
 class Process {
 
