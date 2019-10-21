@@ -2,7 +2,7 @@
 version: 2
 
 unit_tests: &unit_tests
-  - run: apt-get -y update && apt-get -y install git
+  - run: apt-get -y update && apt-get -y install git php-gd
   - checkout
   - run: >
       curl -o- 'https://getcomposer.org/installer' |
