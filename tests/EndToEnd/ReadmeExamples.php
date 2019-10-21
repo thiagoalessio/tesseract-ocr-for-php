@@ -7,6 +7,7 @@ class ReadmeExamples extends TestCase
 {
 	private $executable = 'tesseract';
 	private $imagesDir  = './tests/EndToEnd/images';
+	private $fontsDir  = './tests/EndToEnd/fonts';
 
 	public function testBasicUsage()
 	{
@@ -91,7 +92,7 @@ class ReadmeExamples extends TestCase
 
 		$image = imagecreatetruecolor(600, 1200);
 		$textColor = imagecolorallocate($image, 200, 200, 50);
-		imagettftext($image, 20, 0, 10, 40, $textColor, "/usr/share/fonts/TTF/DejaVuSans.ttf", $expected);
+		imagettftext($image, 20, 0, 10, 40, $textColor, "{$this->fontsDir}/DejaVuSans.ttf", $expected);
 		list($png, $size) = $this->getPNGImage($image);
 		imagedestroy($image);
 
