@@ -79,5 +79,4 @@ class FriendlyErrors
 
 		throw new UnsuccessfulCommandException($msg);
 	}
-
 }
