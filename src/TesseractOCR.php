@@ -33,7 +33,7 @@ class TesseractOCR
 
 		if ($this->command->useFileAsOutput)
 		{
-			$text = file_get_contents($this->command->getOutputFileWithExt());
+			$text = file_get_contents($this->command->getOutputFile());
 			$this->cleanTempFiles();
 		}
 		else
@@ -138,7 +138,7 @@ class TesseractOCR
 
 	private function cleanTempFiles()
 	{
-		unlink($this->command->getOutputFile());
-		unlink($this->command->getOutputFileWithExt());
+		unlink($this->command->getOutputFile(false));
+		unlink($this->command->getOutputFile(true));
 	}
 }
