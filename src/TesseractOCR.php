@@ -43,6 +43,7 @@ class TesseractOCR
 
 	public function imageData($image, $size)
 	{
+		FriendlyErrors::checkTesseractVersion("3.03-rc1", "Reading image data from stdin", $this->command);
 		$this->command->useFileAsInput = false;
 		$this->command->image = $image;
 		$this->command->imageSize = $size;
@@ -51,6 +52,7 @@ class TesseractOCR
 
 	public function withoutTempFiles()
 	{
+		FriendlyErrors::checkTesseractVersion("3.03-rc1", "Writing to stdout (without using temp files)", $this->command);
 		$this->command->useFileAsOutput = false;
 		return $this;
 	}
