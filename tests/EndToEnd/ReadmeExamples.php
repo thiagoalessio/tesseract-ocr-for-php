@@ -78,6 +78,9 @@ class ReadmeExamples extends TestCase
 
 	public function testWithoutInputFile()
 	{
+		// Cannot read from stdin in version 3.02
+		if ($this->isVersion302()) $this->skip();
+
 		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
 		$actual = (new TesseractOCR)
 			->imageData(file_get_contents("{$this->imagesDir}/text.png"), filesize("{$this->imagesDir}/text.png"))
@@ -88,6 +91,10 @@ class ReadmeExamples extends TestCase
 
 	public function testWithCraftedImage()
 	{
+
+		// Cannot read from stdin in version 3.02
+		if ($this->isVersion302()) $this->skip();
+
 		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
 
 		$image = imagecreatetruecolor(600, 1200);
@@ -105,6 +112,9 @@ class ReadmeExamples extends TestCase
 
 	public function testWithoutOutputFile()
 	{
+		// Cannot write to stdout in version 3.02
+		if ($this->isVersion302()) $this->skip();
+
 		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
 		$actual = (new TesseractOCR("{$this->imagesDir}/text.png"))
 			->executable($this->executable)
@@ -115,6 +125,9 @@ class ReadmeExamples extends TestCase
 
 	public function testWithoutFiles()
 	{
+		// Cannot read from stdin and write to stdout in version 3.02
+		if ($this->isVersion302()) $this->skip();
+
 		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
 		$actual = (new TesseractOCR)
 			->imageData(file_get_contents("{$this->imagesDir}/text.png"), filesize("{$this->imagesDir}/text.png"))

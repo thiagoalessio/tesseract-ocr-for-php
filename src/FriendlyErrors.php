@@ -3,6 +3,7 @@
 class ImageNotFoundException extends \Exception {}
 class TesseractNotFoundException extends \Exception {}
 class UnsuccessfulCommandException extends \Exception {}
+class FeatureNotAvailableException extends \Exception {}
 
 class FriendlyErrors
 {
@@ -78,5 +79,21 @@ class FriendlyErrors
 		$msg = join(PHP_EOL, $msg);
 
 		throw new UnsuccessfulCommandException($msg);
+	}
+
+	public static function checkTesseractVersion($expected, $action, $command)
+	{
+		$actual = $command->getTesseractVersion();
+		if (version_compare($actual, $expected, ">=")) return;
+
+		$msg = array();
+		$msg[] = "Error! $action is not available this tesseract version";
+		$msg[] = "Required version is $expected, actual version is $actual";
+		$msg[] = '';
+		$msg[] = 'Generated command:';
+		$msg[] = "$command";
+		$msg = join(PHP_EOL, $msg);
+
+		throw new FeatureNotAvailableException($msg);
 	}
 }
