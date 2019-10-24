@@ -22,7 +22,7 @@
 	"require-dev": {
 		"phpunit/php-code-coverage": "^2.2.4",
 		"codacy/coverage": "dev-master",
-		"ext-gd": "^5.4 || ^7.0"
+		"ext-gd": "*"
 	},
 	"autoload": {
 		"psr-4": {
