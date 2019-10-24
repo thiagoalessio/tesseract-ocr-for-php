@@ -27,7 +27,7 @@ class Command
 		if ($this->threadLimit) $cmd[] = "OMP_THREAD_LIMIT={$this->threadLimit}";
 		$cmd[] = self::escape($this->executable);
 		$cmd[] = $this->useFileAsInput ? self::escape($this->image) : "-";
-		$cmd[] = $this->useFileAsOutput ? $this->getOutputFile() : "-";
+		$cmd[] = $this->useFileAsOutput ? self::escape($this->getOutputFile()) : "-";
 
 		$version = $this->getTesseractVersion();
 
