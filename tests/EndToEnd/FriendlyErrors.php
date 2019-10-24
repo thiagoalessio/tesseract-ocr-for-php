@@ -59,7 +59,7 @@ class FriendlyErrors extends TestCase
 		$expected[] = 'Error! The command did not produce any output.';
 		$expected[] = '';
 		$expected[] = 'Generated command:';
-		$expected[] = '"tesseract" "./tests/EndToEnd/images/not-an-image.txt" tmpfile quiet';
+		$expected[] = '"tesseract" "./tests/EndToEnd/images/not-an-image.txt" "tmpfile" quiet';
 		$expected[] = '';
 		$expected[] = 'Returned message:';
 
