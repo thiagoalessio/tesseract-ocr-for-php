@@ -27,14 +27,14 @@ class TesseractOCRTest extends TestCase
 
 	public function testSimplestUsage()
 	{
-		$expected = '"tesseract" "image.png" tmpfile';
+		$expected = '"tesseract" "image.png" "tmpfile"';
 		$actual = $this->tess->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testDelayedSettingOfImagePath()
 	{
-		$expected = '"tesseract" "image.png" tmpfile';
+		$expected = '"tesseract" "image.png" "tmpfile"';
 
 		$ocr = new TesseractOCR(null, new TestableCommand());
 		$ocr->image('image.png');
@@ -45,56 +45,56 @@ class TesseractOCRTest extends TestCase
 
 	public function testCustomExecutablePath()
 	{
-		$expected = '"/custom/path/to/tesseract" "image.png" tmpfile';
+		$expected = '"/custom/path/to/tesseract" "image.png" "tmpfile"';
 		$actual = $this->tess->executable('/custom/path/to/tesseract')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testDefiningOptions()
 	{
-		$expected = '"tesseract" "image.png" tmpfile -l eng hocr';
+		$expected = '"tesseract" "image.png" "tmpfile" -l eng hocr';
 		$actual = $this->tess->lang('eng')->format('hocr')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testWhitelistSingleStringArgument()
 	{
-		$expected = '"tesseract" "image.png" tmpfile -c "tessedit_char_whitelist=abcdefghij"';
+		$expected = '"tesseract" "image.png" "tmpfile" -c "tessedit_char_whitelist=abcdefghij"';
 		$actual = $this->tess->whitelist('abcdefghij')->command;
 		$this->assertEquals("$expected", $actual);
 	}
 
 	public function testWhitelistMultipleStringArguments()
 	{
-		$expected = '"tesseract" "image.png" tmpfile -c "tessedit_char_whitelist=abcdefghij"';
+		$expected = '"tesseract" "image.png" "tmpfile" -c "tessedit_char_whitelist=abcdefghij"';
 		$actual = $this->tess->whitelist('ab', 'cd', 'ef', 'gh', 'ij')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testWhitelistSingleArrayArgument()
 	{
-		$expected = '"tesseract" "image.png" tmpfile -c "tessedit_char_whitelist=abcdefghij"';
+		$expected = '"tesseract" "image.png" "tmpfile" -c "tessedit_char_whitelist=abcdefghij"';
 		$actual = $this->tess->whitelist(range('a', 'j'))->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testWhitelistMultipleArrayArguments()
 	{
-		$expected = '"tesseract" "image.png" tmpfile -c "tessedit_char_whitelist=abcdefghij"';
+		$expected = '"tesseract" "image.png" "tmpfile" -c "tessedit_char_whitelist=abcdefghij"';
 		$actual = $this->tess->whitelist(range('a', 'e'), range('f', 'j'))->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testWhitelistMixedArguments()
 	{
-		$expected = '"tesseract" "image.png" tmpfile -c "tessedit_char_whitelist=0123456789abcdefghij"';
+		$expected = '"tesseract" "image.png" "tmpfile" -c "tessedit_char_whitelist=0123456789abcdefghij"';
 		$actual = $this->tess->whitelist(range(0, 9), 'abcd', range('e', 'j'))->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testDefiningConfigPairs()
 	{
-		$expected = '"tesseract" "image.png" tmpfile '
+		$expected = '"tesseract" "image.png" "tmpfile" '
 			.'-c "load_system_dawg=F" '
 			.'-c "tessedit_create_pdf=1"';
 		$actual = $this->tess->loadSystemDawg('F')->tesseditCreatePdf(1)->command;
@@ -103,7 +103,7 @@ class TesseractOCRTest extends TestCase
 
 	public function testDefiningConfigFile()
 	{
-		$expected = '"tesseract" "image.png" tmpfile tsv';
+		$expected = '"tesseract" "image.png" "tmpfile" tsv';
 		$actual = $this->tess->configFile('tsv')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
@@ -111,67 +111,84 @@ class TesseractOCRTest extends TestCase
 	// @deprecated
 	public function testDefiningFormat()
 	{
-		$expected = '"tesseract" "image.png" tmpfile tsv';
+		$expected = '"tesseract" "image.png" "tmpfile" tsv';
 		$actual = $this->tess->format('tsv')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testDigits()
 	{
-		$expected = '"tesseract" "image.png" tmpfile digits';
+		$expected = '"tesseract" "image.png" "tmpfile" digits';
 		$actual = $this->tess->digits()->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testHocr()
 	{
-		$expected = '"tesseract" "image.png" tmpfile hocr';
+		$expected = '"tesseract" "image.png" "tmpfile" hocr';
 		$actual = $this->tess->hocr()->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testPdf()
 	{
-		$expected = '"tesseract" "image.png" tmpfile pdf';
+		$expected = '"tesseract" "image.png" "tmpfile" pdf';
 		$actual = $this->tess->pdf()->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testQuiet()
 	{
-		$expected = '"tesseract" "image.png" tmpfile quiet';
+		$expected = '"tesseract" "image.png" "tmpfile" quiet';
 		$actual = $this->tess->quiet()->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testTsv()
 	{
-		$expected = '"tesseract" "image.png" tmpfile tsv';
+		$expected = '"tesseract" "image.png" "tmpfile" tsv';
 		$actual = $this->tess->tsv()->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testTxt()
 	{
-		$expected = '"tesseract" "image.png" tmpfile txt';
+		$expected = '"tesseract" "image.png" "tmpfile" txt';
 		$actual = $this->tess->txt()->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testCustomTempDir()
 	{
+		if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') $this->skip();
+
 		$cmd = (new TesseractOCR('image.png'))
 			->tempDir($this->customTempDir)
 			->command;
 
-		$expected = "\"tesseract\" \"image.png\" {$this->customTempDir}";
+		$expected = "\"tesseract\" \"image.png\" \"{$this->customTempDir}";
+		$actual = substr("$cmd", 0, strlen($expected));
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testCustomTempDirWindows()
+	{
+		if (strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') $this->skip();
+
+		$customTempDir = 'C:\Users\Foo Bar\Temp\Dir';
+		if (!file_exists($customTempDir)) mkdir($customTempDir, null, true);
+
+		$cmd = new Command('image.png');
+		$cmd->tempDir = $customTempDir;
+
+		$expected = '"tesseract" "image.png" "C:\Users\Foo Bar\Temp\Dir';
 		$actual = substr("$cmd", 0, strlen($expected));
 		$this->assertEquals("$expected", "$actual");
 	}
 
 	public function testThreadLimit()
 	{
-		$expected = 'OMP_THREAD_LIMIT=4 "tesseract" "image.png" tmpfile';
+		$expected = 'OMP_THREAD_LIMIT=4 "tesseract" "image.png" "tmpfile"';
 		$actual = $this->tess->threadLimit(4)->command;
 		$this->assertEquals("$expected", "$actual");
 	}

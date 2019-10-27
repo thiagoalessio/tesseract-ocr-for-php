@@ -24,7 +24,7 @@ class CommandTest extends TestCase
 	{
 		$cmd = new TestableCommand('image.png');
 
-		$expected = '"tesseract" "image.png" tmpfile';
+		$expected = '"tesseract" "image.png" "tmpfile"';
 		$this->assertEquals("$expected", "$cmd");
 	}
 
@@ -33,7 +33,7 @@ class CommandTest extends TestCase
 		$cmd = new TestableCommand('image.png');
 		$cmd->options[] = Option::lang('eng');
 
-		$expected = '"tesseract" "image.png" tmpfile -l eng';
+		$expected = '"tesseract" "image.png" "tmpfile" -l eng';
 		$this->assertEquals("$expected", "$cmd");
 	}
 
@@ -42,16 +42,33 @@ class CommandTest extends TestCase
 		$cmd = new TestableCommand('image.png');
 		$cmd->configFile = 'hocr';
 
-		$expected = '"tesseract" "image.png" tmpfile hocr';
+		$expected = '"tesseract" "image.png" "tmpfile" hocr';
 		$this->assertEquals("$expected", "$cmd");
 	}
 
 	public function testCustomTempDir()
 	{
+		if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') $this->skip();
+
 		$cmd = new Command('image.png');
 		$cmd->tempDir = $this->customTempDir;
 
-		$expected = "\"tesseract\" \"image.png\" {$this->customTempDir}";
+		$expected = "\"tesseract\" \"image.png\" \"{$this->customTempDir}";
+		$actual = substr("$cmd", 0, strlen($expected));
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testCustomTempDirWindows()
+	{
+		if (strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') $this->skip();
+
+		$customTempDir = 'C:\Users\Foo Bar\Temp\Dir';
+		if (!file_exists($customTempDir)) mkdir($customTempDir, null, true);
+
+		$cmd = new Command('image.png');
+		$cmd->tempDir = $customTempDir;
+
+		$expected = '"tesseract" "image.png" "C:\Users\Foo Bar\Temp\Dir';
 		$actual = substr("$cmd", 0, strlen($expected));
 		$this->assertEquals("$expected", "$actual");
 	}
@@ -61,7 +78,7 @@ class CommandTest extends TestCase
 		$cmd = new TestableCommand('image.png');
 		$cmd->threadLimit = 2;
 
-		$expected = 'OMP_THREAD_LIMIT=2 "tesseract" "image.png" tmpfile';
+		$expected = 'OMP_THREAD_LIMIT=2 "tesseract" "image.png" "tmpfile"';
 		$this->assertEquals("$expected", "$cmd");
 	}
 
@@ -69,7 +86,7 @@ class CommandTest extends TestCase
 	{
 		$cmd = new TestableCommand('$@ ! ? "#\'.png');
 
-		$expected = '"tesseract" "\$@ ! ? \\"#\'.png" tmpfile';
+		$expected = '"tesseract" "\$@ ! ? \\"#\'.png" "tmpfile"';
 		$this->assertEquals("$expected", "$cmd");
 	}
 }
