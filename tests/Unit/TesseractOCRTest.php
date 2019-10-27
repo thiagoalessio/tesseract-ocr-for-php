@@ -164,7 +164,7 @@ class TesseractOCRTest extends TestCase
 			->tempDir($this->customTempDir)
 			->command;
 
-		$expected = "\"tesseract\" \"image.png\" {$this->customTempDir}";
+		$expected = "\"tesseract\" \"image.png\" \"{$this->customTempDir}";
 		$actual = substr("$cmd", 0, strlen($expected));
 		$this->assertEquals("$expected", "$actual");
 	}

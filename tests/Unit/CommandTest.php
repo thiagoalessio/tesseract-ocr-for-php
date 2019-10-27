@@ -51,7 +51,7 @@ class CommandTest extends TestCase
 		$cmd = new Command('image.png');
 		$cmd->tempDir = $this->customTempDir;
 
-		$expected = "\"tesseract\" \"image.png\" {$this->customTempDir}";
+		$expected = "\"tesseract\" \"image.png\" \"{$this->customTempDir}";
 		$actual = substr("$cmd", 0, strlen($expected));
 		$this->assertEquals("$expected", "$actual");
 	}
