@@ -7,7 +7,6 @@ class ReadmeExamples extends TestCase
 {
 	private $executable = 'tesseract';
 	private $imagesDir  = './tests/EndToEnd/images';
-	private $fontsDir  = './tests/EndToEnd/fonts';
 
 	public function testBasicUsage()
 	{
@@ -89,27 +88,6 @@ class ReadmeExamples extends TestCase
 		$this->assertEquals($expected, $actual);
 	}
 
-	public function testWithCraftedImage()
-	{
-
-		// Cannot read from stdin in version 3.02
-		if ($this->isVersion302()) $this->skip();
-
-		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
-
-		$image = imagecreatetruecolor(600, 1200);
-		$textColor = imagecolorallocate($image, 200, 200, 50);
-		imagettftext($image, 20, 0, 10, 40, $textColor, "{$this->fontsDir}/DejaVuSans.ttf", $expected);
-		list($png, $size) = $this->getPNGImage($image);
-		imagedestroy($image);
-
-		$actual = (new TesseractOCR)
-			->imageData($png, $size)
-			->executable($this->executable)
-			->run();
-		$this->assertEquals($expected, $actual);
-	}
-
 	public function testWithoutOutputFile()
 	{
 		// Cannot write to stdout in version 3.02
@@ -150,14 +128,5 @@ class ReadmeExamples extends TestCase
 		exec('tesseract --version 2>&1', $output);
 		$version = explode(' ', $output[0])[1];
 		return version_compare($version, '4.00', '>=');
-	}
-
-	protected function getPNGImage($img)
-	{
-		ob_start();
-		imagepng($img, null, 0);
-		$size = ob_get_length();
-		$img = ob_get_clean();
-		return [$img, $size];
 	}
 }
