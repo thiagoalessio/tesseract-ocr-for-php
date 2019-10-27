@@ -14,7 +14,7 @@ class ReadmeExamples extends TestCase
 		$actual = (new TesseractOCR("{$this->imagesDir}/text.png"))
 			->executable($this->executable)
 			->run();
-		$this->assertEquals($expected, $actual);
+		$this->assertEquals($expected, str_replace(PHP_EOL, "\n", $actual));
 	}
 
 	public function testOtherLanguages()
@@ -86,6 +86,7 @@ class ReadmeExamples extends TestCase
 			->executable($this->executable)
 			->run();
 		$this->assertEquals($expected, $actual);
+		$this->assertEquals($expected, str_replace(PHP_EOL, "\n", $actual));
 	}
 
 	public function testWithoutOutputFile()
@@ -98,7 +99,7 @@ class ReadmeExamples extends TestCase
 			->executable($this->executable)
 			->withoutTempFiles()
 			->run();
-		$this->assertEquals($expected, $actual);
+		$this->assertEquals($expected, str_replace(PHP_EOL, "\n", $actual));
 	}
 
 	public function testWithoutFiles()
@@ -112,7 +113,7 @@ class ReadmeExamples extends TestCase
 			->executable($this->executable)
 			->withoutTempFiles()
 			->run();
-		$this->assertEquals($expected, $actual);
+		$this->assertEquals($expected, str_replace(PHP_EOL, "\n", $actual));
 	}
 
 	protected function isVersion302()
