@@ -2,8 +2,7 @@
 version: 2
 
 unit_tests: &unit_tests
-  - run: apt-get -y update && apt-get -y install git libpng-dev
-  - run: docker-php-ext-install gd
+  - run: apt-get -y update && apt-get -y install git
   - checkout
   - run: >
       curl -o- 'https://getcomposer.org/installer' |
@@ -13,28 +12,9 @@ unit_tests: &unit_tests
 
 all_tests: &all_tests
   - checkout
-  - run: >
-        ID=unknown;
-        . /etc/os-release;
-        if test "$ID" == 'arch' ;
-           then cp /usr/lib/libreadline.so.7.0 /root;
-           pacman -Sy --noconfirm php php-gd readline;
-           cp /root/libreadline.so.7.0 /usr/lib/;
-           ln -s /usr/lib/libreadline.so.7.0 /usr/lib/libreadline.so.7;
-           sed -i s/\;extension=gd/extension=gd/ /etc/php/php.ini;
-           curl -L --output glib.tar.xz https://archive.archlinux.org/packages/g/glibc/glibc-2.29-4-x86_64.pkg.tar.xz;
-           pacman -U --noconfirm glib.tar.xz;
-        else
-           if test $VERSION_ID -le 8 ;
-              then
-              PHP_VERSION=5;
-           fi;
-           sed -i s/wheezy/jessie/g /etc/apt/sources.list;
-           apt-get -y update && apt-get -y install php$PHP_VERSION-gd ;
-        fi
   - run: composer install
   - run: php tests/run.php unit e2e
-  - run: if test "$CODACY_PROJECT_TOKEN" != "" ; then vendor/bin/codacycoverage clover ./coverage.xml ; fi;
+  - run: vendor/bin/codacycoverage clover ./coverage.xml
 
 jobs:
   php-5.4:
@@ -42,9 +22,6 @@ jobs:
       - image: thiagoalessio/php:5.4
     steps:
       - checkout
-      - run: sed -i s/wheezy/jessie/g /etc/apt/sources.list
-      - run: apt-get -y update&&apt-get -y install php5-gd
-      - run: extension=gd.so>>/etc/php5/cli/php.ini
       - run: composer install
       - run: php tests/run.php unit
 
