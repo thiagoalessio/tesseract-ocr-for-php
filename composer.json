@@ -21,8 +21,7 @@
 	},
 	"require-dev": {
 		"phpunit/php-code-coverage": "^2.2.4",
-		"codacy/coverage": "dev-master",
-		"ext-gd": "*"
+		"codacy/coverage": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
