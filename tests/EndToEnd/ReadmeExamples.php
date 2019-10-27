@@ -14,7 +14,7 @@ class ReadmeExamples extends TestCase
 		$actual = (new TesseractOCR("{$this->imagesDir}/text.png"))
 			->executable($this->executable)
 			->run();
-		$this->assertEquals($expected, $actual);
+		$this->assertEquals($expected, str_replace(PHP_EOL, "\n", $actual));
 	}
 
 	public function testOtherLanguages()
@@ -73,6 +73,47 @@ class ReadmeExamples extends TestCase
 
 		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(false)));
 		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(true)));
+	}
+
+	public function testWithoutInputFile()
+	{
+		// Cannot read from stdin in version 3.02
+		if ($this->isVersion302()) $this->skip();
+
+		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
+		$actual = (new TesseractOCR)
+			->imageData(file_get_contents("{$this->imagesDir}/text.png"), filesize("{$this->imagesDir}/text.png"))
+			->executable($this->executable)
+			->run();
+		$this->assertEquals($expected, $actual);
+		$this->assertEquals($expected, str_replace(PHP_EOL, "\n", $actual));
+	}
+
+	public function testWithoutOutputFile()
+	{
+		// Cannot write to stdout in version 3.02
+		if ($this->isVersion302()) $this->skip();
+
+		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
+		$actual = (new TesseractOCR("{$this->imagesDir}/text.png"))
+			->executable($this->executable)
+			->withoutTempFiles()
+			->run();
+		$this->assertEquals($expected, str_replace(PHP_EOL, "\n", $actual));
+	}
+
+	public function testWithoutFiles()
+	{
+		// Cannot read from stdin and write to stdout in version 3.02
+		if ($this->isVersion302()) $this->skip();
+
+		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
+		$actual = (new TesseractOCR)
+			->imageData(file_get_contents("{$this->imagesDir}/text.png"), filesize("{$this->imagesDir}/text.png"))
+			->executable($this->executable)
+			->withoutTempFiles()
+			->run();
+		$this->assertEquals($expected, str_replace(PHP_EOL, "\n", $actual));
 	}
 
 	protected function isVersion302()

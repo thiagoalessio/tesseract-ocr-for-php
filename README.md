@@ -143,6 +143,27 @@ $ocr->image('/path/to/image.png');
 $ocr->run();
 ```
 
+### imageData
+
+Set the image to be recognized by `tesseract` from a string, with its size.
+This can be useful when dealing with files that are already loaded in memory.
+You can easily retrieve the image data and size of an image object :
+```php
+//Using Imagick
+$data = $img->getImageBlob();
+$size = $img->getImageLength();
+//Using GD
+ob_start();
+// Note that you can use any format supported by tesseract
+imagepng($img, null, 0);
+$size = ob_get_length();
+$data = ob_get_clean();
+
+$ocr = new TesseractOCR();
+$ocr->imageData($data, $size);
+$ocr->run();
+```
+
 ### executable
 
 Define a custom location of the `tesseract` executable,
@@ -352,6 +373,17 @@ to write in there.
 ```php
 echo (new TesseractOCR('img.png'))
     ->tempDir('./my/custom/temp/dir')
+    ->run();
+```
+
+### withoutTempFiles
+
+Specify that `tesseract` should output the recognized text without writing to temporary files.
+The data is gathered from the standard output of `tesseract` instead.
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->withoutTempFiles()
     ->run();
 ```
 

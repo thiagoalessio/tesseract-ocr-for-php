@@ -17,15 +17,44 @@ class TesseractOCR
 	public function run()
 	{
 		FriendlyErrors::checkTesseractPresence($this->command->executable);
-		FriendlyErrors::checkImagePath($this->command->image);
+		if ($this->command->useFileAsInput)
+			FriendlyErrors::checkImagePath($this->command->image);
 
-		exec("{$this->command} 2>&1", $stdout);
+		$process = new Process("{$this->command}");
 
-		FriendlyErrors::checkCommandExecution($this->command, $stdout);
+		if (! $this->command->useFileAsInput)
+		{
+			$process->write($this->command->image, $this->command->imageSize);
+			$process->closeStdin();
+		}
+		$output = $process->wait();
 
-		$text = file_get_contents($this->command->getOutputFileWithExt());
-		$this->cleanTempFiles();
+		FriendlyErrors::checkCommandExecution($this->command, $output["out"], $output["err"]);
+
+		if ($this->command->useFileAsOutput)
+		{
+			$text = file_get_contents($this->command->getOutputFileWithExt());
+			$this->cleanTempFiles();
+		}
+		else
+			$text = $output["out"];
 		return trim($text, " \t\n\r\0\x0A\x0B\x0C");
+	}
+
+	public function imageData($image, $size)
+	{
+		FriendlyErrors::checkTesseractVersion("3.03-rc1", "Reading image data from stdin", $this->command);
+		$this->command->useFileAsInput = false;
+		$this->command->image = $image;
+		$this->command->imageSize = $size;
+		return $this;
+	}
+
+	public function withoutTempFiles()
+	{
+		FriendlyErrors::checkTesseractVersion("3.03-rc1", "Writing to stdout (without using temp files)", $this->command);
+		$this->command->useFileAsOutput = false;
+		return $this;
 	}
 
 	public function image($image)

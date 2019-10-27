@@ -69,8 +69,6 @@ class FriendlyErrors extends TestCase
 				$expected[] = 'read_params_file: Can\'t open quiet';
 				$expected[] = 'Error in pixReadStream: Unknown format: no pix returned';
 				$expected[] = 'Error in pixRead: pix not read';
-				$expected[] = 'Tesseract Open Source OCR Engine v3.02 with Leptonica';
-				$expected[] = 'Unsupported image type.';
 				break;
 
 			case ($this->isVersion('3.03')):

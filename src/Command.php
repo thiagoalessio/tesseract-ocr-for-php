@@ -3,11 +3,14 @@
 class Command
 {
 	public $executable = 'tesseract';
+	public $useFileAsInput = true;
+	public $useFileAsOutput = true;
 	public $options = [];
 	public $configFile;
 	public $tempDir;
 	public $threadLimit;
 	public $image;
+	public $imageSize;
 	private $outputFile;
 
 	public function __construct($image=null, $outputFile=null)
@@ -23,8 +26,8 @@ class Command
 		$cmd = [];
 		if ($this->threadLimit) $cmd[] = "OMP_THREAD_LIMIT={$this->threadLimit}";
 		$cmd[] = self::escape($this->executable);
-		$cmd[] = self::escape($this->image);
-		$cmd[] = $this->getOutputFile();
+		$cmd[] = $this->useFileAsInput ? self::escape($this->image) : "-";
+		$cmd[] = $this->useFileAsOutput ? $this->getOutputFile() : "-";
 
 		$version = $this->getTesseractVersion();
 
