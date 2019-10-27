@@ -160,11 +160,28 @@ class TesseractOCRTest extends TestCase
 
 	public function testCustomTempDir()
 	{
+		if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') $this->skip();
+
 		$cmd = (new TesseractOCR('image.png'))
 			->tempDir($this->customTempDir)
 			->command;
 
 		$expected = "\"tesseract\" \"image.png\" \"{$this->customTempDir}";
+		$actual = substr("$cmd", 0, strlen($expected));
+		$this->assertEquals("$expected", "$actual");
+	}
+
+	public function testCustomTempDirWindows()
+	{
+		if (strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') $this->skip();
+
+		$customTempDir = 'C:\Users\Foo Bar\Temp\Dir';
+		if (!file_exists($customTempDir)) mkdir($customTempDir, null, true);
+
+		$cmd = new Command('image.png');
+		$cmd->tempDir = $customTempDir;
+
+		$expected = '"tesseract" "image.png" "C:\Users\Foo Bar\Temp\Dir';
 		$actual = substr("$cmd", 0, strlen($expected));
 		$this->assertEquals("$expected", "$actual");
 	}

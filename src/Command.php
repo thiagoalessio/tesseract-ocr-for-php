@@ -41,7 +41,10 @@ class Command
 
 	public function getOutputFile($withExt=true)
 	{
-		if (!$this->outputFile) $this->outputFile = tempnam($this->getTempDir(), 'ocr');
+		if (!$this->outputFile)
+			$this->outputFile = $this->getTempDir()
+				.DIRECTORY_SEPARATOR
+				.basename(tempnam($this->getTempDir(), 'ocr'));
 		if (!$withExt) return $this->outputFile;
 
 		$hasCustomExt = ['hocr', 'tsv', 'pdf'];
@@ -70,6 +73,7 @@ class Command
 
 	public static function escape($str)
 	{
-		return '"'.str_replace('$', '\$', addcslashes($str, '\\"')).'"';
+		$charlist = strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' ? '$"' : '$"\\';
+		return '"'.addcslashes($str, $charlist).'"';
 	}
 }
