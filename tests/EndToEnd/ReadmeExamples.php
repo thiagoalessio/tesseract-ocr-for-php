@@ -74,6 +74,26 @@ class ReadmeExamples extends TestCase
 		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(false)));
 		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(true)));
 	}
+	
+	public function testOutputFileIsCreated()
+	{
+		// https://github.com/thiagoalessio/tesseract-ocr-for-php/issues/174
+		// Tesseract can not extract Files in version 3.02
+		if ($this->isVersion302()) $this->skip();
+
+		$outputFileName = "/output.hocr";
+		$outputFolderName = sys_get_temp_dir() . "/output";
+		$ocr = new TesseractOCR("{$this->imagesDir}/text.png");
+		$ocr->setOutputFile($outputFolderName . $outputFileName);
+		$ocr->configFile('hocr');
+		$ocr->run();
+
+		$this->assertEquals(true, file_exists($outputFolderName . $outputFileName));
+		unlink($outputFolderName . $outputFileName);
+		rmdir($outputFolderName);
+		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(false)));
+		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(true)));
+	}
 
 	public function testWithoutInputFile()
 	{
