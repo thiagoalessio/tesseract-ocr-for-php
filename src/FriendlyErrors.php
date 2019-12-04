@@ -4,6 +4,7 @@ class ImageNotFoundException extends \Exception {}
 class TesseractNotFoundException extends \Exception {}
 class UnsuccessfulCommandException extends \Exception {}
 class FeatureNotAvailableException extends \Exception {}
+class NoWritePermissionsForOutputFile extends \Exception {}
 
 class FriendlyErrors
 {
@@ -95,5 +96,23 @@ class FriendlyErrors
 		$msg = join(PHP_EOL, $msg);
 
 		throw new FeatureNotAvailableException($msg);
+	}
+	
+	public static function checkWritePermissions($path)
+	{
+		if (!is_dir(dirname($path))) mkdir(dirname($path));
+		$writableDirectory = is_writable(dirname($path));
+		$writableFile = true;
+		if (file_exists($path)) $writableFile = is_writable($path);
+		if ($writableFile && $writableDirectory) return;
+
+		$msg = array();
+		$msg[] = "Error! No permission to write to $path";
+		$msg[] = "Make sure you have the right outputFile and permissions "
+			."to write to the folder";
+		$msg[] = '';
+		$msg = join(PHP_EOL, $msg);
+
+		throw new NoWritePermissionsForOutputFile($msg);
 	}
 }

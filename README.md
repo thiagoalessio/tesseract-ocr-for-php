@@ -304,6 +304,22 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
+### setOutputFile
+
+Specify an Outputfile to be used. Be aware: If you set an outputfile then
+the option `withoutTempFiles` is ignored.
+Tempfiles are written (and deleted) even if `withoutTempFiles = true`.
+
+In combination with `configFile` you are able to get the `hocr`, `tsv` or
+`pdf` files.
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->configFile('pdf')
+    ->setOutputFile('/PATH_TO_MY_OUTPUTFILE/searchable.pdf');
+    ->run();
+```
+
 ### digits
 
 Shortcut for `->configFile('digits')`.

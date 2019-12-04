@@ -7,6 +7,7 @@ use thiagoalessio\TesseractOCR\FriendlyErrors;
 class TesseractOCR
 {
 	public $command;
+	private $outputFile = null;
 
 	public function __construct($image=null, $command=null)
 	{
@@ -16,6 +17,11 @@ class TesseractOCR
 
 	public function run()
 	{
+		if ($this->outputFile !== null) {
+			FriendlyErrors::checkWritePermissions($this->outputFile);
+			$this->command->useFileAsOutput = true;
+		}
+
 		FriendlyErrors::checkTesseractPresence($this->command->executable);
 		if ($this->command->useFileAsInput)
 			FriendlyErrors::checkImagePath($this->command->image);
@@ -34,6 +40,11 @@ class TesseractOCR
 		if ($this->command->useFileAsOutput)
 		{
 			$text = file_get_contents($this->command->getOutputFile());
+
+			if ($this->outputFile !== null) {
+				rename($this->command->getOutputFile(), $this->outputFile);
+			}
+
 			$this->cleanTempFiles();
 		}
 		else
@@ -90,6 +101,11 @@ class TesseractOCR
 	// @deprecated
 	public function format($fmt) { return $this->configFile($fmt); }
 
+	public function setOutputFile($path) {
+		$this->outputFile = $path;
+		return $this;
+	}
+
 	public function whitelist()
 	{
 		$concat = function ($arg) { return is_array($arg) ? join('', $arg) : $arg; };
@@ -138,7 +154,11 @@ class TesseractOCR
 
 	private function cleanTempFiles()
 	{
-		unlink($this->command->getOutputFile(false));
-		unlink($this->command->getOutputFile(true));
+		if (file_exists($this->command->getOutputFile(false))) {
+			unlink($this->command->getOutputFile(false));
+		}
+		if (file_exists($this->command->getOutputFile(true))) {
+			unlink($this->command->getOutputFile(true));
+		}
 	}
 }
