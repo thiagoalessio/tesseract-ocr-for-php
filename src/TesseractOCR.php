@@ -103,6 +103,7 @@ class TesseractOCR
 
 	public function setOutputFile($path) {
 		$this->outputFile = $path;
+		return $this;
 	}
 
 	public function whitelist()
@@ -153,12 +154,10 @@ class TesseractOCR
 
 	private function cleanTempFiles()
 	{
-		if (file_exists($this->command->getOutputFile(false)))
-		{   
+		if (file_exists($this->command->getOutputFile(false))) {
 			unlink($this->command->getOutputFile(false));
 		}
-		if (file_exists($this->command->getOutputFile(true)))
-		{
+		if (file_exists($this->command->getOutputFile(true))) {
 			unlink($this->command->getOutputFile(true));
 		}
 	}

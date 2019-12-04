@@ -199,4 +199,11 @@ class TesseractOCRTest extends TestCase
 		$actual = $this->tess->version();
 		$this->assertEquals("$expected", "$actual");
 	}
+
+	public function testSetOutputFile()
+	{
+		$expected = '"tesseract" "image.png" "tmpfile" pdf';
+		$actual = $this->tess->configFile('pdf')->setOutputFile('/foo/bar.pdf')->command;
+		$this->assertEquals("$expected", "$actual");
+	}
 }

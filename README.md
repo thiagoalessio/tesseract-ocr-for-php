@@ -306,10 +306,12 @@ echo (new TesseractOCR('img.png'))
 
 ### setOutputFile
 
-Specify an Outputfile to be used. Be aware: If you set an outputfile then the option `withoutTempFiles` is ignored. 
+Specify an Outputfile to be used. Be aware: If you set an outputfile then
+the option `withoutTempFiles` is ignored.
 Tempfiles are written (and deleted) even if `withoutTempFiles = true`.
 
-In combination with `configFile` you are able to get the hocr, tsv or pdf files.
+In combination with `configFile` you are able to get the `hocr`, `tsv` or
+`pdf` files.
 
 ```php
 echo (new TesseractOCR('img.png'))
