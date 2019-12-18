@@ -85,6 +85,10 @@ class FriendlyErrors
 	public static function checkTesseractVersion($expected, $action, $command)
 	{
 		$actual = $command->getTesseractVersion();
+
+		if ($actual[0] === 'v')
+			$actual = substr($actual, 1);
+
 		if (version_compare($actual, $expected, ">=")) return;
 
 		$msg = array();
@@ -97,7 +101,7 @@ class FriendlyErrors
 
 		throw new FeatureNotAvailableException($msg);
 	}
-	
+
 	public static function checkWritePermissions($path)
 	{
 		if (!is_dir(dirname($path))) mkdir(dirname($path));
