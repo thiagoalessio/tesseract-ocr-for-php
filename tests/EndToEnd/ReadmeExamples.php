@@ -2,6 +2,7 @@
 
 use thiagoalessio\TesseractOCR\Tests\Common\TestCase;
 use thiagoalessio\TesseractOCR\TesseractOCR;
+use ReflectionObject;
 
 class ReadmeExamples extends TestCase
 {
@@ -73,6 +74,23 @@ class ReadmeExamples extends TestCase
 
 		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(false)));
 		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(true)));
+	}
+
+	public function testTemporaryFilesAreNotCreated()
+	{
+		// Cannot read from stdin in version 3.02
+		if ($this->isVersion302()) $this->skip();
+
+		$ocr = new TesseractOCR("{$this->imagesDir}/text.png");
+		$ocr->withoutTempFiles();
+		$ocr->run();
+
+		$reflectionProperty = (new ReflectionObject($ocr->command))->getProperty('outputFile');
+		$reflectionProperty->setAccessible(true);
+		$outputFileValue = $reflectionProperty->getValue($ocr->command);
+		echo $outputFileValue;
+
+		$this->assertEquals(null, $outputFileValue);
 	}
 
 	public function testWithoutInputFile()
