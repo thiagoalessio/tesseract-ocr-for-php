@@ -74,10 +74,16 @@ class ReadmeExamples extends TestCase
 
 		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(false)));
 		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(true)));
+	}
+
+	public function testTemporaryFilesAreNotCreated()
+    {
+        // Cannot read from stdin in version 3.02
+		if ($this->isVersion302()) $this->skip();
 
 		$ocr = new TesseractOCR("{$this->imagesDir}/text.png");
 		$ocr->withoutTempFiles();
-		$ocr->run();
+        $ocr->run();
 
 		$reflectionProperty = (new ReflectionObject($ocr->command))->getProperty('outputFile');
 		$reflectionProperty->setAccessible(true);
@@ -85,7 +91,7 @@ class ReadmeExamples extends TestCase
 		echo $outputFileValue;
 
 		$this->assertEquals(null, $outputFileValue);
-	}
+    }
 
 	public function testWithoutInputFile()
 	{
