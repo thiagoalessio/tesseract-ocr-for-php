@@ -48,10 +48,14 @@ class FriendlyErrors
 
 	public static function checkCommandExecution($command, $stdout, $stderr)
 	{
-		$file = $command->getOutputFile();
+		if ($command->useFileAsOutput) {
+		    $file = $command->getOutputFile();
+		    if (file_exists($file) && filesize($file) > 0)  return;
+		}
 
-		if (($command->useFileAsOutput && file_exists($file) && filesize($file) > 0) ||
-			(!$command->useFileAsOutput && $stdout)) return;
+		if (!$command->useFileAsOutput && $stdout) {
+			return;
+		}
 
 		$msg = array();
 		$msg[] = 'Error! The command did not produce any output.';
