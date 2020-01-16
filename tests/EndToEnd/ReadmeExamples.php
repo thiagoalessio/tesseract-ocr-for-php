@@ -1,5 +1,6 @@
 <?php namespace thiagoalessio\TesseractOCR\Tests\EndToEnd;
 
+use thiagoalessio\TesseractOCR\TesseractOcrException;
 use thiagoalessio\TesseractOCR\Tests\Common\TestCase;
 use thiagoalessio\TesseractOCR\TesseractOCR;
 use ReflectionObject;
@@ -88,9 +89,23 @@ class ReadmeExamples extends TestCase
 		$reflectionProperty = (new ReflectionObject($ocr->command))->getProperty('outputFile');
 		$reflectionProperty->setAccessible(true);
 		$outputFileValue = $reflectionProperty->getValue($ocr->command);
-		echo $outputFileValue;
 
 		$this->assertEquals(null, $outputFileValue);
+	}
+
+	public function testTemporaryFilesAreDeletedInCaseOfException()
+	{
+
+		try {
+			$ocr = new TesseractOCR("{$this->imagesDir}/not-an-image.txt");
+			$ocr->run();
+		}
+		catch (TesseractOcrException $e) {
+
+		}
+
+		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(false)));
+		$this->assertEquals(false, file_exists($ocr->command->getOutputFile(true)));
 	}
 
 	public function testWithoutInputFile()
