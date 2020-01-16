@@ -17,28 +17,33 @@ class TesseractOCR
 
 	public function run()
 	{
-		if ($this->outputFile !== null) {
-			FriendlyErrors::checkWritePermissions($this->outputFile);
-			$this->command->useFileAsOutput = true;
+		try {
+			if ($this->outputFile !== null) {
+				FriendlyErrors::checkWritePermissions($this->outputFile);
+				$this->command->useFileAsOutput = true;
+			}
+
+			FriendlyErrors::checkTesseractPresence($this->command->executable);
+			if ($this->command->useFileAsInput) {
+				FriendlyErrors::checkImagePath($this->command->image);
+			}
+
+			$process = new Process("{$this->command}");
+
+			if (!$this->command->useFileAsInput) {
+				$process->write($this->command->image, $this->command->imageSize);
+				$process->closeStdin();
+			}
+			$output = $process->wait();
+
+			FriendlyErrors::checkCommandExecution($this->command, $output["out"], $output["err"]);
+		}
+		catch (TesseractOcrException $e) {
+			if ($this->command->useFileAsOutput) $this->cleanTempFiles();
+			throw $e;
 		}
 
-		FriendlyErrors::checkTesseractPresence($this->command->executable);
-		if ($this->command->useFileAsInput)
-			FriendlyErrors::checkImagePath($this->command->image);
-
-		$process = new Process("{$this->command}");
-
-		if (! $this->command->useFileAsInput)
-		{
-			$process->write($this->command->image, $this->command->imageSize);
-			$process->closeStdin();
-		}
-		$output = $process->wait();
-
-		FriendlyErrors::checkCommandExecution($this->command, $output["out"], $output["err"]);
-
-		if ($this->command->useFileAsOutput)
-		{
+		if ($this->command->useFileAsOutput) {
 			$text = file_get_contents($this->command->getOutputFile());
 
 			if ($this->outputFile !== null) {
@@ -49,6 +54,7 @@ class TesseractOCR
 		}
 		else
 			$text = $output["out"];
+
 		return trim($text, " \t\n\r\0\x0A\x0B\x0C");
 	}
 

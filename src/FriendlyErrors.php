@@ -1,10 +1,12 @@
 <?php namespace thiagoalessio\TesseractOCR;
 
-class ImageNotFoundException extends \Exception {}
-class TesseractNotFoundException extends \Exception {}
-class UnsuccessfulCommandException extends \Exception {}
-class FeatureNotAvailableException extends \Exception {}
-class NoWritePermissionsForOutputFile extends \Exception {}
+abstract class TesseractOcrException extends \Exception {}
+
+class ImageNotFoundException extends TesseractOcrException {}
+class TesseractNotFoundException extends TesseractOcrException {}
+class UnsuccessfulCommandException extends TesseractOcrException {}
+class FeatureNotAvailableException extends TesseractOcrException {}
+class NoWritePermissionsForOutputFile extends TesseractOcrException {}
 
 class FriendlyErrors
 {
