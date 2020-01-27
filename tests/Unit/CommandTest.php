@@ -84,9 +84,9 @@ class CommandTest extends TestCase
 
 	public function testEscapeSpecialCharactersOnFilename()
 	{
-		$cmd = new TestableCommand('$@ ! ? "#\'.png');
+		$cmd = new TestableCommand('$@ ! ? "#\'_`foo.png');
 
-		$expected = '"tesseract" "\$@ ! ? \\"#\'.png" "tmpfile"';
+		$expected = '"tesseract" "\$@ ! ? \\"#\'_\`foo.png" "tmpfile"';
 		$this->assertEquals("$expected", "$cmd");
 	}
 }

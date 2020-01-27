@@ -149,6 +149,15 @@ class ReadmeExamples extends TestCase
 		$this->assertEquals($expected, str_replace(PHP_EOL, "\n", $actual));
 	}
 
+	public function testBacktickOnFilenames()
+	{
+		$expected = "The quick brown fox\njumps over\nthe lazy dog.";
+		$actual = (new TesseractOCR("{$this->imagesDir}/file`with`backtick.png"))
+			->executable($this->executable)
+			->run();
+		$this->assertEquals($expected, str_replace(PHP_EOL, "\n", $actual));
+	}
+
 	protected function isVersion302()
 	{
 		exec('tesseract --version 2>&1', $output);

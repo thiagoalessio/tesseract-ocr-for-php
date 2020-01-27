@@ -73,7 +73,7 @@ class Command
 
 	public static function escape($str)
 	{
-		$charlist = strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' ? '$"' : '$"\\';
+		$charlist = strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' ? '$"`' : '$"\\`';
 		return '"'.addcslashes($str, $charlist).'"';
 	}
 }
