@@ -57,7 +57,7 @@ jobs:
     
   php-8.0:
     docker:
-      - image: php:8.0-rc
+      - image: php:8.0
     steps: *unit_tests
 
   tess-3.02:
