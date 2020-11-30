@@ -54,6 +54,11 @@ jobs:
     docker:
       - image: php:7.4
     steps: *unit_tests
+    
+  php-8.0:
+    docker:
+      - image: php:8.0-rc
+    steps: *unit_tests
 
   tess-3.02:
     docker:
@@ -88,6 +93,7 @@ php_jobs: &php_jobs
   - php-7.2
   - php-7.3
   - php-7.4
+  - php-8.0
 
 workflows:
   version: 2
@@ -100,6 +106,7 @@ workflows:
       - php-7.2
       - php-7.3
       - php-7.4
+      - php-8.0
       - tess-3.02:
           requires: *php_jobs
       - tess-3.03:
