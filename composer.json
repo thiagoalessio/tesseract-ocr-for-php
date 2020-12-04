@@ -17,10 +17,10 @@
 		"source": "https://github.com/thiagoalessio/tesseract-ocr-for-php"
 	},
 	"require": {
-		"php": "^5.4 || ^7.0"
+		"php": "^5.4 || ^7.0 || ^8.0"
 	},
 	"require-dev": {
-		"phpunit/php-code-coverage": "^2.2.4",
+		"phpunit/php-code-coverage": "^2.2.4 || ^9.0.0",
 		"codacy/coverage": "dev-master"
 	},
 	"autoload": {
