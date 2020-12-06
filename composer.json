@@ -20,8 +20,7 @@
 		"php": "^5.4 || ^7.0 || ^8.0"
 	},
 	"require-dev": {
-		"phpunit/php-code-coverage": "^2.2.4 || ^9.0.0",
-		"codacy/coverage": "dev-master"
+		"phpunit/php-code-coverage": "^2.2.4 || ^9.0.0"
 	},
 	"autoload": {
 		"psr-4": {
