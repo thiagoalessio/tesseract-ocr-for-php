@@ -62,27 +62,37 @@ jobs:
 
   tess-3.02:
     docker:
-      - image: thiagoalessio/tesseract:3.02
+      - image: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:3.02
     steps: *all_tests
 
   tess-3.03:
     docker:
-      - image: thiagoalessio/tesseract:3.03
+      - image: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:3.03
     steps: *all_tests
 
   tess-3.04:
     docker:
-      - image: thiagoalessio/tesseract:3.04
+      - image: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:3.04
     steps: *all_tests
 
   tess-3.05:
     docker:
-      - image: thiagoalessio/tesseract:3.05
+      - image: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:3.05
     steps: *all_tests
 
   tess-4.00:
     docker:
-      - image: thiagoalessio/tesseract:4.00
+      - image: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:4.00
+    steps: *all_tests
+
+  tess-4.1.0:
+    docker:
+      - image: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:4.1.0
+    steps: *all_tests
+
+  tess-4.1.1:
+    docker:
+      - image: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:4.1.1
     steps: *all_tests
 
 php_jobs: &php_jobs
@@ -116,6 +126,10 @@ workflows:
       - tess-3.05:
           requires: *php_jobs
       - tess-4.00:
+          requires: *php_jobs
+      - tess-4.1.0:
+          requires: *php_jobs
+      - tess-4.1.1:
           requires: *php_jobs
 
 notify:

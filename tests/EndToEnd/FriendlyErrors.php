@@ -66,9 +66,9 @@ class FriendlyErrors extends TestCase
 		switch (true) {
 
 			case ($this->isVersion('3.02')):
-				$expected[] = 'read_params_file: Can\'t open quiet';
 				$expected[] = 'Error in pixReadStream: Unknown format: no pix returned';
 				$expected[] = 'Error in pixRead: pix not read';
+				$expected[] = 'Unsupported image type.';
 				break;
 
 			case ($this->isVersion('3.03')):
@@ -116,6 +116,6 @@ class FriendlyErrors extends TestCase
 	protected function isVersion($version)
 	{
 		exec('tesseract --version 2>&1', $output);
-		return $output[0] == "tesseract $version";
+		return strpos($output[0], "tesseract $version") !== false;
 	}
 }
