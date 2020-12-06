@@ -466,8 +466,8 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [appveyor]: https://ci.appveyor.com/project/thiagoalessio/tesseract-ocr-for-php/branch/master
 [codacy_badge]: https://api.codacy.com/project/badge/Grade/024c8814aecf40329500df267134c623
 [codacy]: https://www.codacy.com/app/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=thiagoalessio/tesseract-ocr-for-php&amp;utm_campaign=Badge_Grade
-[test_coverage_badge]: https://api.codacy.com/project/badge/Coverage/024c8814aecf40329500df267134c623
-[test_coverage]: https://www.codacy.com/app/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&utm_medium=referral&utm_content=thiagoalessio/tesseract-ocr-for-php&utm_campaign=Badge_Coverage
+[test_coverage_badge]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php/branch/main/graph/badge.svg?token=Y0VnrqiSIf
+[test_coverage]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php
 [stable_version_badge]: https://img.shields.io/packagist/v/thiagoalessio/tesseract_ocr.svg
 [packagist]: https://packagist.org/packages/thiagoalessio/tesseract_ocr
 [total_downloads_badge]: https://img.shields.io/packagist/dt/thiagoalessio/tesseract_ocr.svg
