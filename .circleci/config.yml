@@ -85,6 +85,11 @@ jobs:
       - image: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:4.00
     steps: *all_tests
 
+  tess-4.1.0:
+    docker:
+      - image: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:4.1.0
+    steps: *all_tests
+
 php_jobs: &php_jobs
   - php-5.4
   - php-5.6
@@ -116,6 +121,8 @@ workflows:
       - tess-3.05:
           requires: *php_jobs
       - tess-4.00:
+          requires: *php_jobs
+      - tess-4.1.0:
           requires: *php_jobs
 
 notify:
