@@ -14,7 +14,7 @@ all_tests: &all_tests
   - checkout
   - run: composer install
   - run: php tests/run.php unit e2e
-  - run: vendor/bin/codacycoverage clover ./coverage.xml
+  - run: bash <(curl -s https://codecov.io/bash)
 
 jobs:
   php-5.4:
