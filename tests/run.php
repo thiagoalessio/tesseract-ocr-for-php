@@ -12,8 +12,17 @@ if (in_array('e2e', $argv))
 
 // setting up code coverage
 if (extension_loaded('xdebug')) {
-	$coverage = new \PHP_CodeCoverage;
-	$coverage->filter()->addDirectoryToWhitelist('./src');
+	if (class_exists('\PHP_CodeCoverage')) {
+		$coverage = new \PHP_CodeCoverage;
+		$coverage->filter()->addDirectoryToWhitelist('./src');
+	} else {
+		$filter = new \SebastianBergmann\CodeCoverage\Filter;
+		$filter->includeDirectory('./src');
+		$coverage = new \SebastianBergmann\CodeCoverage\CodeCoverage(
+			(new \SebastianBergmann\CodeCoverage\Driver\Selector)->forLineCoverage($filter),
+			$filter
+		);
+	}
 	$coverage->start('tests');
 }
 
@@ -52,7 +61,10 @@ foreach ($tests as $test) {
 // saving coverage results
 if (isset($coverage)) {
 	$coverage->stop();
-	$writer = new \PHP_CodeCoverage_Report_Clover;
+	$reportClass = class_exists('\PHP_CodeCoverage_Report_Clover')
+		? '\PHP_CodeCoverage_Report_Clover'
+		: '\SebastianBergmann\CodeCoverage\Report\Clover';
+	$writer = new $reportClass;
 	$writer->process($coverage, 'coverage.xml');
 }
 exit($rc);
