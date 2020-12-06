@@ -116,6 +116,6 @@ class FriendlyErrors extends TestCase
 	protected function isVersion($version)
 	{
 		exec('tesseract --version 2>&1', $output);
-		return $output[0] == "tesseract $version";
+		return strpos($output[0], "tesseract $version") !== false;
 	}
 }
