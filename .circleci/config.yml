@@ -72,7 +72,7 @@ jobs:
 
   tess-3.04:
     docker:
-      - image: thiagoalessio/tesseract:3.04
+      - image: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:3.04
     steps: *all_tests
 
   tess-3.05:
