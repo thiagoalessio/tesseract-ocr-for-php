@@ -1,11 +1,13 @@
-FROM debian:jessie
+FROM docker.io/library/fedora:22
 
-RUN apt-get -y update && \
-	apt-get -y install curl git-core unzip php5-cli php5-xdebug php5-curl \
-	tesseract-ocr=3.03.03-1 tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-spa \
-	--no-install-recommends &&\
-	apt-get clean &&\
-	rm -rf /var/lib/apt/lists/*
+RUN dnf install -y curl git php-cli php-pecl-xdebug unzip \
+	tesseract-3.03-0.4.rc1.fc22 \
+	tesseract-langpack-deu \
+	tesseract-langpack-jpn \
+	tesseract-langpack-spa &&\
+	dnf clean all && rm -rf /var/cache/yum && rm -rf /var/tmp/yum-*
 
-RUN curl -sko- https://getcomposer.org/installer | \
+RUN curl -sko- https://getcomposer.org/installer |\
 	php -- --quiet --filename=composer --install-dir=/usr/local/bin
+
+ENTRYPOINT ["/bin/bash"]
