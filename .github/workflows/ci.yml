@@ -71,8 +71,14 @@ jobs:
       run: php tests/run.php e2e
 
   code-coverage:
-    name: code-coverage
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-system:
+        - ubuntu-latest
+        - macos-latest
+
+    name: code-coverage on ${{ matrix.operating-system }}
+    runs-on: ${{ matrix.operating-system }}
 
     steps:
     - name: Checkout code
@@ -85,11 +91,16 @@ jobs:
         extensions: dom, libxml, xmlwriter
         coverage: xdebug
 
-    - name: Install system dependencies
+    - name: Install system dependencies (linux)
       run: >
         sudo apt-get -y update &&
         DEBIAN_FRONTEND=noninteractive sudo apt-get -y install
         tesseract-ocr tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-spa
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+
+    - name: Install system dependencies (macos)
+      run: brew install tesseract tesseract-lang
+      if: ${{ matrix.operating-system == 'macos-latest' }}
 
     - name: Install composer dependencies
       run: composer update --no-ansi --no-interaction --no-progress
