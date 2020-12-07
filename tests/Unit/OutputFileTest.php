@@ -12,7 +12,7 @@ class OutputFileTest extends TestCase
 
 	public function testTxt()
 	{
-		foreach (['digits', 'quiet', 'txt', 'anything', 'else'] as $ext) {
+		foreach (array('digits', 'quiet', 'txt', 'anything', 'else') as $ext) {
 			$this->cmd->configFile = $ext;
 			$expected = "/path/to/output/file.txt";
 			$this->assertEquals($expected, $this->cmd->getOutputFile());

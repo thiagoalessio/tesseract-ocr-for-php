@@ -15,7 +15,7 @@ class CommandTest extends TestCase
 
 	public function tearDown()
 	{
-		$files = glob(join(DIRECTORY_SEPARATOR, [$this->customTempDir, '*']));
+		$files = glob(join(DIRECTORY_SEPARATOR, array($this->customTempDir, '*')));
 		array_map('unlink', $files);
 		rmdir($this->customTempDir);
 	}

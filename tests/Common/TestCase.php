@@ -4,18 +4,18 @@ class TestCase
 {
 	public function run()
 	{
-		$results = [];
+		$results = array();
 
 		if (method_exists($this, 'setUp')) $this->setUp();
 		foreach ($this->getTests() as $test) {
 			if (method_exists($this, 'beforeEach')) $this->beforeEach();
 			try {
 				$this->$test();
-				$results[$test] = ['status' => 'pass'];
+				$results[$test] = array('status' => 'pass');
 			} catch (SkipException $e) {
-				$results[$test] = ['status' => 'skip'];
+				$results[$test] = array('status' => 'skip');
 			} catch (\Exception $e) {
-				$results[$test] = ['status' => 'fail', 'msg' => $e->getMessage()];
+				$results[$test] = array('status' => 'fail', 'msg' => $e->getMessage());
 			}
 			if (method_exists($this, 'afterEach')) $this->afterEach();
 		}

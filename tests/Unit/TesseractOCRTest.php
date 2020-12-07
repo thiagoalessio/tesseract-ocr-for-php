@@ -15,7 +15,7 @@ class TesseractOCRTest extends TestCase
 
 	public function tearDown()
 	{
-		$files = glob(join(DIRECTORY_SEPARATOR, [$this->customTempDir, '*']));
+		$files = glob(join(DIRECTORY_SEPARATOR, array($this->customTempDir, '*')));
 		array_map('unlink', $files);
 		rmdir($this->customTempDir);
 	}
@@ -162,9 +162,8 @@ class TesseractOCRTest extends TestCase
 	{
 		if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') $this->skip();
 
-		$cmd = (new TesseractOCR('image.png'))
-			->tempDir($this->customTempDir)
-			->command;
+		$tess = new TesseractOCR('image.png');
+		$cmd = $tess->tempDir($this->customTempDir)->command;
 
 		$expected = "\"tesseract\" \"image.png\" \"{$this->customTempDir}";
 		$actual = substr("$cmd", 0, strlen($expected));

@@ -13,7 +13,7 @@ class Option
 	public static function oem($oem)
 	{
 		return function($version) use ($oem) {
-			self::checkMinVersion('3.05', $version, 'oem');
+			Option::checkMinVersion('3.05', $version, 'oem');
 			return "--oem $oem";
 		};
 	}
@@ -21,7 +21,7 @@ class Option
 	public static function userWords($path)
 	{
 		return function($version) use ($path) {
-			self::checkMinVersion('3.04', $version, 'user-words');
+			Option::checkMinVersion('3.04', $version, 'user-words');
 			return '--user-words "'.addcslashes($path, '\\"').'"';
 		};
 	}
@@ -29,7 +29,7 @@ class Option
 	public static function userPatterns($path)
 	{
 		return function($version) use ($path) {
-			self::checkMinVersion('3.04', $version, 'user-patterns');
+			Option::checkMinVersion('3.04', $version, 'user-patterns');
 			return '--user-patterns "'.addcslashes($path, '\\"').'"';
 		};
 	}

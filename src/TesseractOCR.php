@@ -145,7 +145,7 @@ class TesseractOCR
 
 	private function isConfigFile($name)
 	{
-		return in_array($name, ['digits', 'hocr', 'pdf', 'quiet', 'tsv', 'txt']);
+		return in_array($name, array('digits', 'hocr', 'pdf', 'quiet', 'tsv', 'txt'));
 	}
 
 	private function isOption($name)

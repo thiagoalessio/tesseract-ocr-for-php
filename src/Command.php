@@ -5,7 +5,7 @@ class Command
 	public $executable = 'tesseract';
 	public $useFileAsInput = true;
 	public $useFileAsOutput = true;
-	public $options = [];
+	public $options = array();
 	public $configFile;
 	public $tempDir;
 	public $threadLimit;
@@ -23,7 +23,7 @@ class Command
 
 	public function __toString()
 	{
-		$cmd = [];
+		$cmd = array();
 		if ($this->threadLimit) $cmd[] = "OMP_THREAD_LIMIT={$this->threadLimit}";
 		$cmd[] = self::escape($this->executable);
 		$cmd[] = $this->useFileAsInput ? self::escape($this->image) : "-";
@@ -47,7 +47,7 @@ class Command
 				.basename(tempnam($this->getTempDir(), 'ocr'));
 		if (!$withExt) return $this->outputFile;
 
-		$hasCustomExt = ['hocr', 'tsv', 'pdf'];
+		$hasCustomExt = array('hocr', 'tsv', 'pdf');
 		$ext = in_array($this->configFile, $hasCustomExt) ? $this->configFile : 'txt';
 		return "{$this->outputFile}.{$ext}";
 	}
@@ -60,7 +60,8 @@ class Command
 	public function getTesseractVersion()
 	{
 		exec(self::escape($this->executable).' --version 2>&1', $output);
-		return explode(' ', $output[0])[1];
+		$outputParts = explode(' ', $output[0]);
+		return $outputParts[1];
 	}
 
 	public function getAvailableLanguages()

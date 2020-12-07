@@ -18,8 +18,9 @@ if (extension_loaded('xdebug')) {
 	} else {
 		$filter = new \SebastianBergmann\CodeCoverage\Filter;
 		$filter->includeDirectory('./src');
+		$selector = new \SebastianBergmann\CodeCoverage\Driver\Selector;
 		$coverage = new \SebastianBergmann\CodeCoverage\CodeCoverage(
-			(new \SebastianBergmann\CodeCoverage\Driver\Selector)->forLineCoverage($filter),
+			$selector->forLineCoverage($filter),
 			$filter
 		);
 	}
@@ -35,24 +36,25 @@ $rc = 0;
 foreach ($tests as $test) {
 	echo str_replace(__NAMESPACE__.'\\', '', $test), PHP_EOL;
 
-	$results = (new $test)->run();
+	$testInstance = new $test;
+	$results = $testInstance->run();
 	foreach ($results as $name => $result) {
 		switch ($result['status']) {
 			case 'fail':
-				$status = "\e[31m✕";
+				$status = "\033[31m✕";
 				break;
 			case 'pass':
-				$status = "\e[32m✓";
+				$status = "\033[32m✓";
 				break;
 			case 'skip':
-				$status = "\e[33m‖";
+				$status = "\033[33m‖";
 				break;
 		}
-		echo "\t{$status} {$name}\e[0m", PHP_EOL;
+		echo "\t{$status} {$name}\033[0m", PHP_EOL;
 
 		if ($result['status'] == 'fail') {
 			$rc++;
-			echo "\e[35m{$result['msg']}\e[0m", PHP_EOL;
+			echo "\033[35m{$result['msg']}\033[0m", PHP_EOL;
 		}
 	}
 	echo PHP_EOL;
