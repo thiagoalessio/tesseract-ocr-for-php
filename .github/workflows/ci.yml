@@ -71,14 +71,7 @@ jobs:
       run: php tests/run.php e2e
 
   code-coverage:
-    strategy:
-      matrix:
-        operating-system:
-        - ubuntu-latest
-        - windows-latest
-        - macos-latest
-
-    name: code-coverage on ${{ matrix.operating-system }}
+    name: code-coverage
     runs-on: ubuntu-latest
 
     steps:
