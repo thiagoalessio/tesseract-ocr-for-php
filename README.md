@@ -48,7 +48,7 @@ But that is not possible with [Homebrew][]. It comes only with **English** suppo
 by default, so if you intend to use it for other language, the quickest solution
 is to install them all:
 
-    $ brew install tesseract --with-all-languages
+    $ brew install tesseract tesseract-lang
 
 <br/>
 
