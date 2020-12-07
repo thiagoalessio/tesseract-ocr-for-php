@@ -68,5 +68,12 @@ if (isset($coverage)) {
 		: '\SebastianBergmann\CodeCoverage\Report\Clover';
 	$writer = new $reportClass;
 	$writer->process($coverage, 'coverage.xml');
+
+	// dev
+	//$reportClass = class_exists('\PHP_CodeCoverage_Report_HTML')
+	//	? '\PHP_CodeCoverage_Report_HTML'
+	//	: '\SebastianBergmann\CodeCoverage\Report\Html\Facade';
+	//$writer = new $reportClass;
+	//@$writer->process($coverage, 'coverage-report');
 }
 exit($rc);
