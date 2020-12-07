@@ -460,10 +460,10 @@ tesseract-ocr-for-php is released under the [MIT License][].
 
 <h2></h2><p align="center"><sub>Made with <sub><a href="#"><img src="https://thiagoalessio.github.io/tesseract-ocr-for-php/images/heart.svg" alt="love" width="14px"/></a></sub> in Berlin</sub></p>
 
-[ci_badge]: https://github.com/thiagoalessio/tesseract-ocr-for-php/workflows/CI/badge.svg?event=push
+[ci_badge]: https://github.com/thiagoalessio/tesseract-ocr-for-php/workflows/CI/badge.svg?event=push&branch=main
 [ci]: https://github.com/thiagoalessio/tesseract-ocr-for-php/actions?query=workflow%3ACI
-[appveyor_badge]: https://ci.appveyor.com/api/projects/status/xwy5ls0798iwcim3/branch/master?svg=true
-[appveyor]: https://ci.appveyor.com/project/thiagoalessio/tesseract-ocr-for-php/branch/master
+[appveyor_badge]: https://ci.appveyor.com/api/projects/status/xwy5ls0798iwcim3/branch/main?svg=true
+[appveyor]: https://ci.appveyor.com/project/thiagoalessio/tesseract-ocr-for-php/branch/main
 [codacy_badge]: https://api.codacy.com/project/badge/Grade/024c8814aecf40329500df267134c623
 [codacy]: https://www.codacy.com/app/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=thiagoalessio/tesseract-ocr-for-php&amp;utm_campaign=Badge_Grade
 [test_coverage_badge]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php/branch/main/graph/badge.svg?token=Y0VnrqiSIf
@@ -491,6 +491,6 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [Gitter]: https://gitter.im/thiagoalessio/tesseract-ocr-for-php
 [Issue]: https://github.com/thiagoalessio/tesseract-ocr-for-php/issues
 [Pull Request]: https://github.com/thiagoalessio/tesseract-ocr-for-php/pulls
-[Code of Conduct]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/.github/CODE_OF_CONDUCT.md
-[Contributing]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/.github/CONTRIBUTING.md
-[MIT License]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/master/MIT-LICENSE
+[Code of Conduct]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/main/.github/CODE_OF_CONDUCT.md
+[Contributing]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/main/.github/CONTRIBUTING.md
+[MIT License]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/main/MIT-LICENSE
