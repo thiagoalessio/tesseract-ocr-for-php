@@ -14,7 +14,6 @@ A wrapper to work with Tesseract OCR inside PHP.
 [![Monthly Downloads][monthly_downloads_badge]][packagist]
 <br/>
 [![Join the chat][gitter_badge]][gitter]
-[![Tweet][twitter_badge]][tweet_intent]
 
 ## Installation
 
@@ -474,8 +473,6 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [monthly_downloads_badge]: https://img.shields.io/packagist/dm/thiagoalessio/tesseract_ocr.svg
 [gitter_badge]: https://img.shields.io/gitter/room/thiagoalessio/tesseract-ocr-for-php.svg?logo=gitter-white&colorB=33cc99
 [gitter]: https://gitter.im/thiagoalessio/tesseract-ocr-for-php?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-[twitter_badge]: https://img.shields.io/twitter/url/https/github.com/thiagoalessio/tesseract-ocr-for-php.svg?style=social&logo=twitter
-[tweet_intent]: https://twitter.com/intent/tweet?text=tesseract-ocr-for-php%3A%20A%20wrapper%20to%20work%20with%20Tesseract%20OCR%20inside%20PHP.&url=https://github.com/thiagoalessio/tesseract-ocr-for-php&hashtags=php,tesseract,ocr
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract
 [Composer]: http://getcomposer.org/
 [windows_icon]: https://thiagoalessio.github.io/tesseract-ocr-for-php/images/windows-18.svg
