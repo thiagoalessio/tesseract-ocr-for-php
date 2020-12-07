@@ -57,38 +57,38 @@ class TesseractOCRTest extends TestCase
 		$this->assertEquals("$expected", "$actual");
 	}
 
-	public function testWhitelistSingleStringArgument()
+	public function testAllowlistSingleStringArgument()
 	{
 		$expected = '"tesseract" "image.png" "tmpfile" -c "tessedit_char_whitelist=abcdefghij"';
-		$actual = $this->tess->whitelist('abcdefghij')->command;
+		$actual = $this->tess->allowlist('abcdefghij')->command;
 		$this->assertEquals("$expected", $actual);
 	}
 
-	public function testWhitelistMultipleStringArguments()
+	public function testAllowlistMultipleStringArguments()
 	{
 		$expected = '"tesseract" "image.png" "tmpfile" -c "tessedit_char_whitelist=abcdefghij"';
-		$actual = $this->tess->whitelist('ab', 'cd', 'ef', 'gh', 'ij')->command;
+		$actual = $this->tess->allowlist('ab', 'cd', 'ef', 'gh', 'ij')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
-	public function testWhitelistSingleArrayArgument()
+	public function testAllowlistSingleArrayArgument()
 	{
 		$expected = '"tesseract" "image.png" "tmpfile" -c "tessedit_char_whitelist=abcdefghij"';
-		$actual = $this->tess->whitelist(range('a', 'j'))->command;
+		$actual = $this->tess->allowlist(range('a', 'j'))->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
-	public function testWhitelistMultipleArrayArguments()
+	public function testAllowlistMultipleArrayArguments()
 	{
 		$expected = '"tesseract" "image.png" "tmpfile" -c "tessedit_char_whitelist=abcdefghij"';
-		$actual = $this->tess->whitelist(range('a', 'e'), range('f', 'j'))->command;
+		$actual = $this->tess->allowlist(range('a', 'e'), range('f', 'j'))->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 
-	public function testWhitelistMixedArguments()
+	public function testAllowlistMixedArguments()
 	{
 		$expected = '"tesseract" "image.png" "tmpfile" -c "tessedit_char_whitelist=0123456789abcdefghij"';
-		$actual = $this->tess->whitelist(range(0, 9), 'abcd', range('e', 'j'))->command;
+		$actual = $this->tess->allowlist(range(0, 9), 'abcd', range('e', 'j'))->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 

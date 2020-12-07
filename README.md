@@ -113,7 +113,7 @@ I eat すし y Pollo
 ```php
 use thiagoalessio\TesseractOCR\TesseractOCR;
 echo (new TesseractOCR('8055.png'))
-    ->whitelist(range('A', 'Z'))
+    ->allowlist(range('A', 'Z'))
     ->run();
 ```
 
@@ -281,13 +281,13 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
-### whitelist
+### allowlist
 
 This is a shortcut for `->config('tessedit_char_whitelist', 'abcdef....')`.
 
 ```php
 echo (new TesseractOCR('img.png'))
-    ->whitelist(range('a', 'z'), range(0, 9), '-_@')
+    ->allowlist(range('a', 'z'), range(0, 9), '-_@')
     ->run();
 ```
 

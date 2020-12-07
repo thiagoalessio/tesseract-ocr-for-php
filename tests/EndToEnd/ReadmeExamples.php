@@ -50,7 +50,7 @@ class ReadmeExamples extends TestCase
 		$expected = 'BOSS';
 		$actual = (new TesseractOCR("{$this->imagesDir}/8055.png"))
 			->executable($this->executable)
-			->whitelist(range('A', 'Z'))
+			->allowlist(range('A', 'Z'))
 			->run();
 		$this->assertEquals($expected, $actual);
 	}
