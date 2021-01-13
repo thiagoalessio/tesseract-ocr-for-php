@@ -18,6 +18,13 @@ class Option
 		};
 	}
 
+	public static function dpi($dpi)
+	{
+		return function($version) use ($dpi) {
+			return "--dpi $dpi";
+		};
+	}
+	
 	public static function userWords($path)
 	{
 		return function($version) use ($path) {
