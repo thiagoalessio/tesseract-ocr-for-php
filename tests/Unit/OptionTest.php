@@ -27,6 +27,13 @@ class OptionTest extends TestCase
 		}
 	}
 
+	public function testDpi()
+	{
+		$dpi = Option::dpi(300);
+
+		$this->assertEquals('--dpi 300', $dpi());
+	}
+
 	public function testUserWords()
 	{
 		$userWords = Option::userWords('/path/to/words');
