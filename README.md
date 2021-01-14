@@ -281,6 +281,16 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
+### dpi
+
+Specify the image DPI. It is useful if your image does not contain this information in its metadata.
+
+```php
+echo (new TesseractOCR('img.png'))
+    ->dpi(300)
+    ->run();
+```
+
 ### allowlist
 
 This is a shortcut for `->config('tessedit_char_whitelist', 'abcdef....')`.
