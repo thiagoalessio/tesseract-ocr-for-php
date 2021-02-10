@@ -1,13 +1,5 @@
 <?php namespace thiagoalessio\TesseractOCR;
 
-abstract class TesseractOcrException extends \Exception {}
-
-class ImageNotFoundException extends TesseractOcrException {}
-class TesseractNotFoundException extends TesseractOcrException {}
-class UnsuccessfulCommandException extends TesseractOcrException {}
-class FeatureNotAvailableException extends TesseractOcrException {}
-class NoWritePermissionsForOutputFile extends TesseractOcrException {}
-
 class FriendlyErrors
 {
 	public static function checkImagePath($image)
