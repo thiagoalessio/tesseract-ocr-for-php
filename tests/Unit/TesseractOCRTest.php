@@ -45,8 +45,8 @@ class TesseractOCRTest extends TestCase
 
 	public function testCustomExecutablePath()
 	{
-		$expected = '"/custom/path/to/tesseract" "image.png" "tmpfile"';
-		$actual = $this->tess->executable('/custom/path/to/tesseract')->command;
+		$expected = '"/bin/ls" "image.png" "tmpfile"';
+		$actual = $this->tess->executable('/bin/ls')->command;
 		$this->assertEquals("$expected", "$actual");
 	}
 

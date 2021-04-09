@@ -82,6 +82,7 @@ class TesseractOCR
 
 	public function executable($executable)
 	{
+		FriendlyErrors::checkTesseractPresence($executable);
 		$this->command->executable = $executable;
 		return $this;
 	}

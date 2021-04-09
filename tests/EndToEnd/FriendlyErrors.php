@@ -53,6 +53,33 @@ class FriendlyErrors extends TestCase
 		}
 	}
 
+	public function testExecutableNotFoundWithVersionCheckingOptions()
+	{
+		# Issue #210, reported by @samwilson
+
+		$currentPath = getenv('PATH');
+
+		$expected = array();
+		$expected[] = 'Error! The command "/nowhere/tesseract" was not found.';
+		$expected[] = '';
+		$expected[] = 'Make sure you have Tesseract OCR installed on your system:';
+		$expected[] = 'https://github.com/tesseract-ocr/tesseract';
+		$expected[] = '';
+		$expected[] = "The current \$PATH is $currentPath";
+		$expected = join(PHP_EOL, $expected);
+
+		try {
+			(new TesseractOCR())
+				->executable('/nowhere/tesseract')
+				->imageData('irrelevant', 1234)
+				->withoutTempFiles()
+				->run();
+			throw new \Exception('TesseractNotFoundException not thrown');
+		} catch (TesseractNotFoundException $e) {
+			$this->assertEquals($expected, $e->getMessage());
+		}
+	}
+
 	public function testUnsuccessfulCommand()
 	{
 		$expected = array();
