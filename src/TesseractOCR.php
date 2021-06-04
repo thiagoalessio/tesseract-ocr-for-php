@@ -15,7 +15,7 @@ class TesseractOCR
 		$this->image("$image");
 	}
 
-	public function run()
+	public function run($timeout = 0)
 	{
 		try {
 			if ($this->outputFile !== null) {
@@ -34,7 +34,7 @@ class TesseractOCR
 				$process->write($this->command->image, $this->command->imageSize);
 				$process->closeStdin();
 			}
-			$output = $process->wait();
+			$output = $process->wait($timeout);
 
 			FriendlyErrors::checkCommandExecution($this->command, $output["out"], $output["err"]);
 		}
