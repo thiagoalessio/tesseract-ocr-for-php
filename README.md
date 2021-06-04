@@ -132,6 +132,21 @@ of breaking CAPTCHAs, so please take a look at this comment:
 
 ## API
 
+### run
+
+Executes a `tesseract` command, optionally receiving an integer as `timeout`,
+in case you experience stalled tesseract processes.
+
+```php
+$ocr = new TesseractOCR();
+$ocr->run();
+```
+```php
+$ocr = new TesseractOCR();
+$timeout = 500;
+$ocr->run($timeout);
+```
+
 ### image
 
 Define the path of an image to be recognized by `tesseract`.
