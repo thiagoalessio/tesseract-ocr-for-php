@@ -6,9 +6,11 @@ class Process {
     private $stdout;
     private $stderr;
     private $handle;
+    private $startTime;
 
     public function __construct($command)
     {
+        $this->startTime = microtime(true);
         $streamDescriptors = [
             array("pipe", "r"),
             array("pipe", "w"),
@@ -35,11 +37,11 @@ class Process {
     }
 
 
-    public function wait()
+    public function wait($timeout = 0)
     {
         $running = true;
         $data = ["out" => "", "err" => ""];
-        while ($running === true)
+        while (($running === true) && !$this->hasTimedOut($timeout))
         {
             $data["out"] .= fread($this->stdout, 8192);
             $data["err"] .= fread($this->stderr, 8192);
@@ -62,6 +64,11 @@ class Process {
         $this->closeStream($this->stdin);
     }
 
+    private function hasTimedOut($timeout)
+    {
+        return (($timeout > 0) &&  ($this->startTime + $timeout < microtime(true)));    
+    }
+    
     private function closeStream(&$stream)
     {
         if ($stream !== NULL)
