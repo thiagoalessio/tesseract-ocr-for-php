@@ -488,8 +488,8 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [ci]: https://github.com/thiagoalessio/tesseract-ocr-for-php/actions?query=workflow%3ACI
 [appveyor_badge]: https://ci.appveyor.com/api/projects/status/xwy5ls0798iwcim3/branch/main?svg=true
 [appveyor]: https://ci.appveyor.com/project/thiagoalessio/tesseract-ocr-for-php/branch/main
-[codacy_badge]: https://api.codacy.com/project/badge/Grade/024c8814aecf40329500df267134c623
-[codacy]: https://www.codacy.com/app/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=thiagoalessio/tesseract-ocr-for-php&amp;utm_campaign=Badge_Grade
+[codacy_badge]: https://app.codacy.com/project/badge/Grade/a81aa10012874f23a57df5b492d835f2
+[codacy]: https://www.codacy.com/gh/thiagoalessio/tesseract-ocr-for-php/dashboard
 [test_coverage_badge]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php/branch/main/graph/badge.svg?token=Y0VnrqiSIf
 [test_coverage]: https://codecov.io/gh/thiagoalessio/tesseract-ocr-for-php
 [stable_version_badge]: https://img.shields.io/packagist/v/thiagoalessio/tesseract_ocr.svg
