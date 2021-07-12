@@ -2,6 +2,8 @@
 
 # Tesseract OCR for PHP
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/55b07d8c1738403a832dcf223816faef)](https://app.codacy.com/gh/thiagoalessio/tesseract-ocr-for-php?utm_source=github.com&utm_medium=referral&utm_content=thiagoalessio/tesseract-ocr-for-php&utm_campaign=Badge_Grade_Settings)
+
 A wrapper to work with Tesseract OCR inside PHP.
 
 [![CI][ci_badge]][ci]
