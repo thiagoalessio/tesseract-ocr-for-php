@@ -340,7 +340,7 @@ In combination with `configFile` you are able to get the `hocr`, `tsv` or
 ```php
 echo (new TesseractOCR('img.png'))
     ->configFile('pdf')
-    ->setOutputFile('/PATH_TO_MY_OUTPUTFILE/searchable.pdf');
+    ->setOutputFile('/PATH_TO_MY_OUTPUTFILE/searchable.pdf')
     ->run();
 ```
 
