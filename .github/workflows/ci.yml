@@ -80,42 +80,21 @@ jobs:
       run: php tests/run.php e2e
 
   code-coverage:
-    strategy:
-      matrix:
-        operating-system:
-        - ubuntu-latest
-        - macos-latest
-
-    name: code-coverage on ${{ matrix.operating-system }}
-    runs-on: ${{ matrix.operating-system }}
+    name: code-coverage
+    runs-on: ubuntu-latest
+    container: quay.io/thiagoalessio/tesseract-ocr-for-php-ci:5.1.0
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.1'
-        extensions: dom, libxml, xmlwriter
-        coverage: xdebug
-
-    - name: Install system dependencies (linux)
-      run: >
-        sudo apt-get -y update &&
-        DEBIAN_FRONTEND=noninteractive sudo apt-get -y install
-        tesseract-ocr tesseract-ocr-deu tesseract-ocr-jpn tesseract-ocr-spa
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-
-    - name: Install system dependencies (macos)
-      run: brew install tesseract tesseract-lang
-      if: ${{ matrix.operating-system == 'macos-latest' }}
 
     - name: Install composer dependencies
       run: composer update --no-ansi --no-interaction --no-progress
 
     - name: Run unit + e2e tests
       run: php tests/run.php unit e2e
+      env:
+        XDEBUG_MODE: coverage
 
     - name: Report code coverage
       run: bash <(curl -s https://codecov.io/bash)
