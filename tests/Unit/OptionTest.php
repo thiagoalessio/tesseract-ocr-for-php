@@ -11,6 +11,7 @@ class OptionTest extends TestCase
 		$this->assertEquals('-psm 8', $psm('3.05.01'));
 		$this->assertEquals('--psm 8', $psm('4.0.0-beta.1'));
 		$this->assertEquals('--psm 8', $psm('v4.0.0-beta.4.20180912'));
+		$this->assertEquals('--psm 8', $psm('v5.0.0-alpha.20200328')); //issue #229
 	}
 
 	public function testOem()
