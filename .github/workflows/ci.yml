@@ -65,6 +65,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v1
 
+    - name: Use insecure transport for composer on very old images
+      run: |
+        composer config --global disable-tls true
+        composer config --global secure-http false
+        composer config --global repo.packagist composer http://packagist.org
+      if: ${{ matrix.tesseract-version == '3.02' || matrix.tesseract-version == '3.03' }}
+
+
     - name: Install dependencies
       run: composer update --no-ansi --no-interaction --no-progress
 
