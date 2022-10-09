@@ -12,8 +12,6 @@ A wrapper to work with Tesseract OCR inside PHP.
 [![Latest Stable Version][stable_version_badge]][packagist]
 [![Total Downloads][total_downloads_badge]][packagist]
 [![Monthly Downloads][monthly_downloads_badge]][packagist]
-<br/>
-[![Join the chat][gitter_badge]][gitter]
 
 ## Installation
 
@@ -461,15 +459,10 @@ echo (new TesseractOCR('img.png'))
     ->run();
 ```
 
-## Where to get help
-
-Join the chat on [Gitter][].
-
 ## How to contribute
 
 You can contribute to this project by:
 
-* Helping new users on [Gitter][];
 * Opening an [Issue][] if you found a bug or wish to propose a new feature;
 * Placing a [Pull Request][] with code that fix a bug, missing/wrong documentation
   or implement a new feature;
@@ -496,8 +489,6 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [packagist]: https://packagist.org/packages/thiagoalessio/tesseract_ocr
 [total_downloads_badge]: https://img.shields.io/packagist/dt/thiagoalessio/tesseract_ocr.svg
 [monthly_downloads_badge]: https://img.shields.io/packagist/dm/thiagoalessio/tesseract_ocr.svg
-[gitter_badge]: https://img.shields.io/gitter/room/thiagoalessio/tesseract-ocr-for-php.svg?logo=gitter-white&colorB=33cc99
-[gitter]: https://gitter.im/thiagoalessio/tesseract-ocr-for-php?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [Tesseract OCR]: https://github.com/tesseract-ocr/tesseract
 [Composer]: http://getcomposer.org/
 [windows_icon]: https://thiagoalessio.github.io/tesseract-ocr-for-php/images/windows-18.svg
@@ -510,7 +501,6 @@ tesseract-ocr-for-php is released under the [MIT License][].
 [@daijiale]: https://github.com/daijiale
 [HOCR]: https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage#hocr-output
 [TSV]: https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage#tsv-output-currently-available-in-305-dev-in-master-branch-on-github
-[Gitter]: https://gitter.im/thiagoalessio/tesseract-ocr-for-php
 [Issue]: https://github.com/thiagoalessio/tesseract-ocr-for-php/issues
 [Pull Request]: https://github.com/thiagoalessio/tesseract-ocr-for-php/pulls
 [Code of Conduct]: https://github.com/thiagoalessio/tesseract-ocr-for-php/blob/main/.github/CODE_OF_CONDUCT.md
