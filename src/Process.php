@@ -47,6 +47,9 @@ class Process {
             $data["err"] .= fread($this->stderr, 8192);
             $procInfo = proc_get_status($this->handle);
             $running = $procInfo["running"];
+            if ($running) {
+                usleep(1000); // Sleep 1ms to yield CPU time
+            }
         }
         return $data;
     }
