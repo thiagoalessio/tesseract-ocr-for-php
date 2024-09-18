@@ -4,6 +4,23 @@ use thiagoalessio\TesseractOCR\Command;
 use thiagoalessio\TesseractOCR\Option;
 use thiagoalessio\TesseractOCR\FriendlyErrors;
 
+/**
+ * @method TesseractOCR lang(string ...$language)
+ * @method TesseractOCR tessdataDir(string $dir)
+ * @method TesseractOCR userWords(string $filename)
+ * @method TesseractOCR userPatterns(string $filename)
+ * @method TesseractOCR psm(int $psm)
+ * @method TesseractOCR oem(int $oem)
+ * @method TesseractOCR dpi(int $dpi)
+ * @method TesseractOCR digits()
+ * @method TesseractOCR hocr()
+ * @method TesseractOCR pdf()
+ * @method TesseractOCR tsv()
+ * @method TesseractOCR txt()
+ * @method TesseractOCR config(string $var,string $value)
+ * @method TesseractOCR configVar(string $value)
+ * @method TesseractOCR otherConfigVar(string $value)
+ */
 class TesseractOCR
 {
 	public $command;
