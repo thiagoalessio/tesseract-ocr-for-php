@@ -1,5 +1,3 @@
-<img src="https://thiagoalessio.github.io/tesseract-ocr-for-php/images/logo.png" alt="Tesseract OCR for PHP" align="right" width="320px"/>
-
 # Tesseract OCR for PHP
 
 A wrapper to work with Tesseract OCR inside PHP.
