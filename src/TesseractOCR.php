@@ -17,19 +17,52 @@ class TesseractOCR
 
 	public function run($timeout = 0)
 	{
+		// Get Tesseract version (cached by Command class)
+		$tesseractVersion = $this->command->getTesseractVersion();
+		$isVersion303OrNewer = version_compare($tesseractVersion, '3.03', '>=');
+
 		try {
-			if ($this->outputFile !== null) {
-				FriendlyErrors::checkWritePermissions($this->outputFile);
-				$this->command->useFileAsOutput = true;
+			// Default to stdout for Tesseract 3.03+ if no output file is specified
+			// This check needs to happen *before* checkWritePermissions, but *after*
+			// the user has had a chance to call setOutputFile or withoutTempFiles.
+			// withoutTempFiles() sets useFileAsOutput to false directly.
+			// setOutputFile() sets $this->outputFile to a non-null value.
+			if ($isVersion303OrNewer && $this->outputFile === null && $this->command->useFileAsOutput === true) {
+				// User did not call setOutputFile() and did not call withoutTempFiles()
+				// So, we can default to using stdout for better performance.
+				$this->command->useFileAsOutput = false;
 			}
 
+			// If we are writing to a file (explicitly or due to old Tesseract version), check permissions.
+			if ($this->command->useFileAsOutput && $this->outputFile !== null) {
+				FriendlyErrors::checkWritePermissions($this->outputFile);
+				// Ensure useFileAsOutput is true if outputFile was set, overriding potential default.
+				// This scenario is unlikely now due to the logic order but kept for robustness.
+				$this->command->useFileAsOutput = true;
+			} elseif ($this->command->useFileAsOutput && $this->outputFile === null) {
+				// If using file output but no specific file was given, TesseractOCR creates
+				// a temp file. No specific permission check needed here beforehand.
+				// Tesseract/Command class handles temp file creation.
+			}
+
+
 			FriendlyErrors::checkTesseractPresence($this->command->executable);
+			// Input validation depends on whether we are using a file or stdin
 			if ($this->command->useFileAsInput) {
 				FriendlyErrors::checkImagePath($this->command->image);
+			} else {
+				// If using stdin, ensure the Tesseract version supports it.
+				// The imageData() method already performs this check, but double-checking here
+				// adds robustness in case the command object was manipulated differently.
+				if (!$isVersion303OrNewer) {
+					throw new FeatureNotAvailableException("Reading image data from stdin", "3.03", $tesseractVersion);
+				}
 			}
+
 
 			$process = new Process("{$this->command}");
 
+			// Write image data to stdin if not using a file
 			if (!$this->command->useFileAsInput) {
 				$process->write($this->command->image, $this->command->imageSize);
 				$process->closeStdin();
@@ -39,21 +72,28 @@ class TesseractOCR
 			FriendlyErrors::checkCommandExecution($this->command, $output["out"], $output["err"]);
 		}
 		catch (TesseractOcrException $e) {
+			// Clean up temporary files only if we were configured to use them
 			if ($this->command->useFileAsOutput) $this->cleanTempFiles();
 			throw $e;
 		}
 
+		// Process the output
 		if ($this->command->useFileAsOutput) {
-			$text = file_get_contents($this->command->getOutputFile());
+			// Read from the generated (temporary or specified) file
+			$outputFilePath = $this->command->getOutputFile();
+			$text = file_get_contents($outputFilePath);
 
-			if ($this->outputFile !== null) {
-				rename($this->command->getOutputFile(), $this->outputFile);
+			// If a specific output file was requested, rename the temp file to it
+			if ($this->outputFile !== null && $outputFilePath !== $this->outputFile) {
+				rename($outputFilePath, $this->outputFile);
 			}
 
+			// Clean up temporary files (if any were used)
 			$this->cleanTempFiles();
-		}
-		else
+		} else {
+			// Read directly from stdout
 			$text = $output["out"];
+		}
 
 		return trim($text, " \t\n\r\0\x0A\x0B\x0C");
 	}

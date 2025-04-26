@@ -126,6 +126,45 @@ of breaking CAPTCHAs, so please take a look at this comment:
 
 <https://github.com/thiagoalessio/tesseract-ocr-for-php/issues/91#issuecomment-342290510>
 
+## Performance Considerations
+
+This library includes features that can help optimize OCR performance:
+
+*   **Automatic stdin/stdout:** For Tesseract versions 3.03 and newer, the library automatically uses stdin for image input (when `imageData()` is used) and stdout for text output (when `setOutputFile()` is *not* used). This avoids creating temporary files and can significantly reduce disk I/O, improving speed, especially for batch processing. You can still force stdout usage on compatible versions by calling `withoutTempFiles()`.
+
+*   **Tesseract Options:** Providing specific options to Tesseract can dramatically improve accuracy and speed by guiding the recognition process. Consult the [Tesseract documentation](https://tesseract-ocr.github.io/tessdoc/Command-Line-Usage.html) for full details. Key options include:
+    *   `psm(<mode>)`: Page Segmentation Mode. Tells Tesseract how to interpret the page layout (e.g., as a single block of text, a single word, etc.).
+        ```php
+        // Example: Assume the image is a single uniform block of text
+        $ocr->psm(6);
+        ```
+    *   `oem(<mode>)`: OCR Engine Mode. Selects the engine used for recognition (e.g., legacy engine, LSTM-based engine).
+        ```php
+        // Example: Use the LSTM engine only
+        $ocr->oem(1);
+        ```
+    *   `allowlist(<characters>)`: Restricts the recognition to a specific set of characters. This can greatly improve accuracy and speed if you know the expected character set (e.g., only digits, only uppercase letters).
+        ```php
+        // Example: Recognize only digits 0-9
+        $ocr->allowlist(range(0, 9));
+
+        // Example: Recognize only uppercase letters and hyphens
+        $ocr->allowlist(range('A', 'Z'), '-');
+        ```
+
+*   **Combined Example:**
+
+    ```php
+    use thiagoalessio\TesseractOCR\TesseractOCR;
+
+    // Optimize for recognizing a single line of digits
+    echo (new TesseractOCR('invoice_number.png'))
+        ->psm(7) // Treat the image as a single text line.
+        ->oem(1) // Use LSTM-based engine.
+        ->allowlist(range(0, 9)) // Only recognize digits.
+        ->run();
+    ```
+
 ## API
 
 ### run

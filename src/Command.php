@@ -12,6 +12,7 @@ class Command
 	public $image;
 	public $imageSize;
 	private $outputFile;
+	private $tesseractVersion = null;
 
 	public function __construct($image=null, $outputFile=null)
 	{
@@ -59,9 +60,14 @@ class Command
 
 	public function getTesseractVersion()
 	{
+		if ($this->tesseractVersion !== null) {
+			return $this->tesseractVersion;
+		}
+
 		exec(self::escape($this->executable).' --version 2>&1', $output);
 		$outputParts = explode(' ', $output[0]);
-		return $outputParts[1];
+		$this->tesseractVersion = $outputParts[1];
+		return $this->tesseractVersion;
 	}
 
 	public function getAvailableLanguages()
