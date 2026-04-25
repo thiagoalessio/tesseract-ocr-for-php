@@ -1,0 +1,36 @@
+# Trafik Kazası Tutanak Analiz Sistemi - Ana .htaccess
+
+# HTTPS yönlendirmesi
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# config.php ve includes klasörünü dış erişime kapat
+<FilesMatch "^(config\.php|\.env\.php|api_keys\.json)$">
+    Deny from all
+</FilesMatch>
+
+# Logs klasörünü koru
+<IfModule mod_rewrite.c>
+    RewriteRule ^logs/ - [F,L]
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+# Dizin listelemeyi devre dışı bırak
+Options -Indexes
+
+# Güvenlik başlıkları
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# PHP ayarları (cPanel uyumlu)
+<IfModule mod_php.c>
+    php_value upload_max_filesize 20M
+    php_value post_max_size 25M
+    php_value max_execution_time 120
+    php_value memory_limit 256M
+</IfModule>

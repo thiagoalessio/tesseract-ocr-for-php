@@ -1,0 +1,226 @@
+/* Trafik Kazası Tutanak Analiz Sistemi - Profesyonel Tema */
+
+/* Genel */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Drop Zone aktif durumu */
+.drop-active {
+    border-color: #f59e0b !important;
+    background-color: rgba(245, 158, 11, 0.08) !important;
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1) !important;
+}
+
+/* Önizleme kartları */
+.preview-card {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid rgba(100, 116, 139, 0.3);
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.preview-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.preview-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.preview-card .remove-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    background: rgba(239, 68, 68, 0.85);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+}
+
+.preview-card .remove-btn:hover {
+    background: rgba(220, 38, 38, 1);
+    transform: scale(1.1);
+}
+
+.preview-card .file-name {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Sonuç içeriği formatlaması - Koyu tema */
+#resultContent h1,
+#resultContent h2,
+#resultContent h3 {
+    color: #f1f5f9;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+}
+
+#resultContent h1 { font-size: 1.25rem; font-weight: 700; color: #fbbf24; border-bottom: 2px solid rgba(251, 191, 36, 0.3); }
+#resultContent h2 { font-size: 1.125rem; font-weight: 600; color: #fcd34d; }
+#resultContent h3 { font-size: 1rem; font-weight: 600; color: #e2e8f0; border-bottom: none; }
+
+#resultContent p {
+    color: #cbd5e1;
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+}
+
+#resultContent ul,
+#resultContent ol {
+    margin-left: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+#resultContent li {
+    margin-bottom: 0.35rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+#resultContent li::marker {
+    color: #f59e0b;
+}
+
+#resultContent strong {
+    color: #f8fafc;
+    font-weight: 600;
+}
+
+#resultContent em {
+    color: #94a3b8;
+}
+
+/* Spinner animasyonu */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Pulse animasyonu */
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.animate-pulse {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Yazdırma stili */
+@media print {
+    header, footer,
+    #analysisForm,
+    #progressSection,
+    #errorSection,
+    #printBtn,
+    #newAnalysisBtn,
+    .bg-amber-500\/10 {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: #1f2937 !important;
+    }
+
+    #resultSection {
+        display: block !important;
+        margin: 0;
+    }
+
+    #resultSection > div {
+        box-shadow: none !important;
+        border: 1px solid #e5e7eb !important;
+        background: white !important;
+    }
+
+    #resultContent h1,
+    #resultContent h2,
+    #resultContent h3 {
+        color: #1f2937 !important;
+    }
+
+    #resultContent p,
+    #resultContent li {
+        color: #374151 !important;
+    }
+
+    #resultContent strong {
+        color: #111827 !important;
+    }
+}
+
+/* Özel scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.3);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.4);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.6);
+}
+
+/* Geçiş animasyonları */
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+/* Glassmorphism yardımcıları */
+.backdrop-blur {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+/* Focus ring stili */
+*:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5);
+    border-radius: 4px;
+}
+
+textarea:focus-visible,
+select:focus-visible,
+input:focus-visible {
+    border-radius: 0.5rem;
+}

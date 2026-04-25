@@ -2,3 +2,4 @@ composer.lock
 coverage-report
 coverage.xml
 vendor
+traffic-analysis/.env.php
